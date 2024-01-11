@@ -1,0 +1,2027 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+        <link rel="next" href="getting-started/dero-node.html">
+      
+      
+      <link rel="icon" href="assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>DERO Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="assets/external/unpkg.com/iframe-worker/shim.js"></script>
+      
+    
+    
+      
+        
+        
+        
+        <link rel="stylesheet" href="assets/external/fonts.googleapis.com/css.49ea35f2.css">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#what-is-dero" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="DERO Documentation" class="md-header__button md-logo" aria-label="DERO Documentation" data-md-component="logo">
+      
+  <img src="assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DERO Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Home
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="index.html" class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="getting-started/dero-node.html" class="md-tabs__link">
+          
+  
+  Getting started
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="developer/dvm.html" class="md-tabs__link">
+          
+  
+  Developers
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="DERO Documentation" class="md-nav__button md-logo" aria-label="DERO Documentation" data-md-component="logo">
+      
+  <img src="assets/logo.png" alt="logo">
+
+    </a>
+    DERO Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="index.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-dero-mission" class="md-nav__link">
+    <span class="md-ellipsis">
+      The DERO Mission
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dero-foundation" class="md-nav__link">
+    <span class="md-ellipsis">
+      DERO Foundation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DERO Foundation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#homomorphic-encryption-blockchain" class="md-nav__link">
+    <span class="md-ellipsis">
+      Homomorphic Encryption Blockchain
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#created-from-scratch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Created from Scratch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secure-and-private-smart-contracts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Secure and Private Smart Contracts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhebp" class="md-nav__link">
+    <span class="md-ellipsis">
+      DHEBP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#account-based-encrypted-blockchain" class="md-nav__link">
+    <span class="md-ellipsis">
+      Account based Encrypted Blockchain
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tls-securedsecured-udp-p2p-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      TLS-SECUREDSecured UDP P2P Network
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-dero-journey" class="md-nav__link">
+    <span class="md-ellipsis">
+      The DERO Journey
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The DERO Journey">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2017" class="md-nav__link">
+    <span class="md-ellipsis">
+      2017
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2018" class="md-nav__link">
+    <span class="md-ellipsis">
+      2018
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2019" class="md-nav__link">
+    <span class="md-ellipsis">
+      2019
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2020" class="md-nav__link">
+    <span class="md-ellipsis">
+      2020
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2021" class="md-nav__link">
+    <span class="md-ellipsis">
+      2021
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2022" class="md-nav__link">
+    <span class="md-ellipsis">
+      2022
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dero-network-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      DERO Network Specifications
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dero-mining" class="md-nav__link">
+    <span class="md-ellipsis">
+      DERO Mining
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dero-milestones" class="md-nav__link">
+    <span class="md-ellipsis">
+      DERO Milestones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#downloads" class="md-nav__link">
+    <span class="md-ellipsis">
+      Downloads
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Downloads">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wallets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wallets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Source Code
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connect-with-dero" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connect with DERO
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Getting started
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DERO Node
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            DERO Node
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started/dero-node.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Windows Node
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started/linux-node.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux Node
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started/android-node.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Android node
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started/fastsync.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Windows WSL Ubuntu Full Node & Fastsync
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Wallets
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Wallets
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started/cli.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Command Line Interface
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started/engram.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Engram GUI Mobile & Desktop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started/androidcli.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Android CLI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Mining
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Mining
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started/miningdero.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mining DERO
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started/androidmining.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Android Mining
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Buying DERO
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Buying DERO
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started/buyingdero.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to buy DERO
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Trading
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Trading
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started/exchanges.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exchanges
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started/deposit.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deposit to an Exchange
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started/withdraw.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Withdraw from an Exchange
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DERO Home network
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            DERO Home network
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started/homenetwork.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create a Home Network
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Smart Contracts
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            Smart Contracts
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started/smartcontract.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploy your own Smart Contract
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Developers
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="developer/dvm.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DERO Virtual Machine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="developer/astrobwt.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AstroBWT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="developer/DHEBP.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DHEBP (DERO Homomorphic Encryption Blockchain Protocol)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="developer/graviton.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Graviton
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="developer/RPC.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DERO Stargate RPC API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-dero-mission" class="md-nav__link">
+    <span class="md-ellipsis">
+      The DERO Mission
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dero-foundation" class="md-nav__link">
+    <span class="md-ellipsis">
+      DERO Foundation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DERO Foundation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#homomorphic-encryption-blockchain" class="md-nav__link">
+    <span class="md-ellipsis">
+      Homomorphic Encryption Blockchain
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#created-from-scratch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Created from Scratch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secure-and-private-smart-contracts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Secure and Private Smart Contracts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhebp" class="md-nav__link">
+    <span class="md-ellipsis">
+      DHEBP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#account-based-encrypted-blockchain" class="md-nav__link">
+    <span class="md-ellipsis">
+      Account based Encrypted Blockchain
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tls-securedsecured-udp-p2p-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      TLS-SECUREDSecured UDP P2P Network
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-dero-journey" class="md-nav__link">
+    <span class="md-ellipsis">
+      The DERO Journey
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The DERO Journey">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2017" class="md-nav__link">
+    <span class="md-ellipsis">
+      2017
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2018" class="md-nav__link">
+    <span class="md-ellipsis">
+      2018
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2019" class="md-nav__link">
+    <span class="md-ellipsis">
+      2019
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2020" class="md-nav__link">
+    <span class="md-ellipsis">
+      2020
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2021" class="md-nav__link">
+    <span class="md-ellipsis">
+      2021
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2022" class="md-nav__link">
+    <span class="md-ellipsis">
+      2022
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dero-network-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      DERO Network Specifications
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dero-mining" class="md-nav__link">
+    <span class="md-ellipsis">
+      DERO Mining
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dero-milestones" class="md-nav__link">
+    <span class="md-ellipsis">
+      DERO Milestones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#downloads" class="md-nav__link">
+    <span class="md-ellipsis">
+      Downloads
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Downloads">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wallets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wallets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Source Code
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connect-with-dero" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connect with DERO
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="what-is-dero">What is DERO</h1>
+<p><a href="https://github.com/deroproject/derohe">DERO</a> is a general purpose, private, and scalable decentralized application platform that allows developers to deploy powerful and unstoppable applications, while users retain total control over their assets with complete privacy.</p>
+<p>The DERO Project has created a platform for developers to deploy secure, open, scalable, and privacy-preserving decentralized applications. DERO is unique because we value security and privacy above all else; as a result, users are able to transact privately over our network without fear of common protocol-level and network attacks. Additionally, our technology preserves transparency where required and scales with network load, which provides an ideal environment for business-class applications.</p>
+<ul>
+<li>Mining Algorithm:AstroBWT</li>
+<li>Max supply:21 Million</li>
+<li>Atomic Units:5</li>
+<li>Block reward:Halving every 4 years</li>
+<li>Difficulty:Retargets at every block</li>
+<li>Ticker:DERO</li>
+</ul>
+<p><img alt="image" src="assets/index/curve.png" /></p>
+<h2 id="the-dero-mission">The DERO Mission</h2>
+<p>DERO is a new blockchain technology written in Golang with a focus on enhanced Privacy and Smart Contracts while maintaining the transparency and security of the blockchain. The goal is to create a unique state of the art blockchain technology with enhanced Reliability, Privacy, Security, Usability, and Portability by bringing together some of the best proven technologies. These technologies will include Homomorphic Encryption, Services and Smart Contracts which will allow for the creation and execution of Decentralized Applications on a Secure Private Blockchain.</p>
+<h2 id="dero-foundation">DERO Foundation</h2>
+<p>The DERO Foundation aims to provide support for the advancement of the DERO Platform and supporting the DERO Community to integrate Decentralized Privacy Systems and Standards within the Blockchain Ecosystem. This will help with the creation and deployment of Private Decentralized Applications, Payment Systems, Services and Tools.</p>
+<h3 id="homomorphic-encryption-blockchain">Homomorphic Encryption Blockchain</h3>
+<p>Account balances and data are never decrypted by the blockchain. Only account owners can decrypt and access their data. Welcome to a new data privacy paradigm.</p>
+<h3 id="created-from-scratch">Created from Scratch</h3>
+<p>DERO has been developed from scratch in Golang and is being actively developed by the original developers. It is not a fork of any other coin.</p>
+<h3 id="secure-and-private-smart-contracts">Secure and Private Smart Contracts</h3>
+<p>DERO is a homomorphically encrypted protocol that can serve individuals and business worldwide, with fast and anonymous transactions, smart contract and service model.</p>
+<h3 id="features">Features</h3>
+<ul>
+<li>Homomorphic Encryption Blockchain Protocol</li>
+<li>Private Smart Contract Platform &amp; Services</li>
+<li>No Trusted Setups or Hidden Parameters</li>
+<li>Fast Transaction Confirmations (~18 sec.)</li>
+<li>Instant Wallet Syncing</li>
+<li>Fully Scalable Blockchain</li>
+<li>Turing Complete DVM</li>
+<li>Decentralized Proof-of-Work Mining</li>
+</ul>
+<h3 id="dhebp">DHEBP</h3>
+<p>DERO Homomorphic Encryption Blockchain Protocol (DHEBP) combines homomorphic encryption and an account based model to provide instant transactions as well as security and privacy.</p>
+<p>DERO Σ (Sigma) mining and Σ blocks create utilize a network wide consensus for mining as well as rewarding all miners for effort vs a winner take all block reward system. All Transactions are settled in the same block in which they occur, allowing for instant full confirmation.</p>
+<p>DERO wallets can only have one open spending transaction at a time to one or many addresses this prevents any sending account from double spending. These transactions are settled on the same block they are sent so subsequent transactions can be made immediately.</p>
+<h3 id="account-based-encrypted-blockchain">Account based Encrypted Blockchain</h3>
+<p>True privacy on chain.</p>
+<p>While a typical blockchain stores all information on chain in clear text and use a UTXO model, DERO uses a unique encrypted blockchain with an account based model.</p>
+<p>Not only does this create a secure and private network, it also gives users the ability to check their balance without syncing the entire chain. Wallets only need to query the most recent block in order to obtain their balance information all while being homomorphically encrypted.</p>
+<p>Homomorphic Encryption is a type of encryption that allows operations to be performed on encrypted data without decrypting it first. In essence, operations can be performed without revealing the underlying data.</p>
+<p>This account based encrypted blockchain model not only provides superior privacy and security but it also allows for instant transactions, transactions settlement and balance information.</p>
+<p>Below is a comparison of DHEBP and a conventional blockchain.</p>
+<p><img alt="image" src="assets/index/DHEBPvsCBP.png" /></p>
+<h3 id="tls-securedsecured-udp-p2p-network">TLS-SECUREDSecured UDP P2P Network</h3>
+<p>The DERO Project has built a blockchain network that can be used by millions of users around the globe. This makes the security of the network highly important. Unencrypted network communication posses a risk for privacy, security and data integrity. DERO is the first blockchain project to use self signed TLS encryption for its network communication, which protects the network participants from eavesdropping and tampering of network data.</p>
+<p>DERO also utilizes UDP for peer to peer communication instead of TCP. This allows node software to run and listen to network events while reducing exposure to the operating system's kernel and also lowers network overhead.</p>
+<p>The DERO team also keeps future large scale applications in mind, e.g. enterprise services which handle thousands of clients per second. They are continuously improving the network in order to accomplish this goal. For example, with the encrypted network, after performing benchmarks they chose ECDSA instead of RSA as method for key generation as it allows for a higher number of handshakes per second.</p>
+<p>Comparison below of network data captured from wallet traffic</p>
+<p><img alt="image" src="assets/index/table_width_code_optimized.png" /></p>
+<h3 id="the-dero-journey">The DERO Journey</h3>
+<h4 id="2017">2017</h4>
+<ul>
+<li>The project was launched in December 2017 comprising a team of three full-time Developers. The core team members each have over a decade of experience in cryptography and multiple years of experience in blockchain development.</li>
+</ul>
+<h4 id="2018">2018</h4>
+<ul>
+<li>
+<p>In April 2018, the DERO network migrated to the Golang code base without a single second of downtime. The migration of the code base coincided with a number of sophisticated attacks on CryptoNote based coins. DERO core team studied how the attacks were implemented and designed a new type of blockchain that is resistant to 51% hashrate attacks and softforks.</p>
+</li>
+<li>
+<p>The DERO project unveiled this new blockchain technology in June 2018, codenamed "Atlantis". It combines the Cryptonote protocol with directed acyclic graph and Bulletproofs. However, these are not just any Bulletproofs, but what have been coined Rocket Bulletproofs, leading to blocktimes of just a few seconds. In a controlled environment, the Atlantis network can achieve blocktimes as low as three seconds processing a thousand transactions per second. A world wide testnet was launched with a nine-second blocktime which allowed for extensive tests of the new technology.</p>
+</li>
+<li>
+<p>July 2018 saw the successful and flawless migration of the DERO network to the new Atlantis codebase with a twelve-second block time and two minute confirmation time. This is by far the fastest CryptoNote based blockchain ever deployed, with 75 transactions per second (Now 750TPS with DHEBP). A relatively longer twelve second block time was chosen so that people in locations with sub-optimal network connectivity could still participate in the network. The Dero team plans to reduce the blocktime further in coming years, as network infrastructure improves around the world.</p>
+</li>
+<li>
+<p>With a ground-breaking new technology established by August 2018, just eight months after conception, the DERO team initiated applications for listings on major exchanges. A bold new marketing initiative is in the process of being established, with a primary focus on professional and business users and developers. An advisory team drawn from and representing the wider DERO community has been formed, and a new DERO Foundation that will support the aims of the DERO Project is in the process of being formed.</p>
+</li>
+</ul>
+<h4 id="2019">2019</h4>
+<ul>
+<li>Stargate Release 1 successfully went to testnet with functioning smart contracts on cryptonote. The developers realized that even though cryptonote was private by nature there was still room for improvement. The devs switched their focus to Fully Homomorphic Encryption which allows operations to be performed on an encrypted data set. This technology has often been referred to as the Holy Grail in cryptocurrency and was not a small task to take on but the project pivoted despite this.</li>
+</ul>
+<h4 id="2020">2020</h4>
+<ul>
+<li>
+<p>AstroBWT is an ASIC/FPGA/GPU resistant CPU mining algorithm that is based on mathematical proofs, unlike many other CPU mining algorithms. AstroBWT is an egalitarian algorith that can run on CPU/GPU/FPGAs and ASICs, however there is little to no economic advantage using specualized hardware. So far, many ARM CPUs prove to have a better hash to watt ratio than even the highest end GPUs. Mining on mobile devices is not only possible but also fairly common.</p>
+</li>
+<li>
+<p>The DERO Homomorphic Encryption Blockchain Protocol (DHEBP) is a new revolutionary protocol for scalable confidential transactions and private smart contracts execution. DHEBP employs an account based structure that removes the requirement for blockchain scanning, which allow wallets to provide instant balances to users.</p>
+</li>
+<li>
+<p>Graviton: ZFS for Key-Value Stores - Graviton is an open source, simple, fast, versioned, authenticated and embeddable key-value store database written in Golang.</p>
+</li>
+<li>
+<p>The DERO team announce the release of a unique homomorphic encryption scheme (DERO-HE) and the complete blockchain protocol (DHEBP) for public testing. DERO will migrate from the existing CryptoNote protocol to its own DERO Homomorphic Encryption Blockchain Protocol (DHEBP).</p>
+</li>
+</ul>
+<h4 id="2021">2021</h4>
+<ul>
+<li>The DERO team announce to bring our long anticipated Stargate RC2 release to the public for testing. Stargate is a general purpose, private, and scalable decentralized application platform that allows developers to deploy powerful and unstoppable applications, while users retain total control over their assets with complete privacy. The technology behind Stargate has evolved over the last few years to challenge many of the issues that are preventing the crypto space from attracting widespread adoption. Preserving user privacy and ensuring a scalable network were the inspiration for this release, since the platform was already developed for speed.</li>
+</ul>
+<h4 id="2022">2022</h4>
+<ul>
+<li>Stargate RC2 Released to mainnet.</li>
+</ul>
+<h3 id="dero-network-specifications">DERO Network Specifications</h3>
+<ul>
+<li>18 Second Blocktime</li>
+<li>Same block/instant confirmation</li>
+<li>No Soft Forks/Chain Splits</li>
+<li>SSL/TLS UDP P2P Network</li>
+<li>A Layer 1 Private Decentralized Application Platform</li>
+<li>Fully Auditable Supply</li>
+<li>Fully Encrypted Blockchain</li>
+<li>No Orphan Blocks</li>
+<li>Homomorphic Encryption Protocol</li>
+<li>Native dApp Support</li>
+<li>Written from Scratch in Golang</li>
+<li>1.25 MB Block Size</li>
+</ul>
+<h3 id="dero-mining">DERO Mining</h3>
+<p>Mining DERO has been completely reworked to vastly decentralize mining rewards with the introduction of Σ-blocks (Sigma blocks), which are simply smaller blocks that are constantly emitted every 1 second and converge into the final 18 second block. Even more plainly, the Σ-Blocks allow on-chain storage of mining data, which effectively turns DERO into one large mining pool. Every miner on the entire network will receive mining rewards based on the amount of work that was contributed, thus creating a truly decentralized network and distribution of rewards. It also greatly improves handling of massive network traffic, where each daemon can support over 10,000 connected devices, acting as a way to pool all of your devices.</p>
+<p>The current configuration of Σ Mining is that all Σ-blocks settle every main block (~18 seconds) and settles all mining rewards every 18 blocks. There are ~86,400 reward blocks daily</p>
+<p>If a miner has 1/86400 (total daily emitted Σ-Blocks) of the total network hashrate, the miner will get probabilistically averaged rewards daily based on shares contributed. For example, 100K miners will get rewards daily. Similarly, if a miner has mining power amounting to half of 1/86400 (or 1/172800), the miner will get rewards every 2 days.</p>
+<p>For a list of hardware benchmakrs please visit our community created benchmark website <a href="https://benchmark.dero.network/">here</a></p>
+<p>In addition, each daemon essentially functions as it's own mining pool, which tracks mining shares from devices connected to it. The daemon itself will retain a fixed fee of 1.6% for the daemon operator, the rest will be distributed to all miners that contributed shares to that daemon. For most miners, they will be mining using their own daemon, so all rewards and fees will be credited.</p>
+<p>We encourage everyone to mine and run their own node!</p>
+<h3 id="dero-milestones">DERO Milestones</h3>
+<ul>
+<li>December 2017 - Launch of DERO Project</li>
+<li>March 2018 - Implementation of the CryptoNote Protocol in Golang completed</li>
+<li>April 2018 - DERO mainnet migrates to the Golang implementation</li>
+<li>June 2018 - DERO Atlantis development completed and testnet launched</li>
+<li>July 2018 - Mainnet migrates to Atlantis code base with 12 secs block time and Rocket Bulletproofs</li>
+<li>October 2018 - Completely in browser web wallet completed with client side key storage</li>
+<li>January 2019 - DERO Stargate RC1 testnet released, providing fully functional smart contracts on cryptonote.</li>
+<li>March 2020 - DERO releases and migrates to AstroBWT an egalitarian PoW algorithm that makes CPU mining economically effcient.</li>
+<li>August 2020 - DHEBP - DERO Homomorphic Encryption Blockchain Protocol</li>
+<li>Sept 2020 - Graviton: ZFS for Key-Value Stores</li>
+<li>February 2021 - Stargate RC2 using DHEBP on Testnet</li>
+<li>February 2022 - Stargate RC2 with Private Smart Contracts and Services launched on mainnet.</li>
+<li>Future Development - DERO developers continue research and development, including quantum resistance</li>
+</ul>
+<h3 id="downloads">Downloads</h3>
+<p>We have builds for Windows, Linux and Mac</p>
+<ul>
+<li><a href="https://dero.io/download.html#windows">Windows</a></li>
+<li><a href="https://dero.io/download.html#linux">Linux</a></li>
+<li><a href="https://dero.io/download.html#macos">Mac</a></li>
+<li><a href="https://github.com/deroproject/derohe/">Github</a></li>
+</ul>
+<h4 id="wallets">Wallets</h4>
+<p>Below are download links for all platforms and also links to source code if you wish to compile on your own. There are two types of wallets available for download including the official CLI wallet (command line) and the DERO Foundation's GUI wallet (named NODE). The browser wallet is also available as a cross platform solution but may not always work with your setup.</p>
+<p>There are no official mobile wallets at this time.</p>
+<p>Use 3rd party mobile wallets at your own risk.</p>
+<p>Always use official DERO or DERO Foundation approved wallets</p>
+<ul>
+<li>Windows<ul>
+<li><a href="https://github.com/deroproject/derohe/releases/latest/download/dero_windows_amd64.zip">Command Line Interface (CLI) Wallet</a></li>
+<li><a href="https://github.com/DEROFDN/Engram/releases/download/0.1.2/engram-windows-amd64.zip">Engram (GUI) Wallet</a></li>
+</ul>
+</li>
+<li>Linux<ul>
+<li><a href="https://github.com/deroproject/derohe/releases/latest/download/dero_linux_amd64.tar.gz">Command Line Interface (CLI) Wallet - CLI Wallet - 64-bit</a></li>
+<li><a href="https://github.com/deroproject/derohe/releases/latest/download/dero_linux_arm7.tar.gz">Command Line Interface (CLI) Wallet - CLI Wallet - ARM 7</a></li>
+<li><a href="https://github.com/deroproject/derohe/releases/latest/download/dero_linux_arm64.tar.gz">Command Line Interface (CLI) Wallet - CLI Wallet - ARM 64</a></li>
+<li><a href="https://github.com/DEROFDN/Engram/releases/download/0.1.2/engram-linux-amd64.tar.xz">Engram (GUI) Wallet</a></li>
+</ul>
+</li>
+<li>MacOS<ul>
+<li><a href="https://github.com/deroproject/derohe/releases/latest/download/dero_darwin_universal.tar.gz">Command Line Interface (CLI) Wallet</a></li>
+<li><a href="https://github.com/DEROFDN/Engram/releases/download/0.1.2/engram-macos-amd64.zip">Engram (GUI) Wallet</a></li>
+</ul>
+</li>
+<li>FreeBSD<ul>
+<li><a href="https://github.com/deroproject/derohe/releases/latest/download/dero_freebsd_amd64.tar.gz">Command Line Interface (CLI) Wallet</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="source-code">Source Code</h4>
+<p>If you wish to compile DERO yourself, checkout github and our git.dero.io.</p>
+<ul>
+<li><a href="https://github.com/deroproject/derohe/archive/refs/heads/main.zip">Zip File</a></li>
+<li><a href="https://github.com/deroproject/derohe/archive/refs/heads/main.tar.gz">TAR File</a></li>
+</ul>
+<h3 id="connect-with-dero">Connect with DERO</h3>
+<p>Reach out to us on any of the following platforms</p>
+<ul>
+<li><a href="https://discord.gg/H95TJDp">Discord</a></li>
+<li><a href="https://matrix.to/#/#general:matrix.dero.live">Matrix</a></li>
+<li><a href="https://twitter.com/deroproject">Twitter</a></li>
+<li><a href="https://www.reddit.com/r/DeroProject/">Reddit</a></li>
+<li><a href="https://forum.dero.io/">DERO Forum</a></li>
+<li><a href="https://lists.dero.io/">Mailing List</a></li>
+<li><a href="https://medium.com/deroproject">Medium</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2017 - 2024 DERO Project
+
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/deroproject" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://discord.gg/H95TJDp" target="_blank" rel="noopener" title="discord.gg" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M524.531 69.836a1.5 1.5 0 0 0-.764-.7A485.065 485.065 0 0 0 404.081 32.03a1.816 1.816 0 0 0-1.923.91 337.461 337.461 0 0 0-14.9 30.6 447.848 447.848 0 0 0-134.426 0 309.541 309.541 0 0 0-15.135-30.6 1.89 1.89 0 0 0-1.924-.91 483.689 483.689 0 0 0-119.688 37.107 1.712 1.712 0 0 0-.788.676C39.068 183.651 18.186 294.69 28.43 404.354a2.016 2.016 0 0 0 .765 1.375 487.666 487.666 0 0 0 146.825 74.189 1.9 1.9 0 0 0 2.063-.676A348.2 348.2 0 0 0 208.12 430.4a1.86 1.86 0 0 0-1.019-2.588 321.173 321.173 0 0 1-45.868-21.853 1.885 1.885 0 0 1-.185-3.126 251.047 251.047 0 0 0 9.109-7.137 1.819 1.819 0 0 1 1.9-.256c96.229 43.917 200.41 43.917 295.5 0a1.812 1.812 0 0 1 1.924.233 234.533 234.533 0 0 0 9.132 7.16 1.884 1.884 0 0 1-.162 3.126 301.407 301.407 0 0 1-45.89 21.83 1.875 1.875 0 0 0-1 2.611 391.055 391.055 0 0 0 30.014 48.815 1.864 1.864 0 0 0 2.063.7A486.048 486.048 0 0 0 610.7 405.729a1.882 1.882 0 0 0 .765-1.352c12.264-126.783-20.532-236.912-86.934-334.541ZM222.491 337.58c-28.972 0-52.844-26.587-52.844-59.239s23.409-59.241 52.844-59.241c29.665 0 53.306 26.82 52.843 59.239 0 32.654-23.41 59.241-52.843 59.241Zm195.38 0c-28.971 0-52.843-26.587-52.843-59.239s23.409-59.241 52.843-59.241c29.667 0 53.307 26.82 52.844 59.239 0 32.654-23.177 59.241-52.844 59.241Z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/deroproject" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8l164.9-188.5L26.8 48h145.6l100.5 132.9L389.2 48zm-24.8 373.8h39.1L151.1 88h-42l255.3 333.8z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://t.me/DeroProjectGroup" target="_blank" rel="noopener" title="t.me" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M248 8C111.033 8 0 119.033 0 256s111.033 248 248 248 248-111.033 248-248S384.967 8 248 8Zm114.952 168.66c-3.732 39.215-19.881 134.378-28.1 178.3-3.476 18.584-10.322 24.816-16.948 25.425-14.4 1.326-25.338-9.517-39.287-18.661-21.827-14.308-34.158-23.215-55.346-37.177-24.485-16.135-8.612-25 5.342-39.5 3.652-3.793 67.107-61.51 68.335-66.746.153-.655.3-3.1-1.154-4.384s-3.59-.849-5.135-.5q-3.283.746-104.608 69.142-14.845 10.194-26.894 9.934c-8.855-.191-25.888-5.006-38.551-9.123-15.531-5.048-27.875-7.717-26.8-16.291q.84-6.7 18.45-13.7 108.446-47.248 144.628-62.3c68.872-28.647 83.183-33.623 92.511-33.789 2.052-.034 6.639.474 9.61 2.885a10.452 10.452 0 0 1 3.53 6.716 43.765 43.765 0 0 1 .417 9.769Z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+
+
+
+
+  
+
+<h4>Cookie consent</h4>
+<p>At DERO, we prioritize and highly value your privacy.  We understand the importance of protecting your personal information, and we are committed to maintaining the confidentiality and security of any data you share with us.  To demonstrate our commitment to your privacy, we have implemented a transparent and cookie-free approach to data collection.</p>
+<input class="md-toggle" type="checkbox" id="__settings" checked>
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.tabs", "navigation.tabs.sticky", "navigation.tracking", "navigation.expand", "search.suggest", "search.share", "content.code.copy"], "search": "assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="assets/external/unpkg.com/mermaid@10.6.1/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

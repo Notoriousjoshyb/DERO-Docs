@@ -1,0 +1,3570 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="graviton.html">
+      
+      
+      
+      <link rel="icon" href="../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>DERO Stargate RPC API - DERO Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="../assets/external/unpkg.com/iframe-worker/shim.js"></script>
+      
+    
+    
+      
+        
+        
+        
+        <link rel="stylesheet" href="../assets/external/fonts.googleapis.com/css.49ea35f2.css">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#dero-stargate-rpc-api" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="DERO Documentation" class="md-header__button md-logo" aria-label="DERO Documentation" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DERO Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              DERO Stargate RPC API
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../getting-started/dero-node.html" class="md-tabs__link">
+          
+  
+  Getting started
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="dvm.html" class="md-tabs__link">
+          
+  
+  Developers
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="DERO Documentation" class="md-nav__button md-logo" aria-label="DERO Documentation" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    DERO Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Getting started
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DERO Node
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            DERO Node
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/dero-node.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Windows Node
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/linux-node.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux Node
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/android-node.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Android node
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/fastsync.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Windows WSL Ubuntu Full Node & Fastsync
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Wallets
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Wallets
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/cli.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Command Line Interface
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/engram.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Engram GUI Mobile & Desktop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/androidcli.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Android CLI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Mining
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Mining
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/miningdero.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mining DERO
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/androidmining.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Android Mining
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Buying DERO
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Buying DERO
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/buyingdero.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to buy DERO
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Trading
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Trading
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/exchanges.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exchanges
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/deposit.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deposit to an Exchange
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/withdraw.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Withdraw from an Exchange
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DERO Home network
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            DERO Home network
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/homenetwork.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create a Home Network
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Smart Contracts
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            Smart Contracts
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/smartcontract.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploy your own Smart Contract
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Developers
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dvm.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DERO Virtual Machine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="astrobwt.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AstroBWT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="DHEBP.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DHEBP (DERO Homomorphic Encryption Blockchain Protocol)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="graviton.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Graviton
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    DERO Stargate RPC API
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="RPC.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    DERO Stargate RPC API
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#daemon-rpc-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Daemon RPC API
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Daemon RPC API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#echo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Echo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ping
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Info
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Block
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-block-header-by-topo-height" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Block Header By Topo Height
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-block-header-by-hash" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Block Header By Hash
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-tx-pool" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Tx Pool
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-random-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Random Address
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-transaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Transaction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#send-raw-transaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Send Raw Transaction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#submit-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      Submit Block
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-height" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Height
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-block-count" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Block Count
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-last-block-header" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Last Block Header
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-block-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Block Template
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-encrypted-balance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Encrypted Balance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-smart-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Smart Contract
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-gas-estimate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Gas Estimate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#name-to-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      Name To Address
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wallet-rpc-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wallet RPC API
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wallet RPC API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#echo_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Echo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Address
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-balance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Balance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-height_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Height
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-transfer-by-txid" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Transfer by TXID
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-transfers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Transfers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#make-integrated-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      Make Integrated Address
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#split-integrated-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      Split Integrated Address
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query Key
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transfer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transfer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transfer-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transfer 2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sc-invoke" class="md-nav__link">
+    <span class="md-ellipsis">
+      SC Invoke
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#daemon-rpc-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Daemon RPC API
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Daemon RPC API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#echo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Echo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ping
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Info
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Block
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-block-header-by-topo-height" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Block Header By Topo Height
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-block-header-by-hash" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Block Header By Hash
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-tx-pool" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Tx Pool
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-random-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Random Address
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-transaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Transaction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#send-raw-transaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Send Raw Transaction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#submit-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      Submit Block
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-height" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Height
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-block-count" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Block Count
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-last-block-header" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Last Block Header
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-block-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Block Template
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-encrypted-balance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Encrypted Balance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-smart-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Smart Contract
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-gas-estimate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Gas Estimate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#name-to-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      Name To Address
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wallet-rpc-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wallet RPC API
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wallet RPC API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#echo_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Echo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Address
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-balance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Balance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-height_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Height
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-transfer-by-txid" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Transfer by TXID
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-transfers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Transfers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#make-integrated-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      Make Integrated Address
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#split-integrated-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      Split Integrated Address
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query Key
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transfer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transfer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transfer-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transfer 2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sc-invoke" class="md-nav__link">
+    <span class="md-ellipsis">
+      SC Invoke
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="dero-stargate-rpc-api">DERO Stargate RPC API</h1>
+<h2 id="daemon-rpc-api">Daemon RPC API</h2>
+<h3 id="echo">Echo</h3>
+<p>Test endpoint to verify that the RPC server is enabled and working well on the daemon side.</p>
+<p><strong>Available parameters</strong></p>
+<p><img alt="image" src="/assets/rpcapistargate/rpc1.PNG" /></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;DERO.Echo&quot;,
+    &quot;params&quot;: [&quot;Hello&quot;, &quot;World&quot;, &quot;!&quot;]
+}
+
+</code></pre>
+<p><strong>cURL Request</strong></p>
+<pre><code>curl -X POST\
+    http://127.0.0.1:40402/json_rpc\
+    -H 'content-type: application/json'\
+    -d '{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;DERO.Echo&quot;,
+    &quot;params&quot;: [&quot;Hello&quot;, &quot;World&quot;, &quot;!&quot;]
+}'
+
+</code></pre>
+<p><strong>Result</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;result&quot;: &quot;DERO Hello World !&quot;
+}
+
+</code></pre>
+<h3 id="ping">Ping</h3>
+<p>Simple Ping request</p>
+<p><strong>Available Parameters</strong></p>
+<p>No Parameters</p>
+<p><strong>Body</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;DERO.Ping&quot;
+}
+
+</code></pre>
+<p><strong>cURL Request</strong></p>
+<pre><code>curl -X POST\
+  http://127.0.0.1:40402/json_rpc\
+  -H 'content-type: application/json'\
+  -d '{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;DERO.Ping&quot;
+}'
+
+</code></pre>
+<p><strong>Result</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;result&quot;: &quot;Pong &quot;
+}
+
+</code></pre>
+<h3 id="get-info">Get Info</h3>
+<p>Returns all infos</p>
+<p><strong>Available Parameters</strong></p>
+<p>No Parameters</p>
+<p><strong>Body</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;DERO.GetInfo&quot;
+}
+
+</code></pre>
+<p><strong>cURL Request</strong></p>
+<pre><code>curl -X POST\
+  http://127.0.0.1:40402/json_rpc\
+  -H 'content-type: application/json'\
+  -d '{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;DERO.GetInfo&quot;
+}'
+
+</code></pre>
+<p><strong>Result</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;result&quot;: {
+        &quot;alt_blocks_count&quot;: 0,
+        &quot;difficulty&quot;: 23467,
+        &quot;grey_peerlist_size&quot;: 0,
+        &quot;height&quot;: 35995,
+        &quot;stableheight&quot;: 35987,
+        &quot;topoheight&quot;: 35995,
+        &quot;treehash&quot;: &quot;2C4A2F8954EA978104D9F4A4D170256B2531F62C30E52A11517FB6375A0D5F29&quot;,
+        &quot;averageblocktime50&quot;: 17.63982,
+        &quot;incoming_connections_count&quot;: 0,
+        &quot;outgoing_connections_count&quot;: 0,
+        &quot;target&quot;: 18,
+        &quot;target_height&quot;: 0,
+        &quot;testnet&quot;: true,
+        &quot;network&quot;: &quot;&quot;,
+        &quot;top_block_hash&quot;: &quot;7ed9939d4c910876ef04312cfefe724d62c18c6b8fb2ab342e9671c511c69b88&quot;,
+        &quot;tx_count&quot;: 0,
+        &quot;tx_pool_size&quot;: 0,
+        &quot;dynamic_fee_per_kb&quot;: 0,
+        &quot;total_supply&quot;: 0,
+        &quot;median_block_size&quot;: 0,
+        &quot;white_peerlist_size&quot;: 0,
+        &quot;version&quot;: &quot;3.4.106-0.DEROHE.STARGATE+18012022&quot;,
+        &quot;status&quot;: &quot;OK&quot;
+    }
+}
+
+</code></pre>
+<h3 id="get-block">Get Block</h3>
+<p>Returns all the information of the requested block.</p>
+<p><strong>Available parameters</strong></p>
+<p><img alt="image" src="/assets/rpcapistargate/rpc2.PNG" /></p>
+<p><strong>Body</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;DERO.GetBlock&quot;,
+    &quot;params&quot;: {
+        &quot;height&quot;: 420
+    }
+}
+
+</code></pre>
+<p><strong>cURL Request</strong></p>
+<pre><code>curl -X POST\
+  http://127.0.0.1:40402/json_rpc\
+  -H 'content-type: application/json'\
+  -d '{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;DERO.GetBlock&quot;,
+    &quot;params&quot;: {
+        &quot;height&quot;: 420
+    }
+}'
+
+</code></pre>
+<p><strong>Result</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;result&quot;: {
+        &quot;blob&quot;: &quot;01010000017e9e872cb1a403010000021f9bcc1208dee302769931ad378a4c0c4b2c21b0cfb3e752607e12d2b6fa6425000000000000000000000000000000000000000000000000000000000000000000016a6856b51e9ffd5b07c6c33ca635d984910f3b7fbbaaaebbb61a99780629e4490a41ee3400000001a46a6856b500000000eec07ce3efc1425bc0ad7e8c72d13b0500000000940d24de2854e800a2da520141f38100000001a46a6856b500000000c3443540c243d11f706b6836d516a95500000000d0bd228895e3da00ef774a0441f49600000001a46a6856b500000000eec07ce3efc1425bc0ad7e8c72d13b050000000064bdff4901054101003a190041fdd400000001a46a6856b500000000eec07ce3efc1425bc0ad7e8c72d13b05000000000cf2b45163efe300a2efe6014105a100000001a46a6856b500000000c3443540c243d11f706b6836d516a95500000000e57c84673a12fe00ef9e52044105ca00000001a46a6856b500000000eec07ce3efc1425bc0ad7e8c72d13b0500000000acb0839b3a13a400a2f8010141082a00000001a46a6856b500000000c3443540c243d11f706b6836d516a955000000006d01841f72304000efa43e0441086d00000001a46a6856b500000000c3443540c243d11f706b6836d516a955000000003fd27e20d1ab8800efca2901410d7200000001a46a6856b500000000c3443540c243d11f706b6836d516a955000000000b1fb80d5442e400a29c8e02712cb100000001a46a6856b500000000a063e24bc973c78fd057fec97cacd720000000006bb830fa72959300eff8080400&quot;,
+        &quot;json&quot;: &quot;{\&quot;major_version\&quot;:1,\&quot;minor_version\&quot;:1,\&quot;timestamp\&quot;:1643337166001,\&quot;height\&quot;:420,\&quot;miner_tx\&quot;:{\&quot;version\&quot;:1,\&quot;source_network\&quot;:0,\&quot;dest_network\&quot;:0,\&quot;txtype\&quot;:2,\&quot;value\&quot;:0,\&quot;miner_address\&quot;:[31,155,204,18,8,222,227,2,118,153,49,173,55,138,76,12,75,44,33,176,207,179,231,82,96,126,18,210,182,250,100,37,0],\&quot;c\&quot;:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],\&quot;s\&quot;:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],\&quot;height\&quot;:0,\&quot;blid\&quot;:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],\&quot;scdata\&quot;:null,\&quot;Payloads\&quot;:null},\&quot;tips\&quot;:[\&quot;6a6856b51e9ffd5b07c6c33ca635d984910f3b7fbbaaaebbb61a99780629e449\&quot;],\&quot;miniblocks\&quot;:[{\&quot;Version\&quot;:1,\&quot;HighDiff\&quot;:false,\&quot;Final\&quot;:false,\&quot;PastCount\&quot;:1,\&quot;Timestamp\&quot;:60980,\&quot;Height\&quot;:420,\&quot;Past\&quot;:[1785222837,0],\&quot;KeyHash\&quot;:\&quot;eec07ce3efc1425bc0ad7e8c72d13b0500000000000000000000000000000000\&quot;,\&quot;Flags\&quot;:0,\&quot;Nonce\&quot;:[2483889374,676653056,2732216833]},{\&quot;Version\&quot;:1,\&quot;HighDiff\&quot;:false,\&quot;Final\&quot;:false,\&quot;PastCount\&quot;:1,\&quot;Timestamp\&quot;:62337,\&quot;Height\&quot;:420,\&quot;Past\&quot;:[1785222837,0],\&quot;KeyHash\&quot;:\&quot;c3443540c243d11f706b6836d516a95500000000000000000000000000000000\&quot;,\&quot;Flags\&quot;:0,\&quot;Nonce\&quot;:[3502056072,2514737664,4017572356]},{\&quot;Version\&quot;:1,\&quot;HighDiff\&quot;:false,\&quot;Final\&quot;:false,\&quot;PastCount\&quot;:1,\&quot;Timestamp\&quot;:62614,\&quot;Height\&quot;:420,\&quot;Past\&quot;:[1785222837,0],\&quot;KeyHash\&quot;:\&quot;eec07ce3efc1425bc0ad7e8c72d13b0500000000000000000000000000000000\&quot;,\&quot;Flags\&quot;:0,\&quot;Nonce\&quot;:[1690173257,17121537,3807488]},{\&quot;Version\&quot;:1,\&quot;HighDiff\&quot;:false,\&quot;Final\&quot;:false,\&quot;PastCount\&quot;:1,\&quot;Timestamp\&quot;:64980,\&quot;Height\&quot;:420,\&quot;Past\&quot;:[1785222837,0],\&quot;KeyHash\&quot;:\&quot;eec07ce3efc1425bc0ad7e8c72d13b0500000000000000000000000000000000\&quot;,\&quot;Flags\&quot;:0,\&quot;Nonce\&quot;:[217232465,1676665600,2733630977]},{\&quot;Version\&quot;:1,\&quot;HighDiff\&quot;:false,\&quot;Final\&quot;:false,\&quot;PastCount\&quot;:1,\&quot;Timestamp\&quot;:1441,\&quot;Height\&quot;:420,\&quot;Past\&quot;:[1785222837,0],\&quot;KeyHash\&quot;:\&quot;c3443540c243d11f706b6836d516a95500000000000000000000000000000000\&quot;,\&quot;Flags\&quot;:0,\&quot;Nonce\&quot;:[3850142823,974323200,4020130308]},{\&quot;Version\&quot;:1,\&quot;HighDiff\&quot;:false,\&quot;Final\&quot;:false,\&quot;PastCount\&quot;:1,\&quot;Timestamp\&quot;:1482,\&quot;Height\&quot;:420,\&quot;Past\&quot;:[1785222837,0],\&quot;KeyHash\&quot;:\&quot;eec07ce3efc1425bc0ad7e8c72d13b0500000000000000000000000000000000\&quot;,\&quot;Flags\&quot;:0,\&quot;Nonce\&quot;:[2897249179,974365696,2734162177]},{\&quot;Version\&quot;:1,\&quot;HighDiff\&quot;:false,\&quot;Final\&quot;:false,\&quot;PastCount\&quot;:1,\&quot;Timestamp\&quot;:2090,\&quot;Height\&quot;:420,\&quot;Past\&quot;:[1785222837,0],\&quot;KeyHash\&quot;:\&quot;c3443540c243d11f706b6836d516a95500000000000000000000000000000000\&quot;,\&quot;Flags\&quot;:0,\&quot;Nonce\&quot;:[1828815903,1915764736,4020518404]},{\&quot;Version\&quot;:1,\&quot;HighDiff\&quot;:false,\&quot;Final\&quot;:false,\&quot;PastCount\&quot;:1,\&quot;Timestamp\&quot;:2157,\&quot;Height\&quot;:420,\&quot;Past\&quot;:[1785222837,0],\&quot;KeyHash\&quot;:\&quot;c3443540c243d11f706b6836d516a95500000000000000000000000000000000\&quot;,\&quot;Flags\&quot;:0,\&quot;Nonce\&quot;:[1070759456,3517679616,4023003393]},{\&quot;Version\&quot;:1,\&quot;HighDiff\&quot;:false,\&quot;Final\&quot;:false,\&quot;PastCount\&quot;:1,\&quot;Timestamp\&quot;:3442,\&quot;Height\&quot;:420,\&quot;Past\&quot;:[1785222837,0],\&quot;KeyHash\&quot;:\&quot;c3443540c243d11f706b6836d516a95500000000000000000000000000000000\&quot;,\&quot;Flags\&quot;:0,\&quot;Nonce\&quot;:[186628109,1413669888,2728168962]},{\&quot;Version\&quot;:1,\&quot;HighDiff\&quot;:true,\&quot;Final\&quot;:true,\&quot;PastCount\&quot;:1,\&quot;Timestamp\&quot;:11441,\&quot;Height\&quot;:420,\&quot;Past\&quot;:[1785222837,0],\&quot;KeyHash\&quot;:\&quot;a063e24bc973c78fd057fec97cacd72000000000000000000000000000000000\&quot;,\&quot;Flags\&quot;:0,\&quot;Nonce\&quot;:[1807233274,1922405120,4026009604]}],\&quot;tx_hashes\&quot;:null}&quot;,
+        &quot;block_header&quot;: {
+            &quot;depth&quot;: 35589,
+            &quot;difficulty&quot;: &quot;15743&quot;,
+            &quot;hash&quot;: &quot;60e7e9f73a4a0f2c1b4a97976150ef6f53f0253f8552c6b2e7e4a010929d8259&quot;,
+            &quot;height&quot;: 420,
+            &quot;topoheight&quot;: 420,
+            &quot;major_version&quot;: 1,
+            &quot;minor_version&quot;: 1,
+            &quot;nonce&quot;: 0,
+            &quot;orphan_status&quot;: false,
+            &quot;syncblock&quot;: true,
+            &quot;sideblock&quot;: false,
+            &quot;txcount&quot;: 0,
+            &quot;reward&quot;: 0,
+            &quot;tips&quot;: [
+                &quot;6a6856b51e9ffd5b07c6c33ca635d984910f3b7fbbaaaebbb61a99780629e449&quot;
+            ],
+            &quot;timestamp&quot;: 1643337166001
+        },
+        &quot;status&quot;: &quot;OK&quot;
+    }
+}
+
+</code></pre>
+<h3 id="get-block-header-by-topo-height">Get Block Header By Topo Height</h3>
+<p>Returns the header of the requested block.</p>
+<p><strong>Available parameters</strong></p>
+<p><img alt="image" src="/assets/rpcapistargate/rpc3.PNG" /></p>
+<p><strong>Body</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;DERO.GetBlockHeaderByTopoHeight&quot;,
+    &quot;params&quot;: {
+        &quot;topoheight&quot;: 420
+    }
+}
+
+</code></pre>
+<p><strong>cURL Request</strong></p>
+<pre><code>curl -X POST\
+  http://127.0.0.1:40402/json_rpc\
+  -H 'content-type: application/json'\
+  -d '{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;DERO.GetBlockHeaderByTopoHeight&quot;,
+    &quot;params&quot;: {
+        &quot;topoheight&quot;: 420
+    }
+}'
+
+</code></pre>
+<p><strong>Result</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;result&quot;: {
+        &quot;block_header&quot;: {
+            &quot;depth&quot;: 35605,
+            &quot;difficulty&quot;: &quot;15743&quot;,
+            &quot;hash&quot;: &quot;60e7e9f73a4a0f2c1b4a97976150ef6f53f0253f8552c6b2e7e4a010929d8259&quot;,
+            &quot;height&quot;: 420,
+            &quot;topoheight&quot;: 420,
+            &quot;major_version&quot;: 1,
+            &quot;minor_version&quot;: 1,
+            &quot;nonce&quot;: 0,
+            &quot;orphan_status&quot;: false,
+            &quot;syncblock&quot;: true,
+            &quot;sideblock&quot;: false,
+            &quot;txcount&quot;: 0,
+            &quot;reward&quot;: 0,
+            &quot;tips&quot;: [
+                &quot;6a6856b51e9ffd5b07c6c33ca635d984910f3b7fbbaaaebbb61a99780629e449&quot;
+            ],
+            &quot;timestamp&quot;: 1643337166001
+        },
+        &quot;status&quot;: &quot;OK&quot;
+    }
+}
+
+</code></pre>
+<h3 id="get-block-header-by-hash">Get Block Header By Hash</h3>
+<p>Returns the header of the requested block.</p>
+<p><strong>Available parameters</strong></p>
+<p><img alt="image" src="/assets/rpcapistargate/rpc4.PNG" /></p>
+<p><strong>Body</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;DERO.GetBlockHeaderByHash&quot;,
+    &quot;params&quot;: {
+        &quot;hash&quot;: &quot;6a6856b51e9ffd5b07c6c33ca635d984910f3b7fbbaaaebbb61a99780629e449&quot;
+    }
+}
+
+</code></pre>
+<p><strong>cURL Request</strong></p>
+<pre><code>curl -X POST\
+  http://127.0.0.1:40402/json_rpc\
+  -H 'content-type: application/json'\
+  -d '{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;DERO.GetBlockHeaderByHash&quot;,
+    &quot;params&quot;: {
+        &quot;hash&quot;: &quot;6a6856b51e9ffd5b07c6c33ca635d984910f3b7fbbaaaebbb61a99780629e449&quot;
+    }
+}'
+
+</code></pre>
+<p><strong>Result</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;result&quot;: {
+        &quot;block_header&quot;: {
+            &quot;depth&quot;: 35615,
+            &quot;difficulty&quot;: &quot;15528&quot;,
+            &quot;hash&quot;: &quot;6a6856b51e9ffd5b07c6c33ca635d984910f3b7fbbaaaebbb61a99780629e449&quot;,
+            &quot;height&quot;: 419,
+            &quot;topoheight&quot;: 419,
+            &quot;major_version&quot;: 1,
+            &quot;minor_version&quot;: 1,
+            &quot;nonce&quot;: 0,
+            &quot;orphan_status&quot;: false,
+            &quot;syncblock&quot;: true,
+            &quot;sideblock&quot;: false,
+            &quot;txcount&quot;: 0,
+            &quot;reward&quot;: 0,
+            &quot;tips&quot;: [
+                &quot;886ffd7ca424f8c1ea3cd4f361c0e3fe865205fc669cf2c5f5bfe692e022e177&quot;
+            ],
+            &quot;timestamp&quot;: 1643337148002
+        },
+        &quot;status&quot;: &quot;OK&quot;
+    }
+}
+
+</code></pre>
+<h3 id="get-tx-pool">Get Tx Pool</h3>
+<p>Returns the list of pending transactions (not included in a block).</p>
+<p><strong>Available parameters</strong></p>
+<p>No parameters</p>
+<p><strong>Body</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;DERO.GetTxPool&quot;
+}
+
+</code></pre>
+<p><strong>cURL Request</strong></p>
+<pre><code>curl -X POST\
+  http://127.0.0.1:40402/json_rpc\
+  -H 'content-type: application/json'\
+  -d '{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;DERO.GetTxPool&quot;
+}'
+
+</code></pre>
+<p><strong>Result</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;result&quot;: {
+        &quot;txs&quot;: [
+            &quot;1b527cc1c2c58f59d339873a9a31873507e79b5877afb2e9c9f480ba5360257e&quot;,
+            &quot;337db1b7a0da82fe7d800b2b5f7790913a8dfdcc2d331579f14b935934be53df&quot;,
+            &quot;3f7aca6ede435296902e362a73ec2f801f6f24f1cf93c69ffe607b7e5a82d8c4&quot;,
+            &quot;25ad0a277174063d786c40752ad740514a1f16266932a6650d0f267a164e077c&quot;,
+            &quot;c8d2b5a8d6cb97d2fa39e797ed795ede0caa1e5413492af2a9efd61638ff9e17&quot;,
+            &quot;38a43e4f188c7bd5c0ce52376a693e156cab71dc6cf0705f3987169969367388&quot;,
+            &quot;6f056cae1f2e692ea9e066e3d7703f14484125b2f732b7f31a48481f96299965&quot;,
+            &quot;0d6e4a43048f23fcf60ba52720ff8cebbd210ebfaab124d8a1147833b7a237fc&quot;,
+            &quot;3a8df3121e63e41a274d201f08bd7e5b1cbbab0b09c71887fcc05f1d758401bb&quot;,
+            &quot;8bd83e78bd958c5594039b703a09f72efbfe20367d28eb1e942f2c4f13be0989&quot;
+        ],
+        &quot;status&quot;: &quot;OK&quot;
+    }
+}
+
+</code></pre>
+<h3 id="get-random-address">Get Random Address</h3>
+<p>Returns a random list of different DERO addresses registered on the blockchain.</p>
+<p><strong>Available parameters</strong></p>
+<p><img alt="image" src="/assets/rpcapistargate/rpc5.PNG" /></p>
+<p><strong>Body</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;DERO.GetRandomAddress&quot;
+}
+
+</code></pre>
+<p><strong>cURL Request</strong></p>
+<pre><code>curl -X POST\
+  http://127.0.0.1:40402/json_rpc\
+  -H 'content-type: application/json'\
+  -d '{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;DERO.GetRandomAddress&quot;
+}'
+
+</code></pre>
+<p><strong>Result</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;result&quot;: {
+        &quot;address&quot;: [
+            &quot;deto1qyyusphxgu67m7ymvn79z0j5av4xsjf9hdf0dvwr0xgf846ae66muqgnks5sr&quot;,
+            &quot;deto1qy5tfxzc9sv0wamaacza0uup5330ds6je93wpkn6rgp38z6jjaeqgqqpf524e&quot;,
+            &quot;deto1qy92f6p3t5nytfsa3er6t8ecvxn53v7yz952xcxgnme5h8jw67ux2qqnrhstn&quot;,
+            &quot;deto1qyh8622rswt9efyzkm00shq5nq5cxaxpznham5g6ajnlw7tvmupf2qgg3f24k&quot;,
+            &quot;deto1qyv6sd4s8zrjy8lgp4x8cv4um6wj4x5hn95x85nkdzjdy99qvl062qqyqnc48&quot;,
+            &quot;deto1qy4mxumzmgxk94x8aumle2wneuns9pwfh0zu4gs4n4j9yasvdnvdvqqmyhc2r&quot;,
+            &quot;deto1qyczrgwkhzmqjhexwqjf9v7crzz6sg8jyx8g3asx2ntxhfjq6htvvqg8e2uxx&quot;,
+            &quot;deto1qy06ucenpf397vez8cdxerw3red6uw4l8afj23ezczkzx9cyqnf0sqgpekxa0&quot;,
+            &quot;deto1qyvmh00j23h2x0604ft60fujrg2hf25x25mwz7zmhkfv89ectyjqzqqcx2g77&quot;,
+            &quot;deto1qyw6f0wkfacudv707rew6ekq4azqsey3whx2tgum4tzs62srejl8zqqaqs3gr&quot;,
+            [...]
+        ],
+        &quot;status&quot;: &quot;OK&quot;
+    }
+}
+
+</code></pre>
+<h3 id="get-transaction">Get Transaction</h3>
+<p>Returns information related to a transaction.</p>
+<p><strong>Available parameters</strong></p>
+<p><img alt="image" src="/assets/rpcapistargate/rpc6.PNG" /></p>
+<p><strong>Body</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;DERO.GetTransaction&quot;,
+    &quot;params&quot;: {
+        &quot;txs_hashes&quot;: [&quot;6f056cae1f2e692ea9e066e3d7703f14484125b2f732b7f31a48481f96299965&quot;, &quot;3f7aca6ede435296902e362a73ec2f801f6f24f1cf93c69ffe607b7e5a82d8c4&quot;]
+    }
+}
+
+</code></pre>
+<p><strong>cURL Request</strong></p>
+<pre><code>curl -X POST\
+  http://127.0.0.1:40402/json_rpc\
+  -H 'content-type: application/json'\
+  -d '{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;DERO.GetTransaction&quot;,
+    &quot;params&quot;: {
+        &quot;txs_hashes&quot;: [&quot;6f056cae1f2e692ea9e066e3d7703f14484125b2f732b7f31a48481f96299965&quot;, &quot;3f7aca6ede435296902e362a73ec2f801f6f24f1cf93c69ffe607b7e5a82d8c4&quot;]
+    }
+}'
+
+</code></pre>
+<p><strong>Result</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;result&quot;: {
+        &quot;txs_as_hex&quot;: [
+            &quot;01000003e69902fc9485e50fdea029153c274613ad208c6799e0c862bf8cc6239419deda7286440100000000000000000000000000000000000000000000000000000000000000000000f26b7c2a5c3a9d763ecab209229726dc0a5f4b60243929873f59bf4182ee7041a03089e8cdb0040799ebc9ed5883d7d275f35d40cbd91a77529116d98cc14eff7b5782eb5156c23a39b1e0e3443ff9270db16e1b9efc946a1b54d723a502e1359bdd4c3681b91b508b11cde5f1c96061616e12a237deb71aa21553d26840125c4b1246bf87dd6afbdca9c73ac82b712e550405c303113dbeafa9bab25787d77a3bc3dc9da2d44ce40ce03c5e4952c6379798716690011fecf2c99cab204e39ac077e61b918d2f88eded45c595f64586f9d9cb7da8985a136dc192cc05668d6b9e6dec33963fb76588812348b86c3443540c2d218ddfb7a458a61408bbe3a930dfdbcebadcd6729d3e659cca0ac8c8bb608d92c879ec966cc139aa9c2a7469f302f49a97690ca011dd9f623802d9c47cb1c389296cbdfe11672cadd281358fd918e42dc82bd1c5a0007808b6f9df3722ea2cd1348c53e48b8eef5b7a07dc7ceadef267081f52e765f000f0d391589e70dfdbf10d76f664ed871c05383afc93a020ab973cdd0f9c0fa440117bea4708a833a267b87d634b6126f4f5a4be62f47f669c7eab31021e06378f4000856ba59668257dc115ad5382717b25aba1eee9b48cacff41336373f80fd56a8002a71272d83cd47ef24ace033f47a1bba1f8d22d2cdfb8757862d184f7c500e0d002324735d8b6acc63b649fd958a45a8e66c5151aee9939fdd78c917d48ed5619e0005bd24668cd20f0e9edf0955e3e1bf2a5e9ddd3eae65c7b6447984537cf1acca010cc58e9fe91a70aaf5e7499b51a18dffb1bdd5ddd3693f0789cdaabe99472499010427becbde3e356b7d6510b4c080053bce9a3ffabb968659ff5336386d7bc61600123a58d1e63341d2e4193ad1b4cfdf268828a6165a77a5c82144706c6137fc33011dfa92e61edb832f190334b89fbc4af595b0025b6bbb4f471442754197f1bbad0000a8fbddefeda6114a990e73c98fec8f2d9964bc76a4455bee110a02d938d7de0029ef38242cc8843ac6918a3425db7f288f8fc3634a23d558760a9d299a867eff0124f2105b8160426af4907faf86f0a2996fd25ccc71d6787ee95e7485fc1a23040003e4f445af3db81c59697f029960560a0e6bab0a5c067c54806f74c5676c751916a15b0ff4ccbf61e6b8f9447452f3914a305e1b64816cf24dd6e399ff4e047f011638e26605561f36d122bf63b36d3a611173d51501b8f30bf8180cbfedef1b4a0118529975d3d285220fa60ab2b7515bb67cc9d5eb383093b7f21daf9786166147000927a9f2dc6ec4e57f97f2edfa7aa4ae56c16bc706398293e7af86d1d1d063710126d2ca6b0a4b65f1713f54a50535c7835c98ba57c00d50c706ab847d6558f394000507000ea1ee57e4df8809971519c9ee0a26fb4b4c278bc4d995d8d378835c630118e7775ba54ae56eb569bd32544c804d8dc25b3d0d7c7f12fb35af7621cc2fff000a4219708f8aff0c97e9b78a09f5f38a8a3beb6c98474e8fb2d0c2b30638ea34001b6169e608eaf0896c839e00aae7b4aac2807ac2043dbc170cbf2787f08e4493012900f70bb1e03158b62c7974b453adb65ff333dcbc608c84c6f8c9c0005f34fc0023955a9fdf9c56b425090ef030494acc83bb7386654d86fedba23be66323ecf3010f8e7cedeb37731317ed7f736aca1b6374a88cf16b73ac02cce7eea17c762a7f002abd5fa748a2d0dd22fb7009e9d340634b1ef564f4b5bc91c7901479fc3e74e30015b9f3e2dfc97a3279de2f4e5bccbee8d43545514ce26868db4c8db579a6d1d20007827ae78b2c074436510d75436bd9bb66c766cafe5824c4f5accfced038e64c0021f82d411243884c79481bfd9baa856cc231e771b1b17e1fcae371f42ff42239010f1bcbc0cddac7d3b1ae3cda20e6db83b7599756517e3c8fec4f13e5f7f97187002440277fbcb9d1cb94cd59b49b6a4cbcb1a42208735561a1318b3ab78ff9d1de000dff51722f806a2d5df6196b3a521c47708857b51341001b950db12ce96e2b26010ea6cb87ccc338c38b2307caa4438623f1a14b8d0b8f187a9f80e08c68cda9150006517f26865df7a7819d7d5a1c74ef4fe15d4a54da2d6a8debd382e957c2ea51002098ba0f690059d55df8165af1a55e4798b9bb1daaa937b53c01d4a8cc4b9edb00150fd91deb00ad30e3caadd5669e0fd5d4cc4b59ea35cfc346d18050d1348f630003bc4f527a9a48f929e237fd7fc38cb917855e8fd8169f693e5a8e64113aac3e000c108da5314b747e7c4f757422977fb6237c3be338b1f5d1ba5e03e26b50c1c00002da3ed171d24913ebe897ab2ea667f024c71a5cb7ef1726f30a5cf74af2dc050017804fba37ac116e2c8500ea1a4a18e6cb0c4cd1321807dba586a7c737abe568011a72a5d6dd8d2db136897096aed41c20d7ebbe9d9c586636786a83945bac68c60007ef74facdbf94c0dbce28c5331b2b4db401c81f6bf0dbb6b2208e06b103d847010ab72c8375e59fa9da6d24e2dabd238b5ad10cc8e7243748c030554ac7add51301274b1f9397af3a0256385b00fd05fb406fdae5f4dcacf2af18c70d80072332d0012626fc2c876cb5091fc64950eb82962aa524a197dc8632cfe665a56711f07edb0127878b7e0b43601f305265aeb2870c40c1169e5b18043c7df5c33eae137550bc0017ab6786adadf6a3f63619295c5bd9c19dba3c17635c41552bc68ebbe6fc5a31002845094d3e7125879d1e858360fc0e21e91b29b96a96b7dab9da308b5fe0019d0114b1018d2f9e7c80a13c5ab647c54fa146c3166bb19fbdb5b09ed1dac8b6263d010a1b630a3ce5cd9e9a10b65c98175e8d9f9b2798f35f1f4cca7fdebbdd583e0e01000000000000000000000000000000000000000000000000000000000000000022b2ab9093612713f0b44ae740a34ef0d8f017dd2f54f892e9544b04795574c9276a8cfd17248a823c8016064e17a36804925e565c70a6b9dcee66c2a0839acd2460bd2aa01033fae4b083bfd59130c019b76f7588fb001da0f2810c2a2d4d811ed8d399e2ae59afbee965aa8c57a6cccb6fe5d1d0ed1f1e8b7ac16751dabe1227c537bc6896c90f49dfcf896adc7f4dbfe33bbec3597a5ad1df166b2b032dc4138839236ba09dd1fd6a335e4ba079aa0f74b66eafa30c1bb878386f3b1965022400be697d631b9bb807b9a49cd1031e7ee2c5ede5275ad96d37e81aa858376027489e2133df5e1951bb7a24b2e056f76aea2ffb9ebddd57da0970ac2971a017304bc7cf70d7f8322d53900540a4bf31f9ca311eb23294bf514fff9c87a1bbfc0117aa7e643fe76f43aad249e83c2feecf78fdbd3a1bf3a6036770f4d79114150b012ab7e0aab168908e0ecde7bde67e982d49fdf8de447d48ace141aabcdd91d8150b8668245d59512dd76a96e1c8f96480d2659fa2a1c701e3aaaf0d4601ee148e1f970a11ad5bcd041304bf5052b1432efc1d9416c8b5fa384f6ff749e1dc9ef911b147a25d9fa67c10da5fb3d7bf2fda1ba9a8ba0323771c57efc4211149694b13eac2bd2497ccf624b7c998ba09f797d27a4dc837443c7285b60373aed85c160246409e05eef1b532f1f6936fb546e8cfd9be1c8018655515e5e86bf0980a8b07f20eaaf6ae90526d2472138d176cca1b4a58667ee88b19d6e906b1a0eafdc70153743b0d3bc8ae4405e0f43a430d718574b6cb80ed34bf55417af8c58ffcf2266d86a26dfec8e282f85590898bcae2ff7e3fe32937eb0257fde6d1b38276ae1e8e94d31bd4a2c164053e3a65551a5582d14c26d790cbf5bbc0806241d9b51e002a3e47d15d2e70a0201fa2eb82462a51c16096f7052800da8a9da3220e45054d002f42f205ed9a09ddcb83ed212950f43f9389ee416127b52cb5006a470f5c29f70003ff4bddc6d753e6b087c5d0793148c8476f00be31b1fa64be5bec2b62d2781d011b4738d12826104a3b231f8975ea13f780cb8839d8d0cec7118a8952cce6fab3010025613eccb92dbf0ac99afcd8a626089c543eb0493dde59881c6461cb48d2e900000443901ac6c1254bfb7e61a8f74e095d82c68f099649674f2fd08a63d15f0e001393ecba1ab93b4f29f2e6e482b9b03c279c461f7b81840e26a5a4c1fcabc232002cc839ecaa1a488384811b5dc53008762aaa77630d605ede4f94eaeedbda3062012b05119a9c3961b533f6b1dad8cfb95afa45eda90de84b8ec8c4b4cf95181ca100238b29c579fe319d3e24a9a08433f88fa822a32fcd06c73d8d64a1afc840991c000450d30a9882faeb3c437796cce575a1d463b4a96d196d42eaaab8045afb1fba011be8e17cf5c22173437c96b574be0679c71452c17c7852db8dd75bb5d59a63630005dd000a330ac1068f56b4bf608cae8594c2ecc5b5faa2521218445f713c963700&quot;,
+            &quot;01000003e69902fc9485e50fdea029153c274613ad208c6799e0c862bf8cc6239419deda7286440100000000000000000000000000000000000000000000000000000000000000000000f7b00b62bb6ffeaf98ed7f252ea95b76b725fe050de30da128837ce772784dc69314c0a5701e123c83bac704c5fec14b6797e3a3cdcda16b9ed97240b4fe144d217a6243620dbd4a2eac6658efee534f82ebb6b94ee8d57311e5e2b6dc711cb75dbf5f11a82683b2291cff7643179e5b85cb5a5959d3588dfc26d199655f2da8cdad81257750e92bc9009213691481cefe0405c30309467aac2a2afcfb09bf242fac7921f1e82cdb4fada78dfe413d0d75514b1ef401ffb247cded31b2c6aa0ad40e324680c3443540c2149e1766f3a8472dca148bea450a6ba676c12aad51f03ae94fc1cd50e53ce915f54ececcbe67ebc8d8f8ca66ca06c1b3f4c07b218884620bc137492a0cbbce17be2d81c304839c0c53e1dcaa5d3debd0ca8c791c9ea1007bb8c884f70026d8a86d32cb79cec58f531754d31b85ec2b7149601ec918941ddb72d33d8333011d3a935cca64839795bd6016b876843295468de4764bb47147e7eb89ba8f405701014e68061e4573d9b491a8180dfc4411b2b4f5c7384770cb6915a09afb0ffa1e001d1c4a4c60a65c3ed5a4fb15bcd65fd7cfa045ac7db6b575f0f2efe1b3a80be90021d71e008c3bccc73b9f163df173a38d32a1567a6876894030b107a1ad9af0ce000b30b9c2106dc0ef5a1a2a1af46e5b1f68614145cd20367c732cd7281f678053010879409ed3cc903a1faf56e9299c6a2a19030ccb559497def01513e72781a8e90122128ab5550b5639812e1076e2cbae330c027b0b284c794aeada50cee433bc200106e23650a4fcfba8f60be26ae22bc863ca68aaad28feaaeeacfec29314a3664b000193659b96a95f31ec5127885fbc3585ad41cf282c01b519c1c0dcaf1628ec1e0026017814db424c1f594420a1c096ac01c48c3a654ff1541c7c8307203fdf6cee000113e0db3f56326973d51cdf3360e9cdae7972e39c0a7f3325c965e48504c5f00018aeb558aaa3ff41f3358faaebe05b52ed1ff233ec973e8bc621e9daf93edafd0107b116db3401423f4975bb5b9d39a3c06bad79f88df43bc3cc9d701ba2709d25000df70aad6d6bdaea8a3bae6e4dfc829e9356ec79de4a614006504e5365de7a810003e4f445af3db81c59697f029960560a0e6bab0a5c067c54806f74c5676c75192d5e86ed77f82ec40247a6058541888613ff9cedba5b0a2fdc87fc4e11c3dbed001c40b4ee98619123eb930c2684ccb3fa5146148a4da5b1d0898691e6367485ff012b08b0ec699421f84b06445e2a067729bfe64d6f072f3890a7277e3a1f5b792a000837564104fefa546b2e2330134a2a0d873e8fc33254fa54101d125816e2094a012d32ed55941b68d79fbe72de192d908924434c78231804b4d6fb01eecfb7edb1000e19c1613a2d2294549466c850d8729aafbe6c31f2c587450c3e01abe49ecb60002a15f0e4b815276858ff375183f44544dedb68e4ddd1d608c5d338c754807d6c0015a783fb7af458137e1100b2a34cda438c01fa2505c745af8e7845d14ab3efb3000befe5ff87e60c230a0d2e062c678904994ce5d998f720e8e821c458239100b30028a11eaee1e9b54026979d3723994624ed974b12063c7481c20df64160c0372701222c9d06da850263e367493c88bdbfb7f58e612492e19f54a6256d1501d8d987001e3aa30bb94c815072d0bf55563d40631bcc11d0832c8ca6278f96caf97a4249000adb571a55bcdef4a4aefb03304624b6158345e91385d14e0c2af7815c8cf5f7010c6fd971a2c9156e95a1a611a8801e0f7ac630f5403a8d79e74839ad5837cb6f001393112847debc1e51379e9cef1f7170d1e5a37844dfac85cf3c21ddaf431902002967be2102e25853016bd44868c0b573e6cb734659c15bc902089a9b710be6a0000abf40ad280302c64d027488c64fb045565d01fd2b79806e061b02fdd48c258b010067270b6d3bdffcc327606cbcaae0824a5311791a63c52ba5c36687f9d48b8801160bac150b6f73abcba7ca95297d9171699526e163dc800e2c51bd8d0a8a599f002e1504db4acba7cd8e36fb5abd2f2711240f02e382cd86b86fd9c25c14ee2c82012bb3ad75755bfb1257681ea4e8922cb77be35e95c4decd63b806fdfa3cd0902001115ecbcf1893b678df2ac70e600d031edaea8f22d7355965ccb5b02d844599ee001c4346a94088c351b48a4edfa4f2a42e4639d5ca77eadb113e6d4e11d5b84a83000359411a2c0cf7de244b4da2e4daf39d4ea9e4c1d0ba33bf755722d37d59efaf000833020cc0992588cf23ba7021c27d6eecd38917bd9f79fd3be3b29271bc73a6001175b41061df0baf57c82cdfe7222bf2322946a938e3320c8244e4ca5c21c612011ce87c2842bd8d1f5c2b7790e05395036350d89ce1b8d522e036e3be7c5855a2012be1a30de449f9a431025d38023a3596db63f9ea6a9bbdbdaa057a8b03079dd501005334ebf3ceb5028561c401dc971d6dcd10803bd7ad7c2c61516f6e8c6d13880015be77d1d0b878ac03cd2e766aa3a2517a157ce29c69b3f73dd55f600849390a0121d54ddeda9cd0938812a7e71aa9b195d19427ca635865cc0bd34e3fb0215f67011b6585ee33f5082b1164a6f8ca27448b616c614d32d9feb7eb06ed341049a52f0022941d16396895ec0c7fd4268497986cc466ef4eedec5453a29fec6bbaf171250023a361d8a6f836e5bc3fc9e2e56194a67fc6ed735707ae09587b2e35d495411a01084c39a1c2444da2f7459c107f403c2ad4770aab683f0b3b64e8c469230ef828011992cbb72047cbc8dd240700152e7051ebdff5f3b74d083384afdb04af215765010caa33c30a9542fd0c8f7d8dee6ec8ff0f899dbef5f5dd994f2e27c18ba53ee3000000000000000000000000000000000000000000000000000000000000000000103ffd6f8a27ed37431f145f4ea498063816b4948ff098f3ddc67b5b2653707d138c6bf2ea9a4718b0a50510b0124b75d24da9a9a07de08847416ab67ab75be3015115995367f4e81f3adb383e3cd7146f770fd3a63bdd9130621b84d17b208c018c80857b89283879764ab8f1ae16b2448621776513c0df487db9e336706a7e1c19a0c127ebf7762f5ee4f334aaa287c2a1af74471d88a22c45cf3348fa16952c30b32fc87990c5b6b9bb2795c85770dc07e541cf94aa7f357442f3ca08c8bb2aba3ed10ef9a8ef1cd20996853384190c4dc79095a91517be60c0d955c2f85e1b22da5326c2b88059b312f7b91b58f52cbf6d84df34834f7d044c7be6a13f041f690b83a6fac06dc6f0cbd7f2c4171aa426951382efbceec9853cdfb566005e00220e6871c0abb720c5b5466d9ab532d6b73797c82e6b570ce0b2d6d151dc154f012ce3e99fe03ea2787f781ba07b27ab73ab84c483762382ff1b69a54def410ad71536278c84543bbd1b5df2441d2078033ff200274d214e1fe602da99c44ca4d80ce6d41d3bb685763c787b4eadd06637eb33a4ab5f8ebcaefa2d23badfd6711a15f024315d03dfb65c01e2ded515109aaa19c56a788d6b81e52311c2113a42af293e1537d5a919ad8f3536602897f553ae8ca2342509815d8091d3099ef67b0014b6e179f0184e79dae1fb5f93e6d16b7ba99603aacd72dee1435b2d0a63dac10eaa5f6e82463a303708008c6d5ce83e1be8a88b0f4e0dc3c274ef1f35dda00b195e0fb94356ff1e390874fb7884866ee511315d348e3dd31b1b1741230ced7e2e3fb65a21ef0577ad6290bd41c94f539d7e613ed3868c80471ae5507876f06a2bd977607ffe9b66c929d8c978b2ab050d911389f35cd23962bbdcb07575ea4b0011932f82346cf49ee903c24acbec4373c6a6e24aed1d2ba6708656eb81affa12002817723dc1ce5f67c680e1742e0290620a4e689e309e664b44ed7fdd3d15d5460102f1cfc9cbb7d9fdb1b1e21480ed229b030fd9293bbd648753903fecfafda2a60128a29cf179688988929e8304ecdfdf1f7d5098cd88ce4b66ca2927cdbf9ebc3c002c861382f359b88d72b281adb8229539c6e7f622f75da274fa1a1ee3cecb1abf0022c07f8f152c80cbd6680533693fe0e76acab8ce4670696573f93f714aa369dc013041371db94160e159d725769ddf0d328745fb2af0a736fd2e8969876dd19662011c8c36dfa032c52f0c3442b7d9695b50d51dcd975d6374e6df1224e276462f6c001dddcfd90e2fbc717135f29af6387daaef87fa791249890d338d644e4532669f000bded5a6a000e08e4797154f5d9137f0e7fde06b0c84217d6c3e06f07eecf2990017f99e2e47bcc0ca0dd2ab1e170e0f828c30408869d9dc46ae75459918fceba700108598f111b389d27e110051a763382cc5ea3f396ae21b6970063a3cac17794b0126030ff863e81e5bbd10f3d434b0490d0a792f1ca50dcf419efdb6b366e364bf01&quot;
+        ],
+        &quot;txs&quot;: [
+            {
+                &quot;as_hex&quot;: &quot;&quot;,
+                &quot;block_height&quot;: 36074,
+                &quot;reward&quot;: 0,
+                &quot;ignored&quot;: false,
+                &quot;in_pool&quot;: false,
+                &quot;output_indices&quot;: null,
+                &quot;tx_hash&quot;: &quot;&quot;,
+                &quot;valid_block&quot;: &quot;e286bd3cedfbfaecbbc327f4cb5b1f5457053f322acdd177d6ff55cb6e897e7f&quot;,
+                &quot;invalid_block&quot;: null,
+                &quot;ring&quot;: [
+                    [
+                        &quot;deto1qy2cl36z7rwqsrp9mqf3jf0lj6hxrvmt98dp6uq2zeathn00rv4rqqgwwwq6y&quot;,
+                        &quot;deto1qy2u9j4c3tv3exmmdd5za82f2gg6dqmaptmxat640ssvwca3zmxajqg67z4sv&quot;,
+                        &quot;deto1qyxwhayh9hc230g7dqtl76yhpj754dd7uh4kgptd4ya29538u4v8wqgvrfdt4&quot;,
+                        &quot;deto1qy56vq7gfrhv2jrgjpcrsd65vsgpf7qpz6c0h03wy5ke9fumewkyuqgxshj8c&quot;,
+                        &quot;deto1qysxfqq9aweksl80wnnxf9n4eqwzxgt9d2uezp2h7rqz5kf2cj5gyqg3pg7eh&quot;,
+                        &quot;deto1qykz0y7k86fpgymege4uy2zzxmehhzqun9u6azs46ze9adwamupk5qg4j9lvt&quot;,
+                        &quot;deto1qyywdf79xhw9kmljtef786rx8j6q7tg3uakvgjgvsz7dw5kuxfexjqgm6e2yj&quot;,
+                        &quot;deto1qyz8umf02tjzkxy2d7alhq2h7xsf6zsuapvy5m4kn67pqrpgc2er6qg6x6d0n&quot;,
+                        &quot;deto1qyynts8afn6fyxslpn7r420c5hehudwyncjgm6r2yfm5t3s370cuwqgn4j6x2&quot;,
+                        &quot;deto1qy04yamzkg64ndsc9u3knuknszed6hmxxtmrx6x387dq4r2hr7tezqq9md6rq&quot;,
+                        &quot;deto1qyyemtmskcpjn3fhguvn0yuquvkasjh5fxwqgk9zk5mn4x0fp7t06qgr7fkdr&quot;,
+                        &quot;deto1qy0ehnqjpr0wxqnknyc66du2fsxyktppkr8m8e6jvplp954klfjz2qqdzcd8p&quot;,
+                        &quot;deto1qy9gs9c683903sgc3cna60fwzuka6r4qgdennpreev60z6rsdw0zkqgy47zwm&quot;,
+                        &quot;deto1qy8z4awcnhnp624ma0fznkpj433wnl75hu47fx73287mk5vy2ga3wqgj9gtla&quot;,
+                        &quot;deto1qy0cx6faws9ypd7aw3500x93v8t8dgdwfsqmy8sqtsaa844ldgn2wqq0e70le&quot;,
+                        &quot;deto1qykhpc3ksq7c39sdvguuv02s62q0elcugr4fwnywhg8cnkkch29ryqqyvtq8g&quot;
+                    ]
+                ],
+                &quot;signer&quot;: &quot;&quot;,
+                &quot;balance&quot;: 0,
+                &quot;code&quot;: &quot;&quot;,
+                &quot;balancenow&quot;: 0,
+                &quot;codenow&quot;: &quot;&quot;
+            },
+            {
+                &quot;as_hex&quot;: &quot;&quot;,
+                &quot;block_height&quot;: 36074,
+                &quot;reward&quot;: 0,
+                &quot;ignored&quot;: false,
+                &quot;in_pool&quot;: false,
+                &quot;output_indices&quot;: null,
+                &quot;tx_hash&quot;: &quot;&quot;,
+                &quot;valid_block&quot;: &quot;e286bd3cedfbfaecbbc327f4cb5b1f5457053f322acdd177d6ff55cb6e897e7f&quot;,
+                &quot;invalid_block&quot;: null,
+                &quot;ring&quot;: [
+                    [
+                        &quot;deto1qyxjcz77he9njxkm2rvd469hlv88yhp3mwwmem5d46jj3lpr6w03wqq8e27rg&quot;,
+                        &quot;deto1qyhvwyjkgmsg40hkau4csh0ksn4qm072uz0jr75gf45lqmdpxah2kqqrp8s4r&quot;,
+                        &quot;deto1qyptptr294w6aa38220um5as08krppx6de0qjk7mu5rdfelfn97h5qg6lfd0v&quot;,
+                        &quot;deto1qy0ehnqjpr0wxqnknyc66du2fsxyktppkr8m8e6jvplp954klfjz2qqdzcd8p&quot;,
+                        &quot;deto1qyt26zg5csas4h3a88dtqxgny6rlyfdr27jx335x94syjxn652f25qggmlag4&quot;,
+                        &quot;deto1qyye8v2zfdmpn9vsd98yflmghwgk90tpcrkfpeds645rvfsxvx5jzqq6ezejl&quot;,
+                        &quot;deto1qyr4pxj7qlxc62j3u7dxdpjgl7vjgmkcf5rwack9dm97etc8fjvx2qq83pmye&quot;,
+                        &quot;deto1qyr0rgqkh0r679ezp6znwgdyxkzlvq50jazuj3r5yslwkt7rssc4jqq78qwmq&quot;,
+                        &quot;deto1qy00rwqzshtn98nz6h42k39230k0v5gzkvp7ms83w49zn09s2tes5qguwuhpp&quot;,
+                        &quot;deto1qyww4r64c4t02qzs8w3cpfw28kfjnrrnth9flk4jped64ynslq8uvqge6hnd4&quot;,
+                        &quot;deto1qyyj99tnmng4mrk6r9n8kx8zyympm9ljkd07jujhhjudrw3e2nwrkqqc9k29f&quot;,
+                        &quot;deto1qyy86yhmx8mr3343dnlk9kc9gec3qek028t4xfdhxhk0ymhy88qzuqgyw9tgn&quot;,
+                        &quot;deto1qy4qyujjy02ayrxs8pgq0rk00n845sqk6dha8jdgp5358v86aqcngqqhld7yr&quot;,
+                        &quot;deto1qy598uhhf9kgdqlyz4aag7gzrjfeged48m8z9mccrf8yn0ufm8auzqggcyydd&quot;,
+                        &quot;deto1qyddyeqfnzg2lwgseuefhpl4564rp2d6p5zf9ud0uj7sepmsxnyhgqq7xdkxz&quot;,
+                        &quot;deto1qyjlw2w4kkfrs6yt4v62tv2zntlvjth435fsuzqafw2yvxt4ae7y6qggjcl4f&quot;
+                    ]
+                ],
+                &quot;signer&quot;: &quot;&quot;,
+                &quot;balance&quot;: 0,
+                &quot;code&quot;: &quot;&quot;,
+                &quot;balancenow&quot;: 0,
+                &quot;codenow&quot;: &quot;&quot;
+            }
+        ],
+        &quot;status&quot;: &quot;OK&quot;
+    }
+}
+
+</code></pre>
+<h3 id="send-raw-transaction">Send Raw Transaction</h3>
+<p>Broadcast a transaction on the DERO network.</p>
+<p><strong>Available parameters</strong></p>
+<p><img alt="image" src="/assets/rpcapistargate/rpc7.PNG" /></p>
+<p><strong>Body</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;DERO.SendRawTransaction&quot;,
+    &quot;params&quot;: {
+        &quot;tx_as_hex&quot;: &quot;01000003d39a02c1295e6cbaf9f98ed67ba0e6a06eb26b3c5d27fa83e0bd070a058c539d21da5d01000000000000000000000000000000000000000000000000000000000000000000000160678916fcfcb943bf579de316406d1dae91b0799701c38aba61129daa92c662074e559ea4165e259e261aaf4e80262398dfc3b0561a63f5c3da356cadfcb9932efb8e0db977e23c82c4f1c0b6014bf1bbb71b91d9d584bb7de5bddaa80a2a8dd9bf12bfd06ef252fab44884c683e0dc92262ead552b1c6dbc513fedaa59929fd5eb21c80d4a8bf44b346d9cd0a667e40404c3031b970faa7e70d5050842ad3c88679852a8f27b6a5afbec1fb8ad000bd189802200dc9e48d5452ec98e05beb43b51056a57c719ab7ec3443540807a908374c64207008c095ed633722a97c95073398e48de0076fec58f96fe3cd2ecb8d385086fb91e8c9c5028d6b6b5a48a432b8f7ac6c43e31eff39396a2074d8af19b7ab4154f01008c0798cf91f0892c4d8246743386fbf617f72a985634e0059a12eaec24a61001016b05ed80daf1e9580f2ccc66081c3765201f9e6ac230a2b7667a0bba427dc6002d7a9f01ff25296b171e036c9c68053d7de826b180323224417126de0fd0748501238b3a1dc5dbe62de9f0488264ee46c39c08925e2cb68f7b6dc60d8aecbb68620002c66dd5c29de5e9adab3bd7f268f64269e1e96921eeb9637505414c790c0a65011e4020fdc76b7a4a6fad84d0fe875cbd38fa7e816585b639d8c3032aca1b3064010e380630678bcc957c4a1cc8e57d2df9fe7996b98dabd42cf1c49eaa8625e1b80119eb616138a8c3606a3bc1f9a0052eaedf6f50ac4158ad2c42074ff02c3ef786001394a47cf5cfc88b357eb50c88d8f1554f9cd5f1fc00cfd54c35d3664e9c27ce00010990641ed8bea313d3201aa9a1b7dbde6e18376e07df73cdea1b5d1c11309c0122e645671fb85d7e8dc79729cb147a4fb534d17981d4d5d576f965492f3745f0001aecdcae49756e90d99500c31514f8e0421cc7678499dd7d6b8ea393cf3b29ef0116b78b380109adbe63d8597aac8a7d2d92ff655c93432ff70a2eacb5e5d75ae4011227aa289afebbbb5ed5d55cc988f39a818f46b75a6b804ebbe47ff021d0c032002442d20d3b09f99317d36dff5b4dd26b4832c0bd158814f9329506a257c235e800d516c08b48be26167e83850a13e0b3b07a1ff9c92aea0403ed60da213726b9371c815b9607b3f2ac78b8f4aacfbeadf7f7a800751ac231447b17606200b6eb0f01191641ed48d79ce5a064fdacfe40061de65b8c0d7aea1fae353b1effc7f2a2ac00270e2ac0dc68e423d1868f5cac869d64d94702ee9e772ef5fd52b4612ead6f5a0003a1c3d496a186a1a72cfe3078e88168ff326473b8af785b254aa124c69064e400163d332d26ea2e7f66022bd963c4163a6f205d44e35ac83eea7d5a0f1236f09c0023f155555baa1083840831c538443e2805966ab97c8ec333435ac7ab58a979fe002f4b9c816d0c5dfc46b6b507028dd967ba0574f6f3f3503c8cfefca4bd88be7300007ccba7bd0cf11585241ba0e573ab5fbcc159220bfb4669de2cd3d11b9ac8a60020369d2d52fd9c8997c6bd384c3627b03da0cc0c2d2f5aa4b0c74a330192f4c2012278d29396e1c6bfaeb67626da24ec117429f4d207ddd2b0632cb09d12652ec10101e3a4ff8846e1655b007195e1b6d800b4c62a88173d4328002d39f673809954001031c5badf10560137006f3e24fa54b27298109f45802311f72682f8416daf870017f293c47a044b8950bb2432f13aabce8d2778e06acbc77b7ff5c0f9fcf19a0d01192e4f040dade991bfccb215e86d43f6d1dcfdba6b990901fc0803205971a8630100c8de7797ac2233659edad98015d4b09fd72795c88b7e72abe67332b6dfe419011b4b31bb8f4839e93470fdf6466cfeebb71e8268fc4eee7e1fc18c693db1b0ee010635360ad6bc1ac35171de94f599ff94b5b99bb8cbcb752c0d8bf814dcb17bf3011d0e8b621bb2d2ccf391b98afe47b113c135357f5704729a7424eb7d43d692ce0028c2ed7d17398ec2c7430b48d95e5b4641ba9aa09d938aee68a156aa708db4b7012db0d18235dbf4800a23edda7f53a433cb6a7df84a0b5cc4c1e810c4f0a2bd8201034aad9debd087e6b816ac31e8233d08ba685bde235a5f794f908405398c12ee0016d5d080eb4042680548d29f8730198051a9dccd0996d40c5a13b6949f14e4910025f28597f07d17439457e9e41a5c7f7daabbc134f6228be485f452461d5b996701220584b24e5a87af99109c460b2052df26f15e631ef8c36f18004ffd7a71a519002ae7670e81dc479985dd0caa0cb08f2128307b43aea07a6d3c5ab84aa648a5a70004ef828ddc623cb574e87065a5d7c3006597716c910190a866969dfea37c30d600249fb654c861c3688c2898fed0aac1fac075b6478146e3fb99d34ccaf790a21d0012a06b85562f201047ed922fe938e72069e4a25f0cc5782b1aec718c0bce46ea002e0dae8b0fe9e50fbe0ba74c6e0565212fddefef7053529cad2747978265f8a8011c140a7bc045eb496e520b4bd08e9dbdf18b9a1bbf6733be4248442d10a9fb0500302c870c17f7ef67e711df82b6603b30603694e188024fa41a14fada846d8ba9012db86e12e976195f38cba6915f7228c2e98fe0a266df942e7174e3f528ddb1d00102222e91f9a9e91904b17d64977352c93e5ac2f6e1d694041f7863ead356f5ee011f4e1eeef0606a9ae6d87562ed0f81dc0402d327102471c4b9dbb3fa3651ba09010e42adcbf49d9050d82ecaa5c40a9c9858aa0f97976cc593de7141d9aacc0a6c00200be9027f39b0dadb36df2114f3a7605a90347e3625304e290d83841365fa2a0011da530bc17fb6e3c5fcd5291fb286c9b52b943a1c93f68b7ac220ff9b008f170000000000000000000000000000000000000000000000000000000000000000000eab3f99967f03bb3a3b1e689145e406155d4c9e027a1206a1cc972f1003be5612eea86bea3b0ee07dafbc2610fe9c71bdeccead3ba0a2702f5da0d89d084f2c053f0931828d42aec32cd555d5d81639005192e5903da3c23218938c7c3dc918227a34fb4889a56ea461988da95aeca6e17dbf5865696fbe738bd7033f51f0b40346b290197557ac24db3e9281f0fedf01110dfeb4daf4d71163de652dc8b2b61778b5e0bd4f45541b35c62923b99b53c3b94f1478dd81708e14112e152e489e2c1c4c580d3e35a9f0693449a0af566deb3f32340373c023ffa6c9ff8d91f80d07af281574a4822870a05678b41d97c4a9b35541e6940f0120b9d47fc4bb2b2003e95bd2ec3c63245602f21808a875ba0d1028ca3e7869b6c6682a7125c1f2ff011ece8eb96ff3e0e9af0947749056b806e554fde39f475f0ca2211cf9198058a4002703f5443f1886e1caf60f775b6431bc948e4b0e2b76f56a8fc8c29da23caded041917938e845f826ddc5f2ec6aca0a985e6f6c98ea0cbc51f9429e2616500e20605af191eac7bd2696409d65dcbf3108079ec1f6bd5f9601b43dd3b58304d9d205b1ef7b34578d80236c0615ac79f69fcc7c92491bbbd3130cc22e8f0ea1fd21d2d5bfc8da06e2ba48acf70477d1cfefa7165a0804166027f0945faa85057cc236797a65ada0329e7de91712b4974fd83bb99ea97042788bfde4b8b9b5f1b251f6853fc4ffbdff382b24f209d4357099ea1c0d0c383dfd7f03d64bb7bff199406aae7f59190862d36ebefe8d011825bc663c6731f6397d5019f00055a3f80b71ab3b3813d5d509d89432a722ee789db88ca86c86fa76d6224b7eb3c5e66822b1e57f77674481d0a3a7252d47c4da5feab251db1b0b146620a9d271ca951c33f001080c18c31919d2de622fe0170824cc31ecaedd90d8214afcf47a7486474d65200153ade04144d5c29e2e0d6003fcf160bec90d79a42afcb4fe230bc695ce956ba001f4b437e4531531b85e326ccdf160e87408454ecd811fd41a51cc7a9585700df01092a076eebb6fb76ae2443dd7f007fe8edc4c7f54a1bdf48e8e5ae59ca513a9901205d75965eb434dd10e8425ff82d7f6695d4cf0b97507e800c3e3d59a60b83f3002d1496857827c872a53a792e86a74da252f12316972cfadbb2afcfa40a2883790108ccf31a2fdd88201361a0d4313a98a0272173132d1fa3d9bf018f35a7b439b701301da927ac71fea5a0024920ecbadd76f5f05f06b2d8e6874ae9a5348316585b002806c45af761489705e347dcc764ab531fbd7205c36c15f44ad1b633a609dda3000a40291cb5b71269ce0535a8b81ee3440e3db8208e4dd2af38c6591121c6a6560127f8dbc559ca73ecc28c0df0f38b7991bd348121cf5c111c4c505b019d5ef8de0018aae0f6ef38795ec5bac7e55ac5e580599a95043bc57ecc4930d2e1279269b2001c77bc717a5a1788e6157bf937e3f089ec9e27b0a7ab4eab11c25eec1918045300&quot;
+    }
+}
+
+</code></pre>
+<p><strong>cURL Request</strong></p>
+<pre><code>curl -X POST\
+  http://127.0.0.1:40402/json_rpc\
+  -H 'content-type: application/json'\
+  -d '{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;DERO.SendRawTransaction&quot;,
+    &quot;params&quot;: {
+        &quot;tx_as_hex&quot;: &quot;01000003d39a02c1295e6cbaf9f98ed67ba0e6a06eb26b3c5d27fa83e0bd070a058c539d21da5d01000000000000000000000000000000000000000000000000000000000000000000000160678916fcfcb943bf579de316406d1dae91b0799701c38aba61129daa92c662074e559ea4165e259e261aaf4e80262398dfc3b0561a63f5c3da356cadfcb9932efb8e0db977e23c82c4f1c0b6014bf1bbb71b91d9d584bb7de5bddaa80a2a8dd9bf12bfd06ef252fab44884c683e0dc92262ead552b1c6dbc513fedaa59929fd5eb21c80d4a8bf44b346d9cd0a667e40404c3031b970faa7e70d5050842ad3c88679852a8f27b6a5afbec1fb8ad000bd189802200dc9e48d5452ec98e05beb43b51056a57c719ab7ec3443540807a908374c64207008c095ed633722a97c95073398e48de0076fec58f96fe3cd2ecb8d385086fb91e8c9c5028d6b6b5a48a432b8f7ac6c43e31eff39396a2074d8af19b7ab4154f01008c0798cf91f0892c4d8246743386fbf617f72a985634e0059a12eaec24a61001016b05ed80daf1e9580f2ccc66081c3765201f9e6ac230a2b7667a0bba427dc6002d7a9f01ff25296b171e036c9c68053d7de826b180323224417126de0fd0748501238b3a1dc5dbe62de9f0488264ee46c39c08925e2cb68f7b6dc60d8aecbb68620002c66dd5c29de5e9adab3bd7f268f64269e1e96921eeb9637505414c790c0a65011e4020fdc76b7a4a6fad84d0fe875cbd38fa7e816585b639d8c3032aca1b3064010e380630678bcc957c4a1cc8e57d2df9fe7996b98dabd42cf1c49eaa8625e1b80119eb616138a8c3606a3bc1f9a0052eaedf6f50ac4158ad2c42074ff02c3ef786001394a47cf5cfc88b357eb50c88d8f1554f9cd5f1fc00cfd54c35d3664e9c27ce00010990641ed8bea313d3201aa9a1b7dbde6e18376e07df73cdea1b5d1c11309c0122e645671fb85d7e8dc79729cb147a4fb534d17981d4d5d576f965492f3745f0001aecdcae49756e90d99500c31514f8e0421cc7678499dd7d6b8ea393cf3b29ef0116b78b380109adbe63d8597aac8a7d2d92ff655c93432ff70a2eacb5e5d75ae4011227aa289afebbbb5ed5d55cc988f39a818f46b75a6b804ebbe47ff021d0c032002442d20d3b09f99317d36dff5b4dd26b4832c0bd158814f9329506a257c235e800d516c08b48be26167e83850a13e0b3b07a1ff9c92aea0403ed60da213726b9371c815b9607b3f2ac78b8f4aacfbeadf7f7a800751ac231447b17606200b6eb0f01191641ed48d79ce5a064fdacfe40061de65b8c0d7aea1fae353b1effc7f2a2ac00270e2ac0dc68e423d1868f5cac869d64d94702ee9e772ef5fd52b4612ead6f5a0003a1c3d496a186a1a72cfe3078e88168ff326473b8af785b254aa124c69064e400163d332d26ea2e7f66022bd963c4163a6f205d44e35ac83eea7d5a0f1236f09c0023f155555baa1083840831c538443e2805966ab97c8ec333435ac7ab58a979fe002f4b9c816d0c5dfc46b6b507028dd967ba0574f6f3f3503c8cfefca4bd88be7300007ccba7bd0cf11585241ba0e573ab5fbcc159220bfb4669de2cd3d11b9ac8a60020369d2d52fd9c8997c6bd384c3627b03da0cc0c2d2f5aa4b0c74a330192f4c2012278d29396e1c6bfaeb67626da24ec117429f4d207ddd2b0632cb09d12652ec10101e3a4ff8846e1655b007195e1b6d800b4c62a88173d4328002d39f673809954001031c5badf10560137006f3e24fa54b27298109f45802311f72682f8416daf870017f293c47a044b8950bb2432f13aabce8d2778e06acbc77b7ff5c0f9fcf19a0d01192e4f040dade991bfccb215e86d43f6d1dcfdba6b990901fc0803205971a8630100c8de7797ac2233659edad98015d4b09fd72795c88b7e72abe67332b6dfe419011b4b31bb8f4839e93470fdf6466cfeebb71e8268fc4eee7e1fc18c693db1b0ee010635360ad6bc1ac35171de94f599ff94b5b99bb8cbcb752c0d8bf814dcb17bf3011d0e8b621bb2d2ccf391b98afe47b113c135357f5704729a7424eb7d43d692ce0028c2ed7d17398ec2c7430b48d95e5b4641ba9aa09d938aee68a156aa708db4b7012db0d18235dbf4800a23edda7f53a433cb6a7df84a0b5cc4c1e810c4f0a2bd8201034aad9debd087e6b816ac31e8233d08ba685bde235a5f794f908405398c12ee0016d5d080eb4042680548d29f8730198051a9dccd0996d40c5a13b6949f14e4910025f28597f07d17439457e9e41a5c7f7daabbc134f6228be485f452461d5b996701220584b24e5a87af99109c460b2052df26f15e631ef8c36f18004ffd7a71a519002ae7670e81dc479985dd0caa0cb08f2128307b43aea07a6d3c5ab84aa648a5a70004ef828ddc623cb574e87065a5d7c3006597716c910190a866969dfea37c30d600249fb654c861c3688c2898fed0aac1fac075b6478146e3fb99d34ccaf790a21d0012a06b85562f201047ed922fe938e72069e4a25f0cc5782b1aec718c0bce46ea002e0dae8b0fe9e50fbe0ba74c6e0565212fddefef7053529cad2747978265f8a8011c140a7bc045eb496e520b4bd08e9dbdf18b9a1bbf6733be4248442d10a9fb0500302c870c17f7ef67e711df82b6603b30603694e188024fa41a14fada846d8ba9012db86e12e976195f38cba6915f7228c2e98fe0a266df942e7174e3f528ddb1d00102222e91f9a9e91904b17d64977352c93e5ac2f6e1d694041f7863ead356f5ee011f4e1eeef0606a9ae6d87562ed0f81dc0402d327102471c4b9dbb3fa3651ba09010e42adcbf49d9050d82ecaa5c40a9c9858aa0f97976cc593de7141d9aacc0a6c00200be9027f39b0dadb36df2114f3a7605a90347e3625304e290d83841365fa2a0011da530bc17fb6e3c5fcd5291fb286c9b52b943a1c93f68b7ac220ff9b008f170000000000000000000000000000000000000000000000000000000000000000000eab3f99967f03bb3a3b1e689145e406155d4c9e027a1206a1cc972f1003be5612eea86bea3b0ee07dafbc2610fe9c71bdeccead3ba0a2702f5da0d89d084f2c053f0931828d42aec32cd555d5d81639005192e5903da3c23218938c7c3dc918227a34fb4889a56ea461988da95aeca6e17dbf5865696fbe738bd7033f51f0b40346b290197557ac24db3e9281f0fedf01110dfeb4daf4d71163de652dc8b2b61778b5e0bd4f45541b35c62923b99b53c3b94f1478dd81708e14112e152e489e2c1c4c580d3e35a9f0693449a0af566deb3f32340373c023ffa6c9ff8d91f80d07af281574a4822870a05678b41d97c4a9b35541e6940f0120b9d47fc4bb2b2003e95bd2ec3c63245602f21808a875ba0d1028ca3e7869b6c6682a7125c1f2ff011ece8eb96ff3e0e9af0947749056b806e554fde39f475f0ca2211cf9198058a4002703f5443f1886e1caf60f775b6431bc948e4b0e2b76f56a8fc8c29da23caded041917938e845f826ddc5f2ec6aca0a985e6f6c98ea0cbc51f9429e2616500e20605af191eac7bd2696409d65dcbf3108079ec1f6bd5f9601b43dd3b58304d9d205b1ef7b34578d80236c0615ac79f69fcc7c92491bbbd3130cc22e8f0ea1fd21d2d5bfc8da06e2ba48acf70477d1cfefa7165a0804166027f0945faa85057cc236797a65ada0329e7de91712b4974fd83bb99ea97042788bfde4b8b9b5f1b251f6853fc4ffbdff382b24f209d4357099ea1c0d0c383dfd7f03d64bb7bff199406aae7f59190862d36ebefe8d011825bc663c6731f6397d5019f00055a3f80b71ab3b3813d5d509d89432a722ee789db88ca86c86fa76d6224b7eb3c5e66822b1e57f77674481d0a3a7252d47c4da5feab251db1b0b146620a9d271ca951c33f001080c18c31919d2de622fe0170824cc31ecaedd90d8214afcf47a7486474d65200153ade04144d5c29e2e0d6003fcf160bec90d79a42afcb4fe230bc695ce956ba001f4b437e4531531b85e326ccdf160e87408454ecd811fd41a51cc7a9585700df01092a076eebb6fb76ae2443dd7f007fe8edc4c7f54a1bdf48e8e5ae59ca513a9901205d75965eb434dd10e8425ff82d7f6695d4cf0b97507e800c3e3d59a60b83f3002d1496857827c872a53a792e86a74da252f12316972cfadbb2afcfa40a2883790108ccf31a2fdd88201361a0d4313a98a0272173132d1fa3d9bf018f35a7b439b701301da927ac71fea5a0024920ecbadd76f5f05f06b2d8e6874ae9a5348316585b002806c45af761489705e347dcc764ab531fbd7205c36c15f44ad1b633a609dda3000a40291cb5b71269ce0535a8b81ee3440e3db8208e4dd2af38c6591121c6a6560127f8dbc559ca73ecc28c0df0f38b7991bd348121cf5c111c4c505b019d5ef8de0018aae0f6ef38795ec5bac7e55ac5e580599a95043bc57ecc4930d2e1279269b2001c77bc717a5a1788e6157bf937e3f089ec9e27b0a7ab4eab11c25eec1918045300&quot;
+    }
+}'
+
+</code></pre>
+<p><strong>Result</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;result&quot;: {
+        &quot;status&quot;: &quot;OK&quot;,
+        &quot;string&quot;: &quot;&quot;
+    }
+}
+
+</code></pre>
+<h3 id="submit-block">Submit Block</h3>
+<p>Broadcast a new block on the DERO network.</p>
+<p><strong>Available parameters</strong></p>
+<p><img alt="image" src="/assets/rpcapistargate/rpc8.PNG" /></p>
+<p><strong>Body</strong></p>
+<p><strong>cURL Request</strong></p>
+<pre><code>curl -X POST\
+  http://127.0.0.1:40402/json_rpc\
+  -H 'content-type: application/json'\
+  -d ''
+
+</code></pre>
+<p><strong>Result</strong></p>
+<pre><code>NOTE: TODO Example
+
+</code></pre>
+<h3 id="get-height">Get Height</h3>
+<p>Returns the current block height.</p>
+<p><strong>Available parameters</strong></p>
+<p>No parameters</p>
+<p><strong>Body</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;DERO.GetHeight&quot;
+}
+
+</code></pre>
+<p><strong>cURL Request</strong></p>
+<pre><code>curl -X POST\
+  http://127.0.0.1:40402/json_rpc\
+  -H 'content-type: application/json'\
+  -d '{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;DERO.GetHeight&quot;
+}'
+
+</code></pre>
+<p><strong>Result</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;result&quot;: {
+        &quot;height&quot;: 36210,
+        &quot;stableheight&quot;: 36202,
+        &quot;topoheight&quot;: 36210,
+        &quot;status&quot;: &quot;OK&quot;
+    }
+}
+
+</code></pre>
+<h3 id="get-block-count">Get Block Count</h3>
+<p>Returns the total number of blocks in the blockchain.</p>
+<p><strong>Available parameters</strong></p>
+<p>No parameters</p>
+<p><strong>Body</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;DERO.GetBlockCount&quot;
+}
+
+</code></pre>
+<p><strong>cURL Request</strong></p>
+<pre><code>curl -X POST\
+  http://127.0.0.1:40402/json_rpc\
+  -H 'content-type: application/json'\
+  -d '{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;DERO.GetBlockCount&quot;
+}'
+
+</code></pre>
+<p><strong>Result</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;result&quot;: {
+        &quot;count&quot;: 36215,
+        &quot;status&quot;: &quot;OK&quot;
+    }
+}
+
+</code></pre>
+<h3 id="get-last-block-header">Get Last Block Header</h3>
+<p>Returns the header of the last block of the blockchain.</p>
+<p><strong>Available parameters</strong></p>
+<p>No parameters</p>
+<p><strong>Body</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;DERO.GetLastBlockHeader&quot;
+}
+
+</code></pre>
+<p><strong>cURL Request</strong></p>
+<pre><code>curl -X POST\
+  http://127.0.0.1:40402/json_rpc\
+  -H 'content-type: application/json'\
+  -d '{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;DERO.GetLastBlockHeader&quot;
+}'
+
+</code></pre>
+<p><strong>Result</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;result&quot;: {
+        &quot;block_header&quot;: {
+            &quot;depth&quot;: 0,
+            &quot;difficulty&quot;: &quot;27629&quot;,
+            &quot;hash&quot;: &quot;b8e540f25322e51492005c78f29f6809f601a9e6f4a89c87d10bd035a73e770b&quot;,
+            &quot;height&quot;: 36224,
+            &quot;topoheight&quot;: 36224,
+            &quot;major_version&quot;: 1,
+            &quot;minor_version&quot;: 1,
+            &quot;nonce&quot;: 0,
+            &quot;orphan_status&quot;: false,
+            &quot;syncblock&quot;: false,
+            &quot;sideblock&quot;: false,
+            &quot;txcount&quot;: 85,
+            &quot;reward&quot;: 0,
+            &quot;tips&quot;: [
+                &quot;9633dad8e3cd7589959fcdf1c3dcaabe3a9e4da7bf64f929abc685c07e859874&quot;
+            ],
+            &quot;timestamp&quot;: 1643998300007
+        },
+        &quot;status&quot;: &quot;OK&quot;
+    }
+}
+
+</code></pre>
+<h3 id="get-block-template">Get Block Template</h3>
+<p>Return the Block Template to find a new block.</p>
+<p><strong>Available parameters</strong></p>
+<p><img alt="image" src="/assets/rpcapistargate/rpc9.PNG" /></p>
+<p><strong>Body</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;DERO.GetBlockTemplate&quot;,
+    &quot;params&quot;: {
+        &quot;wallet_address&quot;: &quot;deto1qyyhg0xznkaxt5udct6lnlylsexvwprun6jphv89xg008vq29jk4vqqayuknf&quot;,
+        &quot;block&quot;: true,
+        &quot;miner&quot;: &quot;Slixe&quot;
+    }
+}
+
+</code></pre>
+<p><strong>cURL Request</strong></p>
+<pre><code>curl -X POST\
+  http://127.0.0.1:40402/json_rpc\
+  -H 'content-type: application/json'\
+  -d '{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;DERO.GetBlockTemplate&quot;,
+    &quot;params&quot;: {
+        &quot;wallet_address&quot;: &quot;deto1qyyhg0xznkaxt5udct6lnlylsexvwprun6jphv89xg008vq29jk4vqqayuknf&quot;,
+        &quot;block&quot;: true,
+        &quot;miner&quot;: &quot;Slixe&quot;
+    }
+}'
+
+</code></pre>
+<p><strong>Result</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;result&quot;: {
+        &quot;jobid&quot;: &quot;1643998645692.0.Slixe&quot;,
+        &quot;blocktemplate_blob&quot;: &quot;01010000017ec5f48dbc929b02010000021f9bcc1208dee302769931ad378a4c0c4b2c21b0cfb3e752607e12d2b6fa642500000000000000000000000000000000000000000000000000000000000000000001261d40140457b0cdbaf4b0d9c4a84d1a463e58dd640c1b9ce751735a0181528b09415d500000008d92261d4014000000001c705e03cba898cbab3683bf1f8cfd2400000000b0a397487357400b629e850241609a0000008d92261d401400000000cf01bc87c4a923fb34d51ac483aaf90b000000006e1499c694a04f7e197e55004161780000008d92261d401400000000eec07ce3efc1425bc0ad7e8c72d13b0500000000bad6dedbe2ac2958ed0c14004166180000008d92261d4014000000001c705e03cba898cbab3683bf1f8cfd240000000098b034fc16a4920b62bfb5034166a40000008d92261d401400000000fe9adfc28bacbdc815b3cd6b1e7fbc530000000026f43d2afb08c33e2579f700416fb50000008d92261d401400000000c3443540c243d11f706b6836d516a955000000002ed78a184271890c492571014171b90000008d92261d401400000000eec07ce3efc1425bc0ad7e8c72d13b05000000008f78534809752558ed2998004171970000008d92261d401400000000cf01bc87c4a923fb34d51ac483aaf90b0000000011c8b696eb90437e19bfa700417f550000008d92261d401400000000c3443540c243d11f706b6836d516a95500000000be142fad0edb0151395db60042a9f4782c542379ac7dfbca3fe99f80270cc4a2cdddbdcf173bffc7f026c567c2ed5583e12e08a9abdb358a28a3499fbab49b024914066f4d29d82b311195d3e42a7277cdcc6a7f9e105c35efbbcc9099fd563f28d2ddf8b14add0a93945f521278673c1f38885654752e44097dfd25bfc9f1e337f4457dd0248cec74bc4ca4aeb2427df130fa8cce24150854dd9dffa3670d5e9fd57a90987c9e0db07e122c3e08ee12c4f82c10f37a6dfe0f69fcd4ff6e482526781b9dd7e4a35a7891072f8d62fd342778f3eabddb14eceede4e310ddac280a8b372484108ea8c8e1dc39986f36a7e28904ca5aae7416a0d33e94e9a93a10220e1d79730f15689f83d8bfcdd16298c5e340d36cf27a18e6446fbda3ebe6b7889786d1ebca318f3b7f51244ed7b097d55e6b283dc8ddc3fb073bbd4fc6a84e599667674abb01cdd0d5b8474dc2f8be7ecef537cdb9e489557bdedaa2e7c48bebb663d82e79546a53d61f768a54eb7ef7bacd8d154672677067b069de1c0af7b5ac537b22d25fc3be164d4934b90e6bbcb9e75b2999392def043662e54125055fcbc03477dfa56bea59626fc513e75eadc492f817a104e94b1f14501941063ca4583f9ed6224302a5930fac34b9659a780fafa9af0cc7a6b9626c7b63d75c76c14b074ed8128172f8ca81f106dd909820b9b3b6ca5258420a71a11410e753950fd89b229574db162eecc92ab5b195827c059bfbf21c7c40be92c915cf733c90c5dee3001669e73c729e2d85bcd4245797152e427b1b265c2edc82d76db40559c77b69a9da2152ef4d0d8eefff4550c3350211057c2f9b5d49d9c8cf0ca9366b0c2e5dec651c49a8ac0fd01b21bcef566ceb5838ef5f0875c01414563a52de084d6d90e20da8f7b7dd5db65b7008ac385b150e6a371c34d8085a5b24d0b101b9965b35fa66ac082e926fcaa0088e830b9b66f941c6593d20226bda3f306dce0df36b6a52c8d831dcb343ccd4a92454d27949ae59cb9108d6d563f20f101744c62e24cc903f2eec88a4dea446e49288c05e139cd163a8918e6619e15aa2578660a220ca2d3ce0d3f93cfc929795fc63d93f66e26b6777898a619f18ce6d62df8bb1fe060dcf3fe5fa953543c254162efa7eb35b7a572646ecc2cc23a97d75e7def28a2542d8bd237b19d104733013ded66ba85e9a1c296628d56dc73fbc7d6159161ef0418d37280eb5f8de5002ab5eb767810a950de6e0fcb65e567db21fc7e208b7a8f8789b848642ec35691c98657c5b6c33f7b05e3937b74f312a52f20901674d215e73bedb53a859eb4e8910f35a47b2375ec4210d5b52d7ace224ab20b8e3551f040b11d016c2b6a4734d44c1023079a8196d5d57bae4a03e03e920fe1649dbb01e671f4a01beb85e90a4b4347cd843b31c5e18052b381d70a71c6fd0fb664a78056a3ae92be19373bf11124f799cb29fcb6f5c4c2db63bc169ac5f0852d3dff667615c47cfc278b2153026c9c4c10f6f3ed5ff6ad575206d1c2f5806788619f8577516bd5d6e8ed58f47fdc135a5d6196729eec1bcdb597c27727c17562baa6d35aa5b898fa4e63d8b2aa5bef53bfed13fe05c707eda80b7e4833728fa0348508959adf0c5d55c1334e1f77bffda45238ef5858a65994c06fc8243ae37e49d5ca103e5c3894963c9ffa189764929162edff317d6d591966aee7f24e1fa196e50078003882a608cdf7dc8948e3a20513bda589574bd9ccb68100ade9af11e37871b938361fafd3dd9a8d2d6c8d233d94ca2f1b838e14618d7289addf834543687d61766a7ac20f164268301875ef7b048e4b0ddf8ad349c83cc42bc620f0c4b45faa484609aeb56e82f811354df0ad17a485c3e4afe2d908743fa15939ebb7dc293bb7b3a37266f8c7277e4279ab45771df087e5af389a65929718637cac2c55720753fa7f4162f0e23f389d90932c20172e4012d87e818e35a3b46f6956be6210b501bfa3a658656af9aec6033436b752a17a8606e6f101978167308f1969aa98e107d64a3598fef0edbc8a24733e40716d025dd31ba8d15dbf2321741e4962ff4b327bb355cec55e762023d08847e6a10004f3212d98ddbede12485a894f7c8802bbc94d5073f737d25d078af7880053ead4a5eb2c7989c46eb122345f4e6d9fef3f405fb5da4998d8f04aea21d568f3b72203e1f7f1e9e09ccc8fe22ea7c31614929422ddd45e09e59f65adfc6fcf8b137d65afb965cf23db5fb23614ae6656bf6959e2dcdbcea6f6976701ae86db4ae15933c645c39c5186d9937d207e224aeffe1e43cdebc01c23b917afd1a8669399e965157e59ff0c4417a9fee42737e3bbbdbb3714d9a057b315103f55dce2fc92973c9a9c60403d92b534f65532672a7363f116623ef60425cf12959ca9209b4c065c2c4e30e21d30eb116734f10d3d1a630dacafe264804b5d500109e14c79beab1f13db202b7db79c96d0127fa1b7540219b682534bd55d7eae6e799bbaaba07df7ecfa4c9e8142e45b3973174185aba6ed8c7ef81b650430ab066a44715c3609cda984e389e78d26bc2170ad0a4c6d41478665739a720c28ed742b571dfb8adc8bdb9a3e31c977afbe0582be9eee24a27cc9d7ec467a81d9a954cbe77b1fe515581b0909a8e26b7e311dea1e3c75edf275bf0472a94c8d8a4160dd1a7923c6ed895c6ec7723c146079fbe11857cecacd7ec5d18523399bb1653688f8473d0eb6bd4caf9609f070a1d7beb571257c16d68c8ff0ef56b49e87dfaa8fe49f04dc9b71c7ded23534ea9f127ae5022f863e2ea12b7e79988464fe3b9db79d2d96808be48d457704eb9bcb395790d157673f979fefc1b45f665607a6c0ebb361818e6c944a6e387f9dea4d3787ba07f1cc7c7777c0f67c0eb41d3f1b8f10860a654831d2c7367a50c50bebf1bd52f1b663e0e0ad8e251440c7a31f912a3680dbb75af7337ba99f01d0960093d0b650a6675a93075a741d74bde710&quot;,
+        &quot;blockhashing_blob&quot;: &quot;718dbc0000008d92261d401400000000f72775df1c4e71027a72003ffae0d6bf0000000082d75d4203254f1d719fba2e&quot;,
+        &quot;difficulty&quot;: &quot;20614&quot;,
+        &quot;difficultyuint64&quot;: 20614,
+        &quot;height&quot;: 36242,
+        &quot;prev_hash&quot;: &quot;261d40140457b0cdbaf4b0d9c4a84d1a463e58dd640c1b9ce751735a0181528b&quot;,
+        &quot;epochmilli&quot;: 0,
+        &quot;blocks&quot;: 0,
+        &quot;miniblocks&quot;: 0,
+        &quot;lasterror&quot;: &quot;&quot;,
+        &quot;status&quot;: &quot;OK&quot;
+    }
+}
+
+</code></pre>
+<h3 id="get-encrypted-balance">Get Encrypted Balance</h3>
+<p>Returns the balance of the selected asset from a valid DERO address.</p>
+<p><strong>Available parameters</strong></p>
+<p><img alt="image" src="/assets/rpcapistargate/rpc10.PNG" /></p>
+<p><strong>Body</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;DERO.GetEncryptedBalance&quot;,
+    &quot;params&quot;: {
+        &quot;address&quot;: &quot;deto1qyyhg0xznkaxt5udct6lnlylsexvwprun6jphv89xg008vq29jk4vqqayuknf&quot;,
+        &quot;topoheight&quot;: -1
+    }
+}
+
+</code></pre>
+<p><strong>cURL Request</strong></p>
+<pre><code>curl -X POST\
+  http://127.0.0.1:40402/json_rpc\
+  -H 'content-type: application/json'\
+  -d '{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;DERO.GetEncryptedBalance&quot;,
+    &quot;params&quot;: {
+        &quot;address&quot;: &quot;deto1qyyhg0xznkaxt5udct6lnlylsexvwprun6jphv89xg008vq29jk4vqqayuknf&quot;,
+        &quot;topoheight&quot;: -1
+    }
+}'
+
+</code></pre>
+<p><strong>Result</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;result&quot;: {
+        &quot;scid&quot;: &quot;0000000000000000000000000000000000000000000000000000000000000000&quot;,
+        &quot;data&quot;: &quot;aff7011376c6b7c6682d2410e5cab55b075221818f815743969c94cd9c7e2a2ff28b8e002db1812376e8846b66aa56f9e2d2ec0230e7b658efba875bd877dd43ac197c6801&quot;,
+        &quot;registration&quot;: 31281,
+        &quot;bits&quot;: 20,
+        &quot;height&quot;: 36261,
+        &quot;topoheight&quot;: 36261,
+        &quot;blockhash&quot;: &quot;987ad08aa23ad24a32862d085c451369e7b1b21e478369ea63aa9e4e0b81050f&quot;,
+        &quot;treehash&quot;: &quot;a823f22d9d50e55bc1d1372be0e9287ebc2eb6bbeb4d0ec86f83a2b8a3c394b8&quot;,
+        &quot;dheight&quot;: 36261,
+        &quot;dtopoheight&quot;: 36261,
+        &quot;dtreehash&quot;: &quot;a823f22d9d50e55bc1d1372be0e9287ebc2eb6bbeb4d0ec86f83a2b8a3c394b8&quot;,
+        &quot;status&quot;: &quot;OK&quot;
+    }
+}
+
+</code></pre>
+<blockquote>
+<p><strong><em>NOTE:</em></strong> the value of topoheight is set to -1 in the request to retrieve from the last block directly.</p>
+</blockquote>
+<h3 id="get-smart-contract">Get Smart Contract</h3>
+<p>Returns information related to a Smart Contract.</p>
+<p><strong>Available parameters</strong></p>
+<p><img alt="image" src="/assets/rpcapistargate/rpc11.PNG" /></p>
+<p><strong>Body</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;DERO.GetSC&quot;,
+    &quot;params&quot;: {
+        &quot;scid&quot;: &quot;0000000000000000000000000000000000000000000000000000000000000001&quot;,
+        &quot;code&quot;: true,
+        &quot;variables&quot;: true
+    }
+}
+
+</code></pre>
+<p><strong>cURL Request</strong></p>
+<pre><code>curl -X POST\
+  http://127.0.0.1:40402/json_rpc\
+  -H 'content-type: application/json'\
+  -d '{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;DERO.GetSC&quot;,
+    &quot;params&quot;: {
+        &quot;scid&quot;: &quot;0000000000000000000000000000000000000000000000000000000000000001&quot;,
+        &quot;code&quot;: true,
+        &quot;variables&quot;: true
+    }
+}'
+
+</code></pre>
+<p><strong>Result</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;result&quot;: {
+        &quot;stringkeys&quot;: {
+            &quot;C&quot;: &quot;2f2a204e616d65205365727669636520534d41525420434f4e545241435420696e2044564d2d42415349432e20200a202020416c6c6f77732061207573657220746f207265676973746572206e616d657320776869636820636f756c64206265206c6f6f6b65642062792077616c6c65747320666f72206561737920746f20757365206e616d65207768696c65207472616e736665720a2a2f0a0a0a202f2f20546869732066756e6374696f6e206973207573656420746f20696e697469616c697a6520706172616d657465727320647572696e6720696e7374616c6c2074696d650a0946756e6374696f6e20496e697469616c697a6528292055696e7436340a093130202052455455524e2030200a09456e642046756e6374696f6e200a0a202020202f2f2052656769737465722061206e616d652c206c696d6974206e616d6573206f662035206f72206c657373206c656e6774680a2020202046756e6374696f6e205265676973746572286e616d6520537472696e67292055696e743634200a0931302020494620455849535453286e616d6529205448454e20474f544f2035302020202f2f206966206e616d6520697320616c726561647920757365642c2069742063616e6e6f74207265726567697374657265640a09313520204946205354524c454e286e616d6529203e3d203634205448454e20474f544f203530202f2f20736b6970206e616d6573206d69737573650a09323020204946205354524c454e286e616d6529203e3d2036205448454e20474f544f203430200a09333020204946205349474e45522829203d3d20616464726573735f72617728226465746f317179767965797a72636d32667a66366b79713765676b6573327566676e7935786e3737793674797068667839733777336d767964357171796e723568782229205448454e20474f544f2034300a09333520204946205349474e4552282920213d20616464726573735f72617728226465746f3171793065686e716a7072307778716e6b6e79633636647532667378796b7470706b72386d3865366a76706c703935346b6c666a7a327171647a636438702229205448454e20474f544f203530200a093430202053544f5245286e616d652c5349474e45522829290a093530202052455455524e20300a09456e642046756e6374696f6e0a0a2020090a092f2f20546869732066756e6374696f6e206973207573656420746f206368616e6765206f776e6572200a092f2f206f776e657220697320616e20737472696e6720666f726d206f662061646472657373200a0946756e6374696f6e205472616e736665724f776e657273686970286e616d6520537472696e672c6e65776f776e657220537472696e67292055696e743634200a09313020204946204c4f4144286e616d652920213d205349474e45522829205448454e20474f544f203330200a093230202053544f5245286e616d652c414444524553535f524157286e65776f776e657229290a093330202052455455524e20300a09456e642046756e6374696f6e0a090a&quot;,
+            &quot;captain&quot;: &quot;07169e14f6a6efb41522a0a0503ef59bf221ef89072903998cc7b599ad5351d801&quot;
+        },
+        &quot;balances&quot;: {
+            &quot;0000000000000000000000000000000000000000000000000000000000000000&quot;: 0
+        },
+        &quot;balance&quot;: 0,
+        &quot;code&quot;: &quot;/* Name Service SMART CONTRACT in DVM-BASIC.  \n   Allows a user to register names which could be looked by wallets for easy to use name while transfer\n*/\n\n\n // This function is used to initialize parameters during install time\n\tFunction Initialize() Uint64\n\t10  RETURN 0 \n\tEnd Function \n\n    // Register a name, limit names of 5 or less length\n    Function Register(name String) Uint64 \n\t10  IF EXISTS(name) THEN GOTO 50   // if name is already used, it cannot reregistered\n\t15  IF STRLEN(name) &gt;= 64 THEN GOTO 50 // skip names misuse\n\t20  IF STRLEN(name) &gt;= 6 THEN GOTO 40 \n\t30  IF SIGNER() == address_raw(\&quot;deto1qyvyeyzrcm2fzf6kyq7egkes2ufgny5xn77y6typhfx9s7w3mvyd5qqynr5hx\&quot;) THEN GOTO 40\n\t35  IF SIGNER() != address_raw(\&quot;deto1qy0ehnqjpr0wxqnknyc66du2fsxyktppkr8m8e6jvplp954klfjz2qqdzcd8p\&quot;) THEN GOTO 50 \n\t40  STORE(name,SIGNER())\n\t50  RETURN 0\n\tEnd Function\n\n  \t\n\t// This function is used to change owner \n\t// owner is an string form of address \n\tFunction TransferOwnership(name String,newowner String) Uint64 \n\t10  IF LOAD(name) != SIGNER() THEN GOTO 30 \n\t20  STORE(name,ADDRESS_RAW(newowner))\n\t30  RETURN 0\n\tEnd Function\n\t\n&quot;,
+        &quot;status&quot;: &quot;OK&quot;
+    }
+}
+
+</code></pre>
+<h3 id="get-gas-estimate">Get Gas Estimate</h3>
+<p>Returns the total costs (= storage and compute) to be paid for a call on a function of a Smart Contract.</p>
+<p><strong>Available parameters</strong></p>
+<p><img alt="image" src="/assets/rpcapistargate/rpc12.PNG" /></p>
+<p><strong>Body</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;DERO.GetGasEstimate&quot;,
+    &quot;params&quot;: {
+        &quot;transfers&quot;: [],
+        &quot;sc_rpc&quot;: [{
+            &quot;name&quot;: &quot;SC_ACTION&quot;,
+            &quot;datatype&quot;: &quot;U&quot;,
+            &quot;value&quot;: 0
+        },
+        {
+            &quot;name&quot;: &quot;SC_ID&quot;,
+            &quot;datatype&quot;: &quot;H&quot;,
+            &quot;value&quot;: &quot;0000000000000000000000000000000000000000000000000000000000000001&quot;
+        },
+        {
+            &quot;name&quot;: &quot;entrypoint&quot;,
+            &quot;datatype&quot;: &quot;S&quot;,
+            &quot;value&quot;: &quot;Register&quot;
+        },
+        {
+            &quot;name&quot;: &quot;name&quot;,
+            &quot;datatype&quot;: &quot;S&quot;,
+            &quot;value&quot;: &quot;Slixe&quot;
+        }],
+        &quot;signer&quot;: &quot;deto1qyyhg0xznkaxt5udct6lnlylsexvwprun6jphv89xg008vq29jk4vqqayuknf&quot;
+    }
+}
+
+</code></pre>
+<p><strong>cURL Request</strong></p>
+<pre><code>curl -X POST\
+  http://127.0.0.1:40402/json_rpc\
+  -H 'content-type: application/json'\
+  -d '{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;DERO.GetGasEstimate&quot;,
+    &quot;params&quot;: {
+        &quot;transfers&quot;: [],
+        &quot;sc_rpc&quot;: [{
+            &quot;name&quot;: &quot;SC_ACTION&quot;,
+            &quot;datatype&quot;: &quot;U&quot;,
+            &quot;value&quot;: 0
+        },
+        {
+            &quot;name&quot;: &quot;SC_ID&quot;,
+            &quot;datatype&quot;: &quot;H&quot;,
+            &quot;value&quot;: &quot;0000000000000000000000000000000000000000000000000000000000000001&quot;
+        },
+        {
+            &quot;name&quot;: &quot;entrypoint&quot;,
+            &quot;datatype&quot;: &quot;S&quot;,
+            &quot;value&quot;: &quot;Register&quot;
+        },
+        {
+            &quot;name&quot;: &quot;name&quot;,
+            &quot;datatype&quot;: &quot;S&quot;,
+            &quot;value&quot;: &quot;Slixe&quot;
+        }],
+        &quot;signer&quot;: &quot;deto1qyyhg0xznkaxt5udct6lnlylsexvwprun6jphv89xg008vq29jk4vqqayuknf&quot;
+    }
+}'
+
+</code></pre>
+<p><strong>Result</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;result&quot;: {
+        &quot;gascompute&quot;: 208200,
+        &quot;gasstorage&quot;: 88,
+        &quot;status&quot;: &quot;OK&quot;
+    }
+}
+
+</code></pre>
+<h3 id="name-to-address">Name To Address</h3>
+<p>Returns the DERO address associated with the registered name.</p>
+<p><strong>Available parameters</strong></p>
+<p><img alt="image" src="/assets/rpcapistargate/rpc13.PNG" /></p>
+<p><strong>Body</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;DERO.NameToAddress&quot;,
+    &quot;params&quot;: {
+        &quot;name&quot;: &quot;captain&quot;,
+        &quot;topoheight&quot;: -1
+    }
+}
+
+</code></pre>
+<p><strong>cURL Request</strong></p>
+<pre><code>curl -X POST\
+  http://127.0.0.1:40402/json_rpc\
+  -H 'content-type: application/json'\
+  -d '{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;DERO.NameToAddress&quot;,
+    &quot;params&quot;: {
+        &quot;name&quot;: &quot;captain&quot;,
+        &quot;topoheight&quot;: -1
+    }
+}'
+
+</code></pre>
+<p><strong>Result</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;result&quot;: {
+        &quot;name&quot;: &quot;captain&quot;,
+        &quot;address&quot;: &quot;deto1qyr3d8s576nwldq4y2s2q5p77kdlyg003yrjjque3nrmtxdd2dgasqgm94m7v&quot;,
+        &quot;status&quot;: &quot;OK&quot;
+    }
+}
+
+</code></pre>
+<h2 id="wallet-rpc-api">Wallet RPC API</h2>
+<p>First, note that the RPC server is not enabled by default on the wallet, to do this, start the wallet with the --rpc-server parameter.</p>
+<p>The RPC server will listen on port 40403 on testnet.</p>
+<h3 id="echo_1">Echo</h3>
+<p>Test endpoint to verify that the RPC server is enabled and working well on the wallet side.</p>
+<p><strong>Available parameters</strong></p>
+<p><img alt="image" src="/assets/rpcapistargate/rpc14.PNG" /></p>
+<p><strong>Body</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;Echo&quot;,
+    &quot;params&quot;: [&quot;Hello&quot;, &quot;World&quot;, &quot;!&quot;]
+}
+
+</code></pre>
+<p><strong>cURL Request</strong></p>
+<pre><code>curl -X POST\
+  http://127.0.0.1:40403/json_rpc\
+  -H 'content-type: application/json'\
+  -d '{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;Echo&quot;,
+    &quot;params&quot;: [&quot;Hello&quot;, &quot;World&quot;, &quot;!&quot;]
+}'
+
+</code></pre>
+<p><strong>Result</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;result&quot;: &quot;WALLET Hello World !&quot;
+}
+
+</code></pre>
+<h3 id="get-address">Get Address</h3>
+<p>Returns the DERO address of the wallet to receive DEROs or other tokens.</p>
+<p><strong>Available parameters</strong></p>
+<p>No parameters</p>
+<p><strong>Body</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;GetAddress&quot;
+}
+
+</code></pre>
+<p><strong>cURL Request</strong></p>
+<pre><code>curl -X POST\
+  http://127.0.0.1:40403/json_rpc\
+  -H 'content-type: application/json'\
+  -d '{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;GetAddress&quot;
+}'
+
+</code></pre>
+<p><strong>Result</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;result&quot;: {
+        &quot;address&quot;: &quot;deto1qyyhg0xznkaxt5udct6lnlylsexvwprun6jphv89xg008vq29jk4vqqayuknf&quot;
+    }
+}
+
+</code></pre>
+<h3 id="get-balance">Get Balance</h3>
+<p>Retrieves the current balance of the wallet.</p>
+<p><strong>Available parameters</strong></p>
+<p>No parameters</p>
+<p><strong>Body</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;GetBalance&quot;
+}
+
+</code></pre>
+<p><strong>cURL Request</strong></p>
+<pre><code>curl -X POST\
+  http://127.0.0.1:40403/json_rpc\
+  -H 'content-type: application/json'\
+  -d '{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;GetBalance&quot;
+}'
+
+</code></pre>
+<p><strong>Result</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;result&quot;: {
+        &quot;balance&quot;: 800000,
+        &quot;unlocked_balance&quot;: 800000
+    }
+}
+
+</code></pre>
+<blockquote>
+<p><strong><em>NOTE:</em></strong> The amount is in atomic format. As a reminder, 10^5 (=100000) is equivalent to 1 DERO.</p>
+</blockquote>
+<p><strong>Warning:</strong> if this address is not registered on the blockchain, you will get this error:</p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;error&quot;: {
+        &quot;code&quot;: -32098,
+        &quot;message&quot;: &quot;Account Unregistered&quot;
+    }
+}
+
+</code></pre>
+<h3 id="get-height_1">Get Height</h3>
+<p>Returns at which block height the wallet is synchronized.</p>
+<p><strong>Available parameters</strong></p>
+<p>No parameters</p>
+<p><strong>Body</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;GetHeight&quot;
+}
+
+</code></pre>
+<p><strong>cURL Request</strong></p>
+<pre><code>curl -X POST\
+  http://127.0.0.1:40403/json_rpc\
+  -H 'content-type: application/json'\
+  -d '{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;GetHeight&quot;
+}'
+
+</code></pre>
+<p><strong>Result</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;result&quot;: {
+        &quot;height&quot;: 420
+    }
+}
+
+</code></pre>
+<h3 id="get-transfer-by-txid">Get Transfer by TXID</h3>
+<p>Returns the details of the transaction based on its hash.</p>
+<p><strong>Available parameters</strong></p>
+<p><img alt="image" src="/assets/rpcapistargate/rpc15.PNG" /></p>
+<p><strong>Body</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;GetTransferbyTXID&quot;,
+    &quot;params&quot;: {
+        &quot;txid&quot;: &quot;2a74bcc6262f48630967129793f3b87dc30236f2cb5df6ebb09d620ec0cb503a&quot;
+    }
+}
+
+</code></pre>
+<p><strong>cURL Request</strong></p>
+<pre><code>curl -X POST\
+  http://127.0.0.1:40403/json_rpc\
+  -H 'content-type: application/json'\
+  -d '{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;GetTransferbyTXID&quot;,
+    &quot;params&quot;: {
+        &quot;txid&quot;: &quot;2a74bcc6262f48630967129793f3b87dc30236f2cb5df6ebb09d620ec0cb503a&quot;
+    }
+}'
+
+</code></pre>
+<p><strong>Result</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;result&quot;: {
+        &quot;entry&quot;: {
+            &quot;height&quot;: 31297,
+            &quot;topoheight&quot;: 31297,
+            &quot;blockhash&quot;: &quot;44e010e6ae56e66e75b158871570233a8a8b918491efc2d02ce793a7ce258612&quot;,
+            &quot;minerreward&quot;: 0,
+            &quot;tpos&quot;: 17,
+            &quot;pos&quot;: 0,
+            &quot;coinbase&quot;: false,
+            &quot;incoming&quot;: true,
+            &quot;txid&quot;: &quot;2a74bcc6262f48630967129793f3b87dc30236f2cb5df6ebb09d620ec0cb503a&quot;,
+            &quot;destination&quot;: &quot;&quot;,
+            &quot;amount&quot;: 500000,
+            &quot;fees&quot;: 451,
+            &quot;proof&quot;: &quot;deroproof1qy3zfvkwdz87xa7mvxc0qq7nsmcgkl3gsf00a2amhk7fs2yu09r4uqdzvfyyskpqckdxyd8vgtzd75mjujsyzj6swrfdy6gw7alx78ak23v6ql60ewqxy4j4rgqq0gfqsjjq9u&quot;,
+            &quot;status&quot;: 0,
+            &quot;time&quot;: &quot;2022-02-03T17:51:16.006+01:00&quot;,
+            &quot;ewdata&quot;: &quot;2efc785f92e9ffdaf1935186e0ffe561e500632722c73f95e741136389a347b8002642ae3d734c6b119a28884920036e895fc8e6a33f9c4ec6d90da1a4d1b65ef901&quot;,
+            &quot;data&quot;: &quot;AqFoQ29tbWVudFNySGVsbG8gZnJvbSBTbGl4ZSAhAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==&quot;,
+            &quot;payloadtype&quot;: 0,
+            &quot;payload&quot;: &quot;oWhDb21tZW50U3JIZWxsbyBmcm9tIFNsaXhlICEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&quot;,
+            &quot;payload_rpc&quot;: [
+                {
+                    &quot;name&quot;: &quot;Comment&quot;,
+                    &quot;datatype&quot;: &quot;S&quot;,
+                    &quot;value&quot;: &quot;Hello from Slixe !&quot;
+                }
+            ],
+            &quot;sender&quot;: &quot;deto1qyj4kx6azntn9psmg7dsfkuv9qs9xde0s94nmmhm2a0damffpm2zzqqcudacc&quot;,
+            &quot;dstport&quot;: 0,
+            &quot;srcport&quot;: 0
+        }
+    }
+}
+
+</code></pre>
+<h3 id="get-transfers">Get Transfers</h3>
+<p>Returns all transactions present in the portfolio against the applied filters.</p>
+<p><strong>Available parameters</strong></p>
+<p><img alt="image" src="/assets/rpcapistargate/rpc16.PNG" /></p>
+<p><strong>Body</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;GetTransfers&quot;,
+    &quot;params&quot;: {
+        &quot;out&quot;: true,
+        &quot;in&quot;: true
+    }
+}
+
+</code></pre>
+<p><strong>cURL Request</strong></p>
+<pre><code>curl -X POST\
+  http://127.0.0.1:40403/json_rpc\
+  -H 'content-type: application/json'\
+  -d '{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;GetTransfers&quot;,
+    &quot;params&quot;: {
+        &quot;out&quot;: true,
+        &quot;in&quot;: true
+    }
+}'
+
+</code></pre>
+<p><strong>Result</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;result&quot;: {
+        &quot;entries&quot;: [
+            {
+                &quot;height&quot;: 31297,
+                &quot;topoheight&quot;: 31297,
+                &quot;blockhash&quot;: &quot;44e010e6ae56e66e75b158871570233a8a8b918491efc2d02ce793a7ce258612&quot;,
+                &quot;minerreward&quot;: 0,
+                &quot;tpos&quot;: 17,
+                &quot;pos&quot;: 0,
+                &quot;coinbase&quot;: false,
+                &quot;incoming&quot;: true,
+                &quot;txid&quot;: &quot;2a74bcc6262f48630967129793f3b87dc30236f2cb5df6ebb09d620ec0cb503a&quot;,
+                &quot;destination&quot;: &quot;&quot;,
+                &quot;amount&quot;: 500000,
+                &quot;fees&quot;: 451,
+                &quot;proof&quot;: &quot;deroproof1qy3zfvkwdz87xa7mvxc0qq7nsmcgkl3gsf00a2amhk7fs2yu09r4uqdzvfyyskpqckdxyd8vgtzd75mjujsyzj6swrfdy6gw7alx78ak23v6ql60ewqxy4j4rgqq0gfqsjjq9u&quot;,
+                &quot;status&quot;: 0,
+                &quot;time&quot;: &quot;2022-02-03T17:51:16.006+01:00&quot;,
+                &quot;ewdata&quot;: &quot;2efc785f92e9ffdaf1935186e0ffe561e500632722c73f95e741136389a347b8002642ae3d734c6b119a28884920036e895fc8e6a33f9c4ec6d90da1a4d1b65ef901&quot;,
+                &quot;data&quot;: &quot;AqFoQ29tbWVudFNySGVsbG8gZnJvbSBTbGl4ZSAhAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==&quot;,
+                &quot;payloadtype&quot;: 0,
+                &quot;payload&quot;: &quot;oWhDb21tZW50U3JIZWxsbyBmcm9tIFNsaXhlICEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&quot;,
+                &quot;payload_rpc&quot;: [
+                    {
+                        &quot;name&quot;: &quot;Comment&quot;,
+                        &quot;datatype&quot;: &quot;S&quot;,
+                        &quot;value&quot;: &quot;Hello from Slixe !&quot;
+                    }
+                ],
+                &quot;sender&quot;: &quot;deto1qyj4kx6azntn9psmg7dsfkuv9qs9xde0s94nmmhm2a0damffpm2zzqqcudacc&quot;,
+                &quot;dstport&quot;: 0,
+                &quot;srcport&quot;: 0
+            }
+        ]
+    }
+}
+
+</code></pre>
+<h3 id="make-integrated-address">Make Integrated Address</h3>
+<p>Returns a new integrated address with Payloads included.</p>
+<p><strong>Available parameters</strong></p>
+<p><img alt="image" src="/assets/rpcapistargate/rpc17.PNG" /></p>
+<p><strong>Body</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;MakeIntegratedAddress&quot;,
+    &quot;params&quot;: {
+        &quot;payload_rpc&quot;: [
+            {
+                &quot;name&quot;: &quot;Comment&quot;,
+                &quot;datatype&quot;: &quot;S&quot;,
+                &quot;value&quot;: &quot;Hello from integrated address !&quot;
+            }
+        ]
+    }
+}
+
+</code></pre>
+<p><strong>cURL Request</strong></p>
+<pre><code>curl -X POST\
+  http://127.0.0.1:40403/json_rpc\
+  -H 'content-type: application/json'\
+  -d '{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;MakeIntegratedAddress&quot;,
+    &quot;params&quot;: {
+        &quot;payload_rpc&quot;: [
+            {
+                &quot;name&quot;: &quot;Comment&quot;,
+                &quot;datatype&quot;: &quot;S&quot;,
+                &quot;value&quot;: &quot;Hello from integrated address !&quot;
+            }
+        ]
+    }
+}'
+
+</code></pre>
+<p><strong>Result</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;result&quot;: {
+        &quot;integrated_address&quot;: &quot;detoi1qyyhg0xznkaxt5udct6lnlylsexvwprun6jphv89xg008vq29jk4vq9pdppk7mtdv4h8g5mcrayx2mrvdusxvun0d5sxjmn5v4nhyct5v4jzqctyv3ex2umnyqssvnqraw&quot;,
+        &quot;payload_rpc&quot;: [
+            {
+                &quot;name&quot;: &quot;Comment&quot;,
+                &quot;datatype&quot;: &quot;S&quot;,
+                &quot;value&quot;: &quot;Hello from integrated address !&quot;
+            }
+        ]
+    }
+}
+
+</code></pre>
+<h3 id="split-integrated-address">Split Integrated Address</h3>
+<p>Returns the DERO address and the payloads included in an Integrated Address.</p>
+<p><strong>Available parameters</strong></p>
+<p><img alt="image" src="/assets/rpcapistargate/rpc18.PNG" /></p>
+<p><strong>Body</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;SplitIntegratedAddress&quot;,
+    &quot;params&quot;: {
+        &quot;integrated_address&quot;: &quot;detoi1qyyhg0xznkaxt5udct6lnlylsexvwprun6jphv89xg008vq29jk4vq9pdppk7mtdv4h8g5mcrayx2mrvdusxvun0d5sxjmn5v4nhyct5v4jzqctyv3ex2umnyqssvnqraw&quot;
+    }
+}
+
+</code></pre>
+<p><strong>cURL Request</strong></p>
+<pre><code>curl -X POST\
+  http://127.0.0.1:40403/json_rpc\
+  -H 'content-type: application/json'\
+  -d '{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;SplitIntegratedAddress&quot;,
+    &quot;params&quot;: {
+        &quot;integrated_address&quot;: &quot;detoi1qyyhg0xznkaxt5udct6lnlylsexvwprun6jphv89xg008vq29jk4vq9pdppk7mtdv4h8g5mcrayx2mrvdusxvun0d5sxjmn5v4nhyct5v4jzqctyv3ex2umnyqssvnqraw&quot;
+    }
+}'
+
+</code></pre>
+<p><strong>Result</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;result&quot;: {
+        &quot;address&quot;: &quot;deto1qyyhg0xznkaxt5udct6lnlylsexvwprun6jphv89xg008vq29jk4vqqayuknf&quot;,
+        &quot;payload_rpc&quot;: [
+            {
+                &quot;name&quot;: &quot;Comment&quot;,
+                &quot;datatype&quot;: &quot;S&quot;,
+                &quot;value&quot;: &quot;Hello from integrated address !&quot;
+            }
+        ]
+    }
+}
+
+</code></pre>
+<h3 id="query-key">Query Key</h3>
+<p>Returns the mnemonic key (seed) associated with this portfolio.</p>
+<p><strong>Available parameters</strong></p>
+<p><img alt="image" src="/assets/rpcapistargate/rpc19.PNG" /></p>
+<p><strong>Body</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;QueryKey&quot;,
+    &quot;params&quot;: {
+        &quot;key_type&quot;: &quot;mnemonic&quot;
+    }
+}
+
+</code></pre>
+<p><strong>cURL Request</strong></p>
+<pre><code>curl -X POST\
+  http://127.0.0.1:40403/json_rpc\
+  -H 'content-type: application/json'\
+  -d '{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;QueryKey&quot;,
+    &quot;params&quot;: {
+        &quot;key_type&quot;: &quot;mnemonic&quot;
+    }
+}'
+
+</code></pre>
+<p><strong>Result</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;result&quot;: {
+        &quot;key&quot;: &quot;eavesdrop sailor tavern fizzle mammal were utmost stellar rafts vats dedicated dosage lynx cent after toyed coexist zippers lipstick aztec dedicated custom chrome onto launching&quot;
+    }
+}
+
+</code></pre>
+<h3 id="transfer">Transfer</h3>
+<p>Creates a transaction and returns its hash</p>
+<p><strong>Available parameters</strong></p>
+<p><img alt="image" src="/assets/rpcapistargate/rpc20.PNG" /></p>
+<p><strong>Body</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;transfer&quot;,
+    &quot;params&quot;: {
+        &quot;scid&quot;: &quot;00000000000000000000000000000000&quot;,
+        &quot;destination&quot;: &quot;deto1qyj4kx6azntn9psmg7dsfkuv9qs9xde0s94nmmhm2a0damffpm2zzqqcudacc&quot;,
+        &quot;amount&quot;: 100000
+    }
+}
+
+</code></pre>
+<p><strong>cURL Request</strong></p>
+<pre><code>curl -X POST\
+  http://127.0.0.1:40403/json_rpc\
+  -H 'content-type: application/json'\
+  -d '{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;transfer&quot;,
+    &quot;params&quot;: {
+        &quot;scid&quot;: &quot;00000000000000000000000000000000&quot;,
+        &quot;destination&quot;: &quot;deto1qyj4kx6azntn9psmg7dsfkuv9qs9xde0s94nmmhm2a0damffpm2zzqqcudacc&quot;,
+        &quot;amount&quot;: 100000
+    }
+}'
+
+</code></pre>
+<p><strong>Result</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;result&quot;: {
+        &quot;txid&quot;: &quot;5201c319d04fb72012ecb2fd8c903feff50bbd5db39c60dfee795b9b3a90433a&quot;
+    }
+}
+
+</code></pre>
+<h3 id="transfer-2">Transfer 2</h3>
+<p>Creates a transaction to several distinct addresses and returns its hash.</p>
+<p><strong>Available parameters</strong></p>
+<p><img alt="image" src="/assets/rpcapistargate/rpc21.PNG" /></p>
+<p><strong>Body</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;transfer&quot;,
+    &quot;params&quot;: {
+        &quot;transfers&quot;: [{
+            &quot;destination&quot;: &quot;deto1qyj4kx6azntn9psmg7dsfkuv9qs9xde0s94nmmhm2a0damffpm2zzqqcudacc&quot;,
+            &quot;amount&quot;: 100000
+        },
+        {
+            &quot;destination&quot;: &quot;deto1qydvjhl67a3hmcw6zq9yt449extwshzcjxkd7lgk4uhgpyxdr494yqg6zwnc2&quot;,
+            &quot;amount&quot;: 100000
+        }],
+        &quot;ringsize&quot;: 32
+    }
+}
+
+</code></pre>
+<p><strong>cURL Request</strong></p>
+<pre><code>curl -X POST\
+  http://127.0.0.1:40403/json_rpc\
+  -H 'content-type: application/json'\
+  -d '{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;transfer&quot;,
+    &quot;params&quot;: {
+        &quot;transfers&quot;: [{
+            &quot;destination&quot;: &quot;deto1qyj4kx6azntn9psmg7dsfkuv9qs9xde0s94nmmhm2a0damffpm2zzqqcudacc&quot;,
+            &quot;amount&quot;: 100000
+        },
+        {
+            &quot;destination&quot;: &quot;deto1qydvjhl67a3hmcw6zq9yt449extwshzcjxkd7lgk4uhgpyxdr494yqg6zwnc2&quot;,
+            &quot;amount&quot;: 100000
+        }],
+        &quot;ringsize&quot;: 32
+    }
+}'
+
+</code></pre>
+<p><strong>Result</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;result&quot;: {
+        &quot;txid&quot;: &quot;3a2712ae039e3f55b4cee132ec7ab76b912d05b3c1fc2744ae2ddd2c18be893e&quot;
+    }
+}
+
+</code></pre>
+<h3 id="sc-invoke">SC Invoke</h3>
+<p>Creates a transaction to call a Smart Contract function and returns its hash.</p>
+<p><strong>Available parameters</strong></p>
+<p><img alt="image" src="/assets/rpcapistargate/rpc22.PNG" /></p>
+<p><strong>Body</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;scinvoke&quot;,
+    &quot;params&quot;: {
+        &quot;scid&quot;: &quot;0000000000000000000000000000000000000000000000000000000000000001&quot;,
+        &quot;ringsize&quot;: 2,
+        &quot;sc_rpc&quot;: [{
+            &quot;name&quot;: &quot;entrypoint&quot;,
+            &quot;datatype&quot;: &quot;S&quot;,
+            &quot;value&quot;: &quot;Register&quot;
+        },
+        {
+            &quot;name&quot;: &quot;name&quot;,
+            &quot;datatype&quot;: &quot;S&quot;,
+            &quot;value&quot;: &quot;Slixe&quot;
+        }]
+    }
+}
+
+</code></pre>
+<p><strong>cURL Request</strong></p>
+<pre><code>curl -X POST\
+  http://127.0.0.1:40403/json_rpc\
+  -H 'content-type: application/json'\
+  -d '{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;method&quot;: &quot;scinvoke&quot;,
+    &quot;params&quot;: {
+        &quot;scid&quot;: &quot;0000000000000000000000000000000000000000000000000000000000000001&quot;,
+        &quot;ringsize&quot;: 2,
+        &quot;sc_rpc&quot;: [{
+            &quot;name&quot;: &quot;entrypoint&quot;,
+            &quot;datatype&quot;: &quot;S&quot;,
+            &quot;value&quot;: &quot;Register&quot;
+        },
+        {
+            &quot;name&quot;: &quot;name&quot;,
+            &quot;datatype&quot;: &quot;S&quot;,
+            &quot;value&quot;: &quot;Slixe&quot;
+        }]
+    }
+}'
+
+</code></pre>
+<p><strong>Result</strong></p>
+<pre><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;result&quot;: {
+        &quot;txid&quot;: &quot;bf4b2cd942f4394a03d0d66bbf8c0639f5cbcbf340becc39d4c9e02f987cecca&quot;
+    }
+}
+
+</code></pre>
+<p>Thank you to Slixe for his contribution to this document.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2017 - 2024 DERO Project
+
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/deroproject" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://discord.gg/H95TJDp" target="_blank" rel="noopener" title="discord.gg" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M524.531 69.836a1.5 1.5 0 0 0-.764-.7A485.065 485.065 0 0 0 404.081 32.03a1.816 1.816 0 0 0-1.923.91 337.461 337.461 0 0 0-14.9 30.6 447.848 447.848 0 0 0-134.426 0 309.541 309.541 0 0 0-15.135-30.6 1.89 1.89 0 0 0-1.924-.91 483.689 483.689 0 0 0-119.688 37.107 1.712 1.712 0 0 0-.788.676C39.068 183.651 18.186 294.69 28.43 404.354a2.016 2.016 0 0 0 .765 1.375 487.666 487.666 0 0 0 146.825 74.189 1.9 1.9 0 0 0 2.063-.676A348.2 348.2 0 0 0 208.12 430.4a1.86 1.86 0 0 0-1.019-2.588 321.173 321.173 0 0 1-45.868-21.853 1.885 1.885 0 0 1-.185-3.126 251.047 251.047 0 0 0 9.109-7.137 1.819 1.819 0 0 1 1.9-.256c96.229 43.917 200.41 43.917 295.5 0a1.812 1.812 0 0 1 1.924.233 234.533 234.533 0 0 0 9.132 7.16 1.884 1.884 0 0 1-.162 3.126 301.407 301.407 0 0 1-45.89 21.83 1.875 1.875 0 0 0-1 2.611 391.055 391.055 0 0 0 30.014 48.815 1.864 1.864 0 0 0 2.063.7A486.048 486.048 0 0 0 610.7 405.729a1.882 1.882 0 0 0 .765-1.352c12.264-126.783-20.532-236.912-86.934-334.541ZM222.491 337.58c-28.972 0-52.844-26.587-52.844-59.239s23.409-59.241 52.844-59.241c29.665 0 53.306 26.82 52.843 59.239 0 32.654-23.41 59.241-52.843 59.241Zm195.38 0c-28.971 0-52.843-26.587-52.843-59.239s23.409-59.241 52.843-59.241c29.667 0 53.307 26.82 52.844 59.239 0 32.654-23.177 59.241-52.844 59.241Z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/deroproject" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8l164.9-188.5L26.8 48h145.6l100.5 132.9L389.2 48zm-24.8 373.8h39.1L151.1 88h-42l255.3 333.8z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://t.me/DeroProjectGroup" target="_blank" rel="noopener" title="t.me" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M248 8C111.033 8 0 119.033 0 256s111.033 248 248 248 248-111.033 248-248S384.967 8 248 8Zm114.952 168.66c-3.732 39.215-19.881 134.378-28.1 178.3-3.476 18.584-10.322 24.816-16.948 25.425-14.4 1.326-25.338-9.517-39.287-18.661-21.827-14.308-34.158-23.215-55.346-37.177-24.485-16.135-8.612-25 5.342-39.5 3.652-3.793 67.107-61.51 68.335-66.746.153-.655.3-3.1-1.154-4.384s-3.59-.849-5.135-.5q-3.283.746-104.608 69.142-14.845 10.194-26.894 9.934c-8.855-.191-25.888-5.006-38.551-9.123-15.531-5.048-27.875-7.717-26.8-16.291q.84-6.7 18.45-13.7 108.446-47.248 144.628-62.3c68.872-28.647 83.183-33.623 92.511-33.789 2.052-.034 6.639.474 9.61 2.885a10.452 10.452 0 0 1 3.53 6.716 43.765 43.765 0 0 1 .417 9.769Z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+
+
+
+
+  
+
+<h4>Cookie consent</h4>
+<p>At DERO, we prioritize and highly value your privacy.  We understand the importance of protecting your personal information, and we are committed to maintaining the confidentiality and security of any data you share with us.  To demonstrate our commitment to your privacy, we have implemented a transparent and cookie-free approach to data collection.</p>
+<input class="md-toggle" type="checkbox" id="__settings" checked>
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.tabs", "navigation.tabs.sticky", "navigation.tracking", "navigation.expand", "search.suggest", "search.share", "content.code.copy"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="../assets/external/unpkg.com/mermaid@10.6.1/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

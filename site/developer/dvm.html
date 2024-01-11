@@ -1,0 +1,2403 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../getting-started/smartcontract.html">
+      
+      
+        <link rel="next" href="astrobwt.html">
+      
+      
+      <link rel="icon" href="../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>DERO Virtual Machine - DERO Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="../assets/external/unpkg.com/iframe-worker/shim.js"></script>
+      
+    
+    
+      
+        
+        
+        
+        <link rel="stylesheet" href="../assets/external/fonts.googleapis.com/css.49ea35f2.css">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#dero-virtual-machine" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="DERO Documentation" class="md-header__button md-logo" aria-label="DERO Documentation" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DERO Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              DERO Virtual Machine
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../getting-started/dero-node.html" class="md-tabs__link">
+          
+  
+  Getting started
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="dvm.html" class="md-tabs__link">
+          
+  
+  Developers
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="DERO Documentation" class="md-nav__button md-logo" aria-label="DERO Documentation" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    DERO Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Getting started
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DERO Node
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            DERO Node
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/dero-node.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Windows Node
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/linux-node.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux Node
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/android-node.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Android node
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/fastsync.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Windows WSL Ubuntu Full Node & Fastsync
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Wallets
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Wallets
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/cli.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Command Line Interface
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/engram.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Engram GUI Mobile & Desktop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/androidcli.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Android CLI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Mining
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Mining
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/miningdero.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mining DERO
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/androidmining.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Android Mining
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Buying DERO
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Buying DERO
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/buyingdero.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to buy DERO
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Trading
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Trading
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/exchanges.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exchanges
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/deposit.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deposit to an Exchange
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/withdraw.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Withdraw from an Exchange
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DERO Home network
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            DERO Home network
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/homenetwork.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create a Home Network
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Smart Contracts
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            Smart Contracts
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/smartcontract.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploy your own Smart Contract
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Developers
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    DERO Virtual Machine
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="dvm.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    DERO Virtual Machine
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dim-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      DIM Statement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#function-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function statement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#goto-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      GOTO Statement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#if" class="md-nav__link">
+    <span class="md-ellipsis">
+      IF
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#let-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      LET Statement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#return-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Return Statement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#support-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Support Functions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lottery-sc-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lottery SC Guide
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lotterybas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lottery.bas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#token-sc-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Token SC Guide
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tokenbas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Token.bas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assets-interchange-smart-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      ASSETS Interchange Smart Contract
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assetbas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Asset.bas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assetexchangebas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assetexchange.bas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nameservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nameservice
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nameservicebas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nameservice.bas
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="astrobwt.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AstroBWT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="DHEBP.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DHEBP (DERO Homomorphic Encryption Blockchain Protocol)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="graviton.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Graviton
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="RPC.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DERO Stargate RPC API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dim-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      DIM Statement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#function-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function statement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#goto-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      GOTO Statement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#if" class="md-nav__link">
+    <span class="md-ellipsis">
+      IF
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#let-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      LET Statement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#return-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Return Statement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#support-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Support Functions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lottery-sc-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lottery SC Guide
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lotterybas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lottery.bas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#token-sc-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Token SC Guide
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tokenbas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Token.bas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assets-interchange-smart-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      ASSETS Interchange Smart Contract
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assetbas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Asset.bas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assetexchangebas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assetexchange.bas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nameservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nameservice
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nameservicebas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nameservice.bas
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="dero-virtual-machine">DERO Virtual Machine</h1>
+<p>DERO Virtual Machine represents entire DERO Smart Contracts eco-system which runs on the DERO block chain.</p>
+<p><strong>Documentation</strong></p>
+<p>DVM is a decentralized platform that runs both public and private smart contracts: applications that run exactly as programmed without any possibility of downtime, censorship, fraud or third-party interference.Public Smart contracts are open versions. However, the DVM is being designed to support Private Smart Contracts where everything is hidden, eg parties, and information involved. Smart Contracts are nothing but rules which apply on transacting parties.</p>
+<p>Current version of DVM is an interpretor based system to avoid security vulneribilities, issues and compiler backdoors. This also allows easy audits of Smart Contracts for quality,bug-testing and security assurances. DVM supports a new language DVM-BASIC.</p>
+<p>DVM apps run on a from scratch custom built privacy supporting, encrypted blockchain, an enormously powerful shared global infrastructure that can move value around and represent the ownership of assets/property without leaking any information.No one knows who owns what and who transferred to whom.</p>
+<ul>
+<li>This enables developers to create puzzles, games, voting, markets, store registries of debts or promises, move funds in accordance with instructions given long in the past (like a will or a futures contract) and many other ideas/things that have not been invented yet, all without a middleman or counterparty risk.</li>
+<li>DVM-BASIC is a contract-oriented, high-level language for implementing smart contracts. It is influenced by GW-BASIC, Visual Basic and C and is designed to target the DERO Virtual Machine (DVM). It is very easy to program and very readable.</li>
+<li>DVM runs Smart Contracts which are a collection of functions written in DVM-BASIC. These functions can be invoked over the blockchain to do something. SCs can act as libraries for other SCs.</li>
+<li>DVM supports number of comments formats such as â€˜, // , // as good documentation is necessary.</li>
+</ul>
+<p><strong>Example Factorial Program</strong></p>
+<pre><code>    ' This is a comment
+    // This comment is supported
+    /* this is multi-line comment  */
+    // printf is not supported in latest DVM. Please comment or remove printf from all old Smart Contracts.
+     Function Factorial(s Uint64) Uint64   // this is a commment
+        10  DIM result,scopy as Uint64     /* this is also comment */
+        15  LET scopy =  s
+        20  LET result = 1
+        30  LET result = result * s
+        40  LET s = s - 1
+        50  IF s &gt;= 2 THEN GOTO 30
+        //60  PRINTF &quot;FACTORIAL of %d = %d&quot; scopy result // printf is not supported in latest DVM.
+        70  RETURN result
+    End Function
+
+</code></pre>
+<p><strong>DVM are written in a DVM-BASIC custom BASIC style language with line numbers.</strong></p>
+<p><strong>DVM supports uint64 and string data-types.</strong></p>
+<p><strong>DVM interprets the smart-contract and processes the SC line-line</strong></p>
+<ul>
+<li>uint64 supports almost all operators namely +,-,*,/,%</li>
+<li>uint64 support following bitwise operators &amp; ,|, ^, ! , &gt;&gt; , &lt;&lt;</li>
+<li>uint64 supports following logical operators &gt;, &gt;= , &lt;, &lt;=, == , !=</li>
+<li>string supports only + operator. string support concatenation with a uint64.</li>
+<li>string supports ==, != logical operators.</li>
+<li>All DVM variables are mandatory to define and are initialized to default values namely 0 and â€œâ€.</li>
+</ul>
+<p>A SC execution must return 0 to persist any changes made during execution. During execution, no panics should occur.</p>
+<h2 id="dim-statement">DIM Statement</h2>
+<p>DIM stands for data in memory and is used to define variable names within a function</p>
+<p>syntax</p>
+<p>10 DIM variable1 as type 20 DIM variable1,variable2 as type</p>
+<p>type can be any type supported by DVM</p>
+<p>Defining a varible initializes a variable to its ZERO value.</p>
+<h2 id="function-statement">Function statement</h2>
+<p>Function statement is used to define a function. See eg, below for a function which adds 2 numbers</p>
+<pre><code>    Function ADD(x uint64, y uint64) uint64
+    10 RETURN x + y
+    End Function
+
+</code></pre>
+<p>Function syntax is of 2 types</p>
+<ol>
+<li>Function function_name( 0 or more arguments )</li>
+<li>Function function_name( 0 or more arguments ) return type</li>
+</ol>
+<p>The rules for functions are as follows</p>
+<ul>
+<li>All functions begin with Function keyword</li>
+<li>Function name should be alpha-numeric. If the first letter of the function is Upper case alphabet, it can be invoked by blockchain and other smart-contracts. Otherwise the function can only be called by other functions within the smart contract.</li>
+<li>Function may or may not have a return type</li>
+<li>All functions must use RETURN to return from function or to return a value. RETURN is mandatory.</li>
+<li>All functions must end with End Function. End Function is mandatory</li>
+<li>A function can have a implicit parameter value of type uint64, which contains amount of DERO value sent with the transaction.</li>
+</ul>
+<p>Any error caused during processing will immediately stop execution and discard all changes that occur during SC execution.</p>
+<p>Any Entrypoint which returns uint64 value 0 is termed as success and will make transaction to commit all state changes.</p>
+<h2 id="goto-statement">GOTO Statement</h2>
+<p>It is used to jump to any point within the function. It cannot cross function-boundary</p>
+<p>syntax GOTO line-number</p>
+<h2 id="if">IF</h2>
+<p>If statement is used to evaluate expression and make decisions.It has following forms</p>
+<ol>
+<li>IF expr1 condition expr2 THEN GOTO line number</li>
+<li>IF expr1 condition expr2 THEN GOTO line number ELSE GOTO line number</li>
+</ol>
+<p>This is used to change execution flow based on conditions. Conditions can be as complex expressions</p>
+<h2 id="let-statement">LET Statement</h2>
+<p>LET is used to assign a value to a variable. value can be as complex as possible and can contain complex expression</p>
+<p>syntax</p>
+<p>line number LET variable_name = expression;</p>
+<p>expression can invoke other functions,eg</p>
+<p>10 LET x = 2 + 3 + ADD(2,3)</p>
+<p>ANY assignments within DVM can only be done using LET</p>
+<h2 id="return-statement">Return Statement</h2>
+<p>It is used to return from a function and can be used anywhere within a function</p>
+<p>syntax</p>
+<p>1.RETURN ( return nil ) 2.RETURN expression ( evaluates expression and returns value )</p>
+<p>Any return value must match with the type defined while declaring function</p>
+<h2 id="support-functions">Support Functions</h2>
+<p><strong>VERSION(v String)</strong></p>
+<ul>
+<li>Description: Sets a version to dvm.VERSION. Returns 1 if successful, panics otherwise.</li>
+<li>Return Type: Uint64</li>
+<li>ComputeCost: 1000</li>
+<li>StorageCost: 0</li>
+</ul>
+<p><strong>LOAD(variable)</strong></p>
+<ul>
+<li>Description: Loads a variable which was previously stored in the blockchain using STORE function. Return type will depend on what is stored. It will panic if the value does NOT exist.</li>
+<li>Return Type: Uint64/String (depending what is stored)</li>
+<li>ComputeCost: 5000</li>
+<li>StorageCost: 0</li>
+</ul>
+<p><strong>EXISTS(variable)</strong></p>
+<ul>
+<li>Description: Return 1 if the variable is stored in DB via STORE and 0 otherwise.</li>
+<li>Return Type: Uint64</li>
+<li>ComputeCost: 5000</li>
+<li>StorageCost: 0</li>
+</ul>
+<p><strong>STORE(key variable, value variable)</strong></p>
+<ul>
+<li>Description: Stores key and value in the DB. All storage state of the SC is accessible only from the SC which created it. Returns 1.</li>
+<li>Return Type: Uint64</li>
+<li>ComputeCost: 10000</li>
+<li>StorageCost: 0</li>
+</ul>
+<p><strong>DELETE(variable)</strong></p>
+<ul>
+<li>Description: Sets the rawkey value to []byte{} effectively deleting it from storage. Returns 1.</li>
+<li>Return Type: Uint64</li>
+<li>ComputeCost: 3000</li>
+<li>StorageCost: 0</li>
+</ul>
+<p><strong>MAPEXISTS(variable)</strong></p>
+<ul>
+<li>Description: Returns 1 if the variable has been stored in RAM (current invoke session) via MAPSTORE and 0 otherwise.</li>
+<li>Return Type: Uint64</li>
+<li>ComputeCost: 1000</li>
+<li>StorageCost: 0</li>
+</ul>
+<p><strong>MAPGET(variable)</strong></p>
+<ul>
+<li>Description: Loads a variable which was previously stored in RAM (current invoke session) via MAPSTORE. Return type will depend on what is stored. I twill panic if the value does NOT exist.</li>
+<li>Return Type: Uint64/String (depending on what is stored)</li>
+<li>ComputeCost: 1000</li>
+<li>StorageCost: 0</li>
+</ul>
+<p><strong>MAPSTORE(key variable, value variable)</strong></p>
+<ul>
+<li>Description: Stores key and value in RAM (current invoke session). All MAPSTORE state is accessible only from the session in which it is stored. Returns 1.</li>
+<li>Return Type: Uint64</li>
+<li>ComputeCost: 1000</li>
+<li>StorageCost: 0</li>
+</ul>
+<p><strong>MAPDELETE(variable)</strong></p>
+<ul>
+<li>Description: Deletes the element from the map in RAM (current invoke session). If the key does not exist, delete has no action. Returns 1.</li>
+<li>Return Type: Uint64</li>
+<li>ComputeCost: 1000</li>
+<li>StorageCost: 0</li>
+</ul>
+<p><strong>RANDOM(limit Uint64)</strong></p>
+<ul>
+<li>Description: RANDOM returns a random using a PRNG seeded on BLID,SCID,TXID. First form gives a uint64, second form returns random number in the range 0 - (limit), 0 is inclusive, limit is exclusive.</li>
+<li>Return Type: Uint64</li>
+<li>ComputeCost: 2500</li>
+<li>StorageCost: 0</li>
+</ul>
+<p><strong>SCID()</strong></p>
+<ul>
+<li>Description: Returns SMART CONTRACT ID which is currently running.</li>
+<li>Return Type: String</li>
+<li>ComputeCost: 2000</li>
+<li>StorageCost: 0</li>
+</ul>
+<p><strong>BLID()</strong></p>
+<ul>
+<li>Description: Returns current BLOCK ID which contains current execution-in-progress TXID.</li>
+<li>Return Type: String</li>
+<li>ComputeCost: 2000</li>
+<li>StorageCost: 0</li>
+</ul>
+<p><strong>TXID()</strong></p>
+<ul>
+<li>Description: Returns current TXID which is execution-in-progress.</li>
+<li>Return Type: String</li>
+<li>ComputeCost: 2000</li>
+<li>StorageCost: 0</li>
+</ul>
+<p><strong>DERO()</strong></p>
+<ul>
+<li>Description: Returns a string representation of zerohash which is of type crypto.Hash.</li>
+<li>Return Type: String</li>
+<li>ComputeCost: 10000</li>
+<li>StorageCost: 0</li>
+</ul>
+<p><strong>BLOCK_HEIGHT()</strong></p>
+<ul>
+<li>Description: Returns current chain height of BLID().</li>
+<li>Return Type: Uint64</li>
+<li>ComputeCost: 2000</li>
+<li>StorageCost: 0</li>
+</ul>
+<p><strong>BLOCK_TIMESTAMP()</strong></p>
+<ul>
+<li>Description: Returns current timestamp of BLID().</li>
+<li>Return Type: Uint64</li>
+<li>ComputeCost: 2500</li>
+<li>StorageCost: 0</li>
+</ul>
+<p><strong>SIGNER()</strong></p>
+<ul>
+<li>Description: Returns address of who signed this transaction. Ringsize of tx must be 2 for this value to be known or else empty.</li>
+<li>Return Type: String</li>
+<li>ComputeCost: 5000</li>
+<li>StorageCost: 0</li>
+</ul>
+<p><strong>UPDATE_SC_CODE(sc_code String)</strong></p>
+<ul>
+<li>Description: Stores updated SC code of type string. If it is not of type string, return 0, else return 1.</li>
+<li>Return Type: Uint64</li>
+<li>ComputeCost: 5000</li>
+<li>StorageCost: 0</li>
+</ul>
+<p><strong>IS_ADDRESS_VALID(address String)</strong></p>
+<ul>
+<li>Description: Returns 1 if address is valid, 0 otherwise.</li>
+<li>Return Type: Uint64</li>
+<li>ComputeCost: 50000</li>
+<li>StorageCost: 0</li>
+</ul>
+<p><strong>ADDRESS_RAW(address String)</strong></p>
+<ul>
+<li>Description: Returns address in RAW form as 33 byte keys, stripping away textual/presentation form. 2 address should always be compared in RAW form.</li>
+<li>Return Type: String</li>
+<li>ComputeCost: 60000</li>
+<li>StorageCost: 0</li>
+</ul>
+<p><strong>ADDRESS_STRING(p String)</strong></p>
+<ul>
+<li>Description: Returns address in STRING form. If it can be evaluated, a string form of an address will be returned, otherwise return an empty string.</li>
+<li>Return Type: String</li>
+<li>ComputeCost: 50000</li>
+<li>StorageCost: 0</li>
+</ul>
+<p><strong>SEND_DERO_TO_ADDRESS(a String, amount Uint64)</strong></p>
+<ul>
+<li>Description: Sends amount DERO from SC DERO balance to a address which should be raw form. Address must be in string DERO/DETO form. If the SC does not have enough balance, it will panic.</li>
+<li>Return Type: Uint64</li>
+<li>ComputeCost: 70000</li>
+<li>StorageCost: 0</li>
+</ul>
+<p><strong>SEND_ASSET_TO_ADDRESS(a String, amount Uint64, asset String)</strong></p>
+<ul>
+<li>Description: Sends amount ASSET from SC ASSET balance to a address which should be raw form. Address must be in string DERO/DETO form. If the SC does not have enough balance, it will panic.</li>
+<li>Return Type: Uint64</li>
+<li>ComputeCost: 90000</li>
+<li>StorageCost: 0</li>
+</ul>
+<p><strong>DEROVALUE()</strong></p>
+<ul>
+<li>Description: Gets the amount of DERO sent within this transaction.</li>
+<li>Return Type: Uint64</li>
+<li>ComputeCost: 10000</li>
+<li>StorageCost: 0</li>
+</ul>
+<p><strong>ASSETVALUE(asset String)</strong></p>
+<ul>
+<li>Description: Gets the amount of a given ASSET sent within this transaction.</li>
+<li>Return Type: Uint64</li>
+<li>ComputeCost: 10000</li>
+<li>StorageCost: 0</li>
+</ul>
+<p><strong>ATOI(s String)</strong></p>
+<ul>
+<li>Description: Returns a Uint64 representation of a string. Else panic.</li>
+<li>Return Type: Uint64</li>
+<li>ComputeCost: 5000</li>
+<li>StorageCost: 0</li>
+</ul>
+<p><strong>ITOA(n Uint64)</strong></p>
+<ul>
+<li>Description: Returns string representation of a Uint64. Else panic.</li>
+<li>Return Type: String</li>
+<li>ComputeCost: 5000</li>
+<li>StorageCost: 0</li>
+</ul>
+<p><strong>SHA256(s String)</strong></p>
+<ul>
+<li>Description: Returns a string sha2-256 hash of a given string. Else panic.</li>
+<li>Return Type: String</li>
+<li>ComputeCost: 25000</li>
+<li>StorageCost: 0</li>
+</ul>
+<p><strong>SHA3256(s String)</strong></p>
+<ul>
+<li>Description: Returns a string sha3-256 hash of a given string. Else panic.</li>
+<li>Return Type: String</li>
+<li>ComputeCost: 25000</li>
+<li>StorageCost: 0</li>
+</ul>
+<p><strong>KECCAK256(s String)</strong></p>
+<ul>
+<li>Description: Returns a string sha3-keccak256 hash of a given string. Else panic.</li>
+<li>Return Type: String</li>
+<li>ComputeCost: 25000</li>
+<li>StorageCost: 0</li>
+</ul>
+<p><strong>HEX(s String)</strong></p>
+<ul>
+<li>Description: Returns a hex encoded string value of a given string. Else panic.</li>
+<li>Return Type: String</li>
+<li>ComputeCost: 10000</li>
+<li>StorageCost: 0</li>
+</ul>
+<p><strong>HEXDECODE(s String)</strong></p>
+<ul>
+<li>Description: Returns a hex decoded string value of a given hex string. Else panic.</li>
+<li>Return Type: String</li>
+<li>ComputeCost: 10000</li>
+<li>StorageCost: 0</li>
+</ul>
+<p><strong>MIN(f Uint64, s Uint64)</strong></p>
+<ul>
+<li>Description: Returns the minimum value of 2 Uint64 values. Else panic.</li>
+<li>Return Type: Uint64</li>
+<li>ComputeCost: 5000</li>
+<li>StorageCost: 0</li>
+</ul>
+<p><strong>MAX(f Uint64, s Uint64)</strong></p>
+<ul>
+<li>Description: Returns the maximum value of 2 Uint64 values. Else panic.</li>
+<li>Return Type: Uint64</li>
+<li>ComputeCost: 5000</li>
+<li>StorageCost: 0</li>
+</ul>
+<p><strong>STRLEN(s String)</strong></p>
+<ul>
+<li>Description: Returns the length of a given string in Uint64. Else panic.</li>
+<li>Return Type: Uint64</li>
+<li>ComputeCost: 20000</li>
+<li>StorageCost: 0</li>
+</ul>
+<p><strong>SUBSTR(s String, offset Uint64, length Uint64)</strong></p>
+<ul>
+<li>Description: Returns the substring of a given string with offset and length defined. Else panic.</li>
+<li>Return Type: String</li>
+<li>ComputeCost: 20000</li>
+<li>StorageCost: 0</li>
+</ul>
+<p><strong>PANIC</strong></p>
+<ul>
+<li>Description: Panics.</li>
+<li>Return Type: Panic</li>
+<li>ComputeCost: 10000</li>
+<li>StorageCost: 0</li>
+</ul>
+<h2 id="lottery-sc-guide">Lottery SC Guide</h2>
+<p><strong>Dero Stargate DVM Smart Contracts guide to install and test various function of lottery Smart Contract.</strong></p>
+<p><strong>Download</strong> DERO Stargate testnet <code>source &lt;https://github.com/deroproject/derohe&gt;</code><em> and <code>binaries. &lt;https://github.com/deroproject/derohe/releases&gt;</code></em></p>
+<p>./derod-linux-amd64 --testnet;</p>
+<p><strong>Start DERO wallet in testnet.</strong></p>
+<p>dero-wallet-cli-linux-amd64 --rpc-server --wallet-file testnet.wallet --testnet;</p>
+<p><strong>Start Dero wallet second instance to test transfer/ownership functions etc.</strong></p>
+<pre><code>dero-wallet-cli-linux-amd64 --wallet-file testnet2.wallet --testnet --rpc-server --rpc-bind=127.0.0.1:40403;
+
+</code></pre>
+<p><strong>Dero testnet Explorer</strong></p>
+<p><code>./explorer-linux-amd64 --rpc-server-address 127.0.0.1:30306 --http-address=0.0.0.0:8080;</code></p>
+<p><strong>DERO Stargate Testnet Explorer</strong></p>
+<p>https://testnetexplorer.dero.io/</p>
+<p><strong>Installing Smart Contract</strong></p>
+<p>Download Lottery.bas <a href="https://git.dero.io/DeroProject/derosuite_stargate/src/master/cmd/dvm/lottery.bas">https://git.dero.io/DeroProject/derosuite_stargate/src/master/cmd/dvm/lottery.bas</a></p>
+<p>curl --request POST --data-binary @lottery.bas http://127.0.0.1:40403/install_sc;</p>
+<p>Download SC Code,check balance and variables from chain</p>
+<pre><code>curl http://127.0.0.1:40402/json_rpc -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:&quot;0&quot;,&quot;method&quot;:&quot;getsc&quot;,&quot;params&quot;:{ &quot;scid&quot;:&quot;aacaa7bb2388d06e523e5bc0783e4e131738270641406c12978155ba033373af&quot; , &quot;code&quot;:false, &quot;keysstring&quot;:[&quot;deposit_count&quot;]}}' -H 'Content-Type: application/json';
+
+</code></pre>
+<p><strong>Examples of various lottery Smart Contract functions Eg: To play lottery</strong></p>
+<p><code>curl http://127.0.0.1:40403/json_rpc -d '{"jsonrpc":"2.0","id":"0","method":"transfer","params":{ "transfers":[{"amount":111111,"destination":"deto1qxqqen6lqmksmzmxmfqmxp2y8zvkldtcq8jhkzqflmyczepjw9dp46gc3cczu"}],"scid":"aacaa7bb2388d06e523e5bc0783e4e131738270641406c12978155ba033373af","sc_rpc":[{"name":"entrypoint","datatype":"S","value":"Lottery"}] }}' -H 'Content-Type: application/json';</code></p>
+<p><strong>Eg: Withdraw balance only for smart contract owner</strong></p>
+<p><code>curl http://127.0.0.1:40403/json_rpc -d '{"jsonrpc":"2.0","id":"0","method":"transfer","params":{ "transfers":[{"amount":111111,"destination":"deto1qxqqen6lqmksmzmxmfqmxp2y8zvkldtcq8jhkzqflmyczepjw9dp46gc3cczu"}],"scid":"aacaa7bb2388d06e523e5bc0783e4e131738270641406c12978155ba033373af", "sc_rpc":[{"name":"entrypoint","datatype":"S","value":"Withdraw"}, {"name":"amount","datatype":"U","value":2 }] }}' -H 'Content-Type: application/json';</code></p>
+<p><strong>Eg: To transfer ownership</strong></p>
+<p><code>curl http://127.0.0.1:40403/json_rpc -d '{"jsonrpc":"2.0","id":"0","method":"transfer","params":{ "transfers":[{"amount":111111,"destination":"deto1qxqqen6lqmksmzmxmfqmxp2y8zvkldtcq8jhkzqflmyczepjw9dp46gc3cczu"}],"scid":"aacaa7bb2388d06e523e5bc0783e4e131738270641406c12978155ba033373af", "sc_rpc":[{"name":"entrypoint","datatype":"S","value":"TransferOwnership"}, {"name":"newowner","datatype":"S","value":"deto1qxsplx7vzgydacczw6vnrtfh3fxqcjevyxcvlvl82fs8uykjkmaxgfgulfha5" }] }}' -H 'Content-Type: application/json';</code></p>
+<p><strong>Eg: To claim ownership</strong></p>
+<p><code>curl http://127.0.0.1:40403/json_rpc -d â€˜{â€œjsonrpcâ€:â€œ2.0â€,â€œidâ€:â€œ0â€,â€œmethodâ€:â€œtransferâ€,â€œparamsâ€:{ â€œtransfersâ€:[{â€œamountâ€:111111,â€œdestinationâ€:â€œdeto1qxqqen6lqmksmzmxmfqmxp2y8zvkldtcq8jhkzqflmyczepjw9dp46gc3cczuâ€}],â€œscidâ€:â€œaacaa7bb2388d06e523e5bc0783e4e131738270641406c12978155ba033373afâ€, â€œsc_rpcâ€:[{â€œnameâ€:â€œentrypointâ€,â€œdatatypeâ€:â€œSâ€,â€œvalueâ€:â€œClaimOwnershipâ€}] }}â€™ -H â€˜Content-Type: application/jsonâ€™;</code></p>
+<h2 id="lotterybas">Lottery.bas</h2>
+<pre><code>    /* Lottery Smart Contract in DVM-BASIC
+
+</code></pre>
+<p>This lottery smart contract will give lottery wins every xth try. */</p>
+<pre><code>    Function Lottery(value Uint64) Uint64
+10  dim deposit_count,winner as Uint64
+20  LET deposit_count =  LOAD(&quot;deposit_count&quot;)+1
+25  IF value == 0 THEN GOTO 110  // if deposit amount is 0, simply return
+30  STORE(&quot;depositor_address&quot; + (deposit_count-1), SIGNER()) // store address for later on payment
+40  STORE(&quot;deposit_total&quot;, LOAD(&quot;deposit_total&quot;) + value )
+50  STORE(&quot;deposit_count&quot;,deposit_count)
+60  IF LOAD(&quot;lotteryeveryXdeposit&quot;) &gt; deposit_count THEN GOTO 110 // we will wait till X players join in
+  // we are here means all players have joined in, roll the DICE,
+70  LET winner  = RANDOM() % deposit_count // we have a winner
+80  SEND_DERO_TO_ADDRESS(LOAD(&quot;depositor_address&quot; + winner) , LOAD(&quot;lotterygiveback&quot;)*LOAD(&quot;deposit_total&quot;)/10000)
+
+        // Re initialize for another round
+90   STORE(&quot;deposit_count&quot;, 0)   //  initial players
+100  STORE(&quot;deposit_total&quot;, 0)   //  total deposit of all players
+110  RETURN 0
+End Function
+
+// this function is used to initialize parameters during install time
+Function Initialize() Uint64
+10  STORE(&quot;owner&quot;, SIGNER())   // store in DB  [&quot;owner&quot;] = address
+20  STORE(&quot;lotteryeveryXdeposit&quot;, 2)   // lottery will reward every X deposits
+    // how much will lottery giveback in 1/10000 parts, granularity .01 %
+30  STORE(&quot;lotterygiveback&quot;, 9900)   // lottery will give reward 99% of deposits, 1 % is accumulated for owner to withdraw
+33  STORE(&quot;deposit_count&quot;, 0)   //  initial players
+34  STORE(&quot;deposit_total&quot;, 0)   //  total deposit of all players
+// 35 printf &quot;Initialize executed&quot;
+40 RETURN 0
+End Function
+
+// Used to tune lottery parameters
+Function TuneLotteryParameters(input Uint64, lotteryeveryXdeposit Uint64, lotterygiveback Uint64) Uint64
+10  dim key,stored_owner as String
+20  dim value_uint64 as Uint64
+30  IF LOAD(&quot;owner&quot;) == SIGNER() THEN GOTO 100  // check whether owner is real owner
+40  RETURN 1
+
+100  STORE(&quot;lotteryeveryXdeposit&quot;, lotteryeveryXdeposit)   // lottery will reward every X deposits
+130  STORE(&quot;lotterygiveback&quot;, value_uint64)   // how much will lottery giveback in 1/10000 parts, granularity .01 %
+140  RETURN 0 // return success
+End Function
+
+// This function is used to change owner
+// owner is an string form of address
+Function TransferOwnership(newowner String) Uint64
+10  IF LOAD(&quot;owner&quot;) == SIGNER() THEN GOTO 30
+20  RETURN 1
+30  STORE(&quot;tmpowner&quot;,ADDRESS_RAW(newowner))
+40  RETURN 0
+End Function
+
+// Until the new owner claims ownership, existing owner remains owner
+    Function ClaimOwnership() Uint64
+10  IF LOAD(&quot;tmpowner&quot;) == SIGNER() THEN GOTO 30
+20  RETURN 1
+30  STORE(&quot;owner&quot;,SIGNER()) // ownership claim successful
+40  RETURN 0
+End Function
+
+// if signer is owner, withdraw any requested funds
+// if everthing is okay, they will be showing in signers wallet
+    Function Withdraw( amount Uint64) Uint64
+10  IF LOAD(&quot;owner&quot;) == SIGNER() THEN GOTO 30
+20  RETURN 1
+30  SEND_DERO_TO_ADDRESS(SIGNER(),amount)
+40  RETURN 0
+End Function
+
+// if signer is owner, provide him rights to update code anytime
+// make sure update is always available to SC
+    Function UpdateCode( code String) Uint64
+10  IF LOAD(&quot;owner&quot;) == SIGNER() THEN GOTO 30
+20  RETURN 1
+30  UPDATE_SC_CODE(code)
+40  RETURN 0
+End Function
+
+</code></pre>
+<h2 id="token-sc-guide">Token SC Guide</h2>
+<p><strong>Dero Stargate DVM Smart Contracts guide to install and test various function of private token Smart Contract.</strong></p>
+<p>Notes: 1. All wallet Addressess need to be registerd first with SC before they need to interact with. This condition will be removed in future. 2. Requirement of detoAnyRandomAddressFromExplorer during SC invocation will be removed in future. 3. burn is equal to deposit if SCID is defined else DERO/token will dissappear/burn from network forever. burn will renamed to something more meaningful. This can be proved with cryptographic proof.</p>
+<p><strong>Download</strong> DERO Stargate testnet <code>source &lt;https://github.com/deroproject/derohe&gt;</code><em> and <code>binaries. &lt;https://github.com/deroproject/derohe/releases&gt;</code></em></p>
+<p><strong>Start Dero daemon in testnet mode</strong></p>
+<pre><code>./derod-linux-amd64  --testnet;
+
+</code></pre>
+<p><strong>Start Dero wallet in testnet.</strong></p>
+<pre><code>dero-wallet-cli-linux-amd64 --rpc-server --wallet-file testnet.wallet --testnet;
+
+</code></pre>
+<p><strong>Start Dero wallet second instance to test transfer/ownership functions etc.</strong></p>
+<pre><code>dero-wallet-cli-linux-amd64 --wallet-file testnet2.wallet --testnet --rpc-server --rpc-bind=127.0.0.1:40403;
+
+</code></pre>
+<p><strong>Dero testnet Explorer, Not required but if you want to host your own explorer for privacy reasons.</strong></p>
+<pre><code>./explorer-linux-amd64  --http-address=0.0.0.0:8080 ;
+
+</code></pre>
+<p><strong>Connect to explorer using browser on localhost:8080</strong></p>
+<p><strong>Dero Stargate Testnet Explorer</strong> https://testnetexplorer.dero.io/</p>
+<p><strong>To send DERO to multiple users in one transaction</strong></p>
+<pre><code>curl http://127.0.0.1:40403/json_rpc -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:&quot;0&quot;,&quot;method&quot;:&quot;transfer&quot;,&quot;params&quot;:{ &quot;transfers&quot;:[{&quot;amount&quot;:100000,&quot;destination&quot;:&quot;deto1ADDRESS1&quot;},{&quot;amount&quot;:300000,&quot;destination&quot;:&quot;deto1ADDRESS12}] }}' -H 'Content-Type: application/json';
+
+</code></pre>
+<p><strong>DERO has 2 types of SCs, public and private.</strong></p>
+<p>1.Public SCs are public with all data/code/exchanges are public. 2.Private SCs have their smart contract data public. But no one knows how many tokens a particular user own or how much is he sending or how much is he receiving. Best example is to understand private SCs as banks and private tokens as cash. Once cash is out from the bank, Bank doesnâ€™t know â€œwho has what amount or how is it being used/sent/received etc.â€. This makes all private tokens completely private.</p>
+<p><strong>Installing Private Smart Contract.</strong></p>
+<p>Download token.bas <a href="https://git.dero.io/DeroProject/derosuite_stargate/src/master/cmd/dvm/token.bas">https://git.dero.io/DeroProject/derosuite_stargate/src/master/cmd/dvm/token.bas</a></p>
+<pre><code>curl  --request POST --data-binary   @token.bas http://127.0.0.1:40403/install_sc;
+
+</code></pre>
+<p><strong>To check private token balance in wallet, type this command in wallet.</strong></p>
+<pre><code>balance SCID;
+
+</code></pre>
+<p><strong>Download SC Code,check SC balance and variables from chain</strong></p>
+<pre><code>curl http://127.0.0.1:40402/json_rpc -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:&quot;0&quot;,&quot;method&quot;:&quot;getsc&quot;,&quot;params&quot;:{ &quot;scid&quot;:&quot;aacaa7bb2388d06e523e5bc0783e4e131738270641406c12978155ba033373af&quot; , &quot;code&quot;:true}}' -H 'Content-Type: application/json';
+
+</code></pre>
+<p>Examples of various private token Smart Contract functions Eg: To send private tokens from one wallet to another wallet, this does not involve SC Eg: this also showcases to send multiple assets( DERO and other tokens on DERO Network) within a single transaction</p>
+<pre><code>curl http://127.0.0.1:40403/json_rpc -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:&quot;0&quot;,&quot;method&quot;:&quot;transfer&quot;,&quot;params&quot;:{ &quot;transfers&quot;:[{&quot;amount&quot;:111111,&quot;destination&quot;:&quot;deto1qxqqen6lqmksmzmxmfqmxp2y8zvkldtcq8jhkzqflmyczepjw9dp46gc3cczu&quot;},{&quot;amount&quot;:333333,&quot;destination&quot;:&quot;deto1qxqqen6lqmksmzmxmfqmxp2y8zvkldtcq8jhkzqflmyczepjw9dp46gc3cczu&quot;,&quot;scid&quot;: &quot;aacaa7bb2388d06e523e5bc0783e4e131738270641406c12978155ba033373af&quot; }] }}' -H 'Content-Type: application/json';
+
+</code></pre>
+<p>Eg: Convert DERO to tokens 1:1 swap, we are swapping 44 DERO atomic units to get some tokens</p>
+<pre><code>curl http://127.0.0.1:40403/json_rpc -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:&quot;0&quot;,&quot;method&quot;:&quot;transfer&quot;,&quot;params&quot;:{&quot;transfers&quot;:[{&quot;amount&quot;:1,&quot;destination&quot;:&quot;deto1qxqqen6lqmksmzmxmfqmxp2y8zvkldtcq8jhkzqflmyczepjw9dp46gc3cczu&quot;, &quot;burn&quot;:44}],&quot;scid&quot;:&quot;aacaa7bb2388d06e523e5bc0783e4e131738270641406c12978155ba033373af&quot;, &quot;sc_rpc&quot;:[{&quot;name&quot;:&quot;entrypoint&quot;,&quot;datatype&quot;:&quot;S&quot;,&quot;value&quot;:&quot;IssueTOKENX&quot;}] }}' -H 'Content-Type: application/json';
+
+</code></pre>
+<p>Convert tokens to DERO 1:1 swap, we are swapping 9 token atomic units to get 9 DERO atomic units This tx shows transferring tokens natively, no dero fees etc, this is under evaluation, <strong>Currently these show as coinbase rewards</strong></p>
+<pre><code>curl http://127.0.0.1:40403/json_rpc -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:&quot;0&quot;,&quot;method&quot;:&quot;transfer&quot;,&quot;params&quot;:{&quot;transfers&quot;:[{&quot;scid&quot;:&quot;aacaa7bb2388d06e523e5bc0783e4e131738270641406c12978155ba033373af&quot;, &quot;amount&quot;:1,&quot;destination&quot;:&quot;deto1qxqqen6lqmksmzmxmfqmxp2y8zvkldtcq8jhkzqflmyczepjw9dp46gc3cczu&quot;, &quot;burn&quot;:9}],&quot;scid&quot;:&quot;aacaa7bb2388d06e523e5bc0783e4e131738270641406c12978155ba033373af&quot;, &quot;sc_rpc&quot;:[{&quot;name&quot;:&quot;entrypoint&quot;,&quot;datatype&quot;:&quot;S&quot;,&quot;value&quot;:&quot;ConvertTOKENX&quot;}] }}' -H 'Content-Type: application/json';
+
+</code></pre>
+<p>Eg: To withdraw balance only for smart contract owner</p>
+<pre><code>curl http://127.0.0.1:40403/json_rpc -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:&quot;0&quot;,&quot;method&quot;:&quot;transfer&quot;,&quot;params&quot;:{ &quot;transfers&quot;:[{&quot;amount&quot;:111111,&quot;destination&quot;:&quot;deto1qxqqen6lqmksmzmxmfqmxp2y8zvkldtcq8jhkzqflmyczepjw9dp46gc3cczu&quot;}],&quot;scid&quot;:&quot;aacaa7bb2388d06e523e5bc0783e4e131738270641406c12978155ba033373af&quot;, &quot;sc_rpc&quot;:[{&quot;name&quot;:&quot;entrypoint&quot;,&quot;datatype&quot;:&quot;S&quot;,&quot;value&quot;:&quot;Withdraw&quot;}, {&quot;name&quot;:&quot;amount&quot;,&quot;datatype&quot;:&quot;U&quot;,&quot;value&quot;:2 }] }}' -H 'Content-Type: application/json';
+
+</code></pre>
+<p>Eg: To transfer ownership of smart contract to new address/owner</p>
+<pre><code>curl http://127.0.0.1:40403/json_rpc -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:&quot;0&quot;,&quot;method&quot;:&quot;transfer&quot;,&quot;params&quot;:{ &quot;transfers&quot;:[{&quot;amount&quot;:111111,&quot;destination&quot;:&quot;deto1qxqqen6lqmksmzmxmfqmxp2y8zvkldtcq8jhkzqflmyczepjw9dp46gc3cczu&quot;}],&quot;scid&quot;:&quot;aacaa7bb2388d06e523e5bc0783e4e131738270641406c12978155ba033373af&quot;, &quot;sc_rpc&quot;:[{&quot;name&quot;:&quot;entrypoint&quot;,&quot;datatype&quot;:&quot;S&quot;,&quot;value&quot;:&quot;TransferOwnership&quot;}, {&quot;name&quot;:&quot;newowner&quot;,&quot;datatype&quot;:&quot;S&quot;,&quot;value&quot;:&quot;deto1qxsplx7vzgydacczw6vnrtfh3fxqcjevyxcvlvl82fs8uykjkmaxgfgulfha5&quot; }] }}' -H 'Content-Type: application/json';
+
+</code></pre>
+<p>Eg: To claim ownership of smart contract</p>
+<pre><code>curl http://127.0.0.1:40403/json_rpc -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:&quot;0&quot;,&quot;method&quot;:&quot;transfer&quot;,&quot;params&quot;:{ &quot;transfers&quot;:[{&quot;amount&quot;:111111,&quot;destination&quot;:&quot;deto1qxqqen6lqmksmzmxmfqmxp2y8zvkldtcq8jhkzqflmyczepjw9dp46gc3cczu&quot;}],&quot;scid&quot;:&quot;aacaa7bb2388d06e523e5bc0783e4e131738270641406c12978155ba033373af&quot;, &quot;sc_rpc&quot;:[{&quot;name&quot;:&quot;entrypoint&quot;,&quot;datatype&quot;:&quot;S&quot;,&quot;value&quot;:&quot;ClaimOwnership&quot;}] }}' -H 'Content-Type: application/json';
+
+</code></pre>
+<p>Eg: To update smart contract code</p>
+<pre><code>curl http://127.0.0.1:40403/json_rpc -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:&quot;0&quot;,&quot;method&quot;:&quot;transfer&quot;,&quot;params&quot;:{ &quot;transfers&quot;:[{&quot;amount&quot;:111111,&quot;destination&quot;:&quot;deto1qxqqen6lqmksmzmxmfqmxp2y8zvkldtcq8jhkzqflmyczepjw9dp46gc3cczu&quot;}],&quot;scid&quot;:&quot;aacaa7bb2388d06e523e5bc0783e4e131738270641406c12978155ba033373af&quot;, &quot;sc_rpc&quot;:[{&quot;name&quot;:&quot;entrypoint&quot;,&quot;datatype&quot;:&quot;S&quot;,&quot;value&quot;:&quot;UpdateCode&quot;}, {&quot;name&quot;:&quot;code&quot;,&quot;datatype&quot;:&quot;S&quot;,&quot;value&quot;:&quot;new code should be placed here&quot; }] }}' -H 'Content-Type: application/json';
+
+</code></pre>
+<h2 id="tokenbas">Token.bas</h2>
+<pre><code>/* Private Token Smart Contract Example in DVM-BASIC.
+
+</code></pre>
+<p>DERO Smart Contracts Tokens privacy can be understood just like banks handle cash. Once cash is out from the bank, bank is not aware about it (who owns what value), until it is deposited back. Smart contract only maintains supply and other necessary items to keep it working. DERO Tokens can be tranfered to other wallets just like native DERO with Homomorphic Encryption and without involvement of issuing Smart Contracts. Token issuing Smart Contract cannot hold/freeze/control their tokens once they are issued and sent to any wallet. This token is Private. Use Function InitializePrivate() Uint64 to make any Smart Contract private.</p>
+<pre><code>*/
+
+// Issue tokens after depositing DERO (Convert DERO to TOKENX)
+Function IssueTOKENX() Uint64
+10  SEND_ASSET_TO_ADDRESS(SIGNER(), DEROVALUE(),SCID())   // Increment balance of user, without knowing original balance, this is done homomorphically
+20  RETURN 0
+End Function
+
+// Convert TOKENX to DERO after depositing TOKENX. Smart Contract can give DERO, Only if DERO balance exists.
+Function ConvertTOKENX() Uint64
+10  SEND_DERO_TO_ADDRESS(SIGNER(),ASSETVALUE(SCID()))   // Increment balance of user, without knowing original balance, this is done using Homomorphic Encryption.
+20  RETURN 0
+End Function
+
+// This function is used to initialize parameters during install time
+// InitializePrivate initializes a private SC
+Function InitializePrivate() Uint64
+10  STORE(&quot;owner&quot;, SIGNER())   // Store in DB  [&quot;owner&quot;] = address
+
+</code></pre>
+<p>30 SEND_ASSET_TO_ADDRESS(SIGNER(), 1600000, SCID()) // Gives initial encrypted balance of 1600000. 40 RETURN 0 End Function</p>
+<pre><code>// This function is used to change owner
+// owner is an string form of address
+Function TransferOwnership(newowner String) Uint64
+10  IF LOAD(&quot;owner&quot;) == SIGNER() THEN GOTO 30
+20  RETURN 1
+30  STORE(&quot;tmpowner&quot;,ADDRESS_RAW(newowner))
+40  RETURN 0
+End Function
+
+// Until the new owner claims ownership, existing owner remains owner
+    Function ClaimOwnership() Uint64
+10  IF LOAD(&quot;tmpowner&quot;) == SIGNER() THEN GOTO 30
+20  RETURN 1
+30  STORE(&quot;owner&quot;,SIGNER()) // ownership claim successful
+40  RETURN 0
+End Function
+
+// if signer is owner, withdraw any requested funds
+// if everthing is okay, they will be showing in signers wallet
+
+</code></pre>
+<p>Function Withdraw( amount Uint64) Uint64 10 IF LOAD("owner") == SIGNER() THEN GOTO 30 20 RETURN 1 30 SEND_DERO_TO_ADDRESS(SIGNER(),amount) 40 RETURN 0 End Function</p>
+<pre><code>// if signer is owner, provide him rights to update code anytime
+    // make sure update is always available to SC
+    Function UpdateCode( code String) Uint64
+10  IF LOAD(&quot;owner&quot;) == SIGNER() THEN GOTO 30
+20  RETURN 1
+30  UPDATE_SC_CODE(code)
+40  RETURN 0
+End Function
+
+</code></pre>
+<h2 id="assets-interchange-smart-contract">ASSETS Interchange Smart Contract</h2>
+<p>This Smart Contract converts assetOne to assetTwo as per defined ratio in contract. Provided exchange has sufficient assets balances.</p>
+<p><strong>Steps to create an exchange contract.</strong></p>
+<p>First create two tokens and deposit it to exchange. Then anyone can use exchange smart contract for conversion of assets.</p>
+<p>Step 1] https://github.com/deroproject/documentation/tree/master/DVMDOCS/examples/token</p>
+<p><code>curl --request POST --data-binary @token.bas http://127.0.0.1:40403/install_sc</code></p>
+<p>Step 2] https://github.com/deroproject/documentation/tree/master/DVMDOCS/examples/token</p>
+<p><code>curl --request POST --data-binary @token2.bas http://127.0.0.1:40403/install_sc</code></p>
+<p>STEP 3] Create and install https://github.com/deroproject/documentation/blob/master/DVMDOCS/examples/assetexchange/asset_exchange.bas</p>
+<p><code>curl --request POST --data-binary @asset_exchange.bas http://127.0.0.1:40403/install_sc</code></p>
+<p>Step 4] Deposit assetOne/token1 to exchange contract.</p>
+<p><code>curl --silent http://127.0.0.1:40403/json_rpc -d '{"jsonrpc":"2.0","id":"0","method":"transfer","params":{"scid":"'"Interchange-SCID"'","ringsize":2, "sc_rpc":[{"name":"entrypoint","datatype":"S","value":"Deposit"}], "transfers": [ {"scid":"'"ASSET_ONE_SCID"'", "burn":AssetOneCount_DEPOSITED_TO_EXCHANGE}] }}' -H 'Content-Type: application/json'</code></p>
+<p>Step 5] Deposit assetTwo/token2 to exchange contract.</p>
+<p><code>curl --silent http://127.0.0.1:40403/json_rpc -d '{"jsonrpc":"2.0","id":"0","method":"transfer","params":{"scid":"'"Interchange-SCID"'","ringsize":2, "sc_rpc":[{"name":"entrypoint","datatype":"S","value":"Interchange"},{"name":"incoming","datatype":"H","value":"'"ASSET_ONE_SCID"'"},{"name":"outgoing","datatype":"H","value":"'"ASSET_TWO_SCID"'"}], "transfers": [{"scid":"'"ASSET_ONE_SCID"'", "burn":AssetOneCount_TO_BE__Converted}] }}' -H 'Content-Type: application/json'</code></p>
+<p>step 7] In wallet check balance of assetTwo.</p>
+<p>balance ASSET_TWO_SCID</p>
+<p><strong>NB: Following used above are variables, please change them. SCIDs are transaction-IDs returned by respective commands.</strong></p>
+<p>Interchange-SCID ASSET_ONE_SCID ASSET_TWO_SCID AssetOneCount_DEPOSITED_TO_EXCHANGE AssetTwoCount_DEPOSITED_TO_EXCHANGE AssetOneCount_TO_BE__Converted</p>
+<h2 id="assetbas">Asset.bas</h2>
+<p>/* Private Token Smart Contract Example in DVM-BASIC.\
+DERO Smart Contracts Tokens privacy can be understood just like banks handle cash. Once cash is out from the bank, bank is not aware about it (who owns what value), until it is deposited back. Smart contract only maintains supply and other necessary items to keep it working. DERO Tokens can be tranfered to other wallets just like native DERO with Homomorphic Encryption and without involvement of issuing Smart Contracts. Token issuing Smart Contract cannot hold/freeze/control their tokens once they are issued and sent to any wallet. This token is Private. Use Function InitializePrivate() Uint64 to make any Smart Contract private.</p>
+<pre><code>*/
+
+// Issue Asset after depositing DERO (Convert DERO to TOKENX)
+Function IssueAsset() Uint64
+10  SEND_ASSET_TO_ADDRESS(SIGNER(), DEROVALUE(),SCID())   // send asset without knowing original balance, this is done homomorphically
+20  RETURN 0
+End Function
+
+// This function is used to initialize parameters during install time
+// InitializePrivate initializes a private SC
+Function InitializePrivate() Uint64
+40  RETURN 0
+End Function
+
+</code></pre>
+<h2 id="assetexchangebas">Assetexchange.bas</h2>
+<pre><code>   // Asset Interchange/Exchnage  Smart Contract Example in DVM-BASIC.
+//    This SC allows you to deposit an arbitrary token, into it
+//    and later allows you to swap one token with another
+// if the SC has enough balance to cover outgoing transfer it will be done
+
+    // deposits an arbitrary token
+    //  owner should deposits all arbitrary types
+
+   Function Deposit() Uint64
+    20  RETURN 0
+    End Function
+
+// incoming represents incoming asset type basicallly an SCID
+// outgoing represents outgoing asset type basicallly an SCID
+   Function Interchange(incoming String, outgoing String) Uint64
+    10  SEND_ASSET_TO_ADDRESS(SIGNER(),ASSETVALUE(incoming)/2, outgoing)   // 1:1/2 interchange of assets
+    20  RETURN 0
+    End Function
+
+    Function Initialize() Uint64
+    10 STORE(&quot;owner&quot;, SIGNER())   // store in DB  [&quot;owner&quot;] = address
+    40  RETURN 0
+    End Function
+
+// everything below this is supplementary and not required
+
+    // This function is used to change owner
+    // owner is an string form of address
+    Function TransferOwnership(newowner String) Uint64
+    10  IF LOAD(&quot;owner&quot;) == SIGNER() THEN GOTO 30
+    20  RETURN 1
+    30  STORE(&quot;tmpowner&quot;,ADDRESS_RAW(newowner))
+    40  RETURN 0
+    End Function
+
+    // Until the new owner claims ownership, existing owner remains owner
+        Function ClaimOwnership() Uint64
+    10  IF LOAD(&quot;tmpowner&quot;) == SIGNER() THEN GOTO 30
+    20  RETURN 1
+    30  STORE(&quot;owner&quot;,SIGNER()) // ownership claim successful
+    40  RETURN 0
+    End Function
+
+    // if signer is owner, withdraw any requested funds
+    // if everthing is okay, they will be showing in signers wallet
+   Function Withdraw(amount Uint64, asset String) Uint64
+    10  IF LOAD(&quot;owner&quot;) == SIGNER() THEN GOTO 30
+    20  RETURN 1
+    30  SEND_ASSET_TO_ADDRESS(SIGNER(),amount,asset)
+    40  RETURN 0
+    End Function
+
+    // if signer is owner, provide him rights to update code anytime
+        // make sure update is always available to SC
+        Function UpdateCode( code String) Uint64
+    10  IF LOAD(&quot;owner&quot;) == SIGNER() THEN GOTO 30
+    20  RETURN 1
+    30  UPDATE_SC_CODE(code)
+    40  RETURN 0
+    End Function
+
+</code></pre>
+<h2 id="nameservice">Nameservice</h2>
+<p><strong>Register and associate DERO wallet to username.</strong></p>
+<p>Step 1] Check whether username is already registered. You cannot register username if already registered.</p>
+<p><code>curl http://127.0.0.1:40402/json_rpc -d '{"jsonrpc":"2.0","id":"0","method":"nametoaddress","params":{"name":"TESTUSERNAME" }}' -H 'Content-Type: application/json'</code></p>
+<p>Step 2] Register and associate DERO wallet to username.</p>
+<p><code>curl http://127.0.0.1:40403/json_rpc -d '{"jsonrpc":"2.0","id":"0","method":"scinvoke","params":{"scid":"0000000000000000000000000000000000000000000000000000000000000001","ringsize":2, "sc_rpc":[{"name":"entrypoint","datatype":"S","value":"Register"}, {"name":"name","datatype":"S","value":"TESTUSERNAME" }] }}' -H 'Content-Type: application/json'</code></p>
+<p><strong>NB: Replace TESTUSERNAME with your desired available username in abvove steps.</strong></p>
+<p><strong>NB: "scid":"0000000000000000000000000000000000000000000000000000000000000001" is reserved for nameservice registration.</strong></p>
+<h2 id="nameservicebas">Nameservice.bas</h2>
+<pre><code>   /* Name Service SMART CONTRACT in DVM-BASIC.
+   Allows a user to register names which could be looked by wallets for easy to use name while transfer
+*/
+
+ // This function is used to initialize parameters during install time
+    Function Initialize() Uint64
+    10  RETURN 0
+    End Function
+
+    // Register a name, limit names of 5 or less length
+    Function Register(name String) Uint64
+    10  IF EXISTS(name) THEN GOTO 50   // if name is already used, it cannot reregistered
+    20  IF STRLEN(name) &gt;= 6 THEN GOTO 40
+    30  IF SIGNER() != address_raw(&quot;deto1qyvyeyzrcm2fzf6kyq7egkes2ufgny5xn77y6typhfx9s7w3mvyd5qqynr5hx&quot;) THEN GOTO 50
+    40  STORE(name,SIGNER())
+    50  RETURN 0
+    End Function
+
+    // This function is used to change owner
+    // owner is an string form of address
+    Function TransferOwnership(name String,newowner String) Uint64
+    10  IF LOAD(name) != SIGNER() THEN GOTO 30
+    20  STORE(name,ADDRESS_RAW(newowner))
+    30  RETURN 0
+    End Function
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2017 - 2024 DERO Project
+
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/deroproject" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://discord.gg/H95TJDp" target="_blank" rel="noopener" title="discord.gg" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M524.531 69.836a1.5 1.5 0 0 0-.764-.7A485.065 485.065 0 0 0 404.081 32.03a1.816 1.816 0 0 0-1.923.91 337.461 337.461 0 0 0-14.9 30.6 447.848 447.848 0 0 0-134.426 0 309.541 309.541 0 0 0-15.135-30.6 1.89 1.89 0 0 0-1.924-.91 483.689 483.689 0 0 0-119.688 37.107 1.712 1.712 0 0 0-.788.676C39.068 183.651 18.186 294.69 28.43 404.354a2.016 2.016 0 0 0 .765 1.375 487.666 487.666 0 0 0 146.825 74.189 1.9 1.9 0 0 0 2.063-.676A348.2 348.2 0 0 0 208.12 430.4a1.86 1.86 0 0 0-1.019-2.588 321.173 321.173 0 0 1-45.868-21.853 1.885 1.885 0 0 1-.185-3.126 251.047 251.047 0 0 0 9.109-7.137 1.819 1.819 0 0 1 1.9-.256c96.229 43.917 200.41 43.917 295.5 0a1.812 1.812 0 0 1 1.924.233 234.533 234.533 0 0 0 9.132 7.16 1.884 1.884 0 0 1-.162 3.126 301.407 301.407 0 0 1-45.89 21.83 1.875 1.875 0 0 0-1 2.611 391.055 391.055 0 0 0 30.014 48.815 1.864 1.864 0 0 0 2.063.7A486.048 486.048 0 0 0 610.7 405.729a1.882 1.882 0 0 0 .765-1.352c12.264-126.783-20.532-236.912-86.934-334.541ZM222.491 337.58c-28.972 0-52.844-26.587-52.844-59.239s23.409-59.241 52.844-59.241c29.665 0 53.306 26.82 52.843 59.239 0 32.654-23.41 59.241-52.843 59.241Zm195.38 0c-28.971 0-52.843-26.587-52.843-59.239s23.409-59.241 52.843-59.241c29.667 0 53.307 26.82 52.844 59.239 0 32.654-23.177 59.241-52.844 59.241Z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/deroproject" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8l164.9-188.5L26.8 48h145.6l100.5 132.9L389.2 48zm-24.8 373.8h39.1L151.1 88h-42l255.3 333.8z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://t.me/DeroProjectGroup" target="_blank" rel="noopener" title="t.me" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M248 8C111.033 8 0 119.033 0 256s111.033 248 248 248 248-111.033 248-248S384.967 8 248 8Zm114.952 168.66c-3.732 39.215-19.881 134.378-28.1 178.3-3.476 18.584-10.322 24.816-16.948 25.425-14.4 1.326-25.338-9.517-39.287-18.661-21.827-14.308-34.158-23.215-55.346-37.177-24.485-16.135-8.612-25 5.342-39.5 3.652-3.793 67.107-61.51 68.335-66.746.153-.655.3-3.1-1.154-4.384s-3.59-.849-5.135-.5q-3.283.746-104.608 69.142-14.845 10.194-26.894 9.934c-8.855-.191-25.888-5.006-38.551-9.123-15.531-5.048-27.875-7.717-26.8-16.291q.84-6.7 18.45-13.7 108.446-47.248 144.628-62.3c68.872-28.647 83.183-33.623 92.511-33.789 2.052-.034 6.639.474 9.61 2.885a10.452 10.452 0 0 1 3.53 6.716 43.765 43.765 0 0 1 .417 9.769Z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+
+
+
+
+  
+
+<h4>Cookie consent</h4>
+<p>At DERO, we prioritize and highly value your privacy.  We understand the importance of protecting your personal information, and we are committed to maintaining the confidentiality and security of any data you share with us.  To demonstrate our commitment to your privacy, we have implemented a transparent and cookie-free approach to data collection.</p>
+<input class="md-toggle" type="checkbox" id="__settings" checked>
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.tabs", "navigation.tabs.sticky", "navigation.tracking", "navigation.expand", "search.suggest", "search.share", "content.code.copy"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="../assets/external/unpkg.com/mermaid@10.6.1/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

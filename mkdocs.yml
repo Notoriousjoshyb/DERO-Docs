@@ -11,7 +11,7 @@ theme:
     - search.share
     - content.code.copy
   logo: assets/logo.png
-  favicon: assets/img/favicon.ico
+  favicon: assets/favicon.ico
   language: en
   name: material
   palette:

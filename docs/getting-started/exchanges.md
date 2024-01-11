@@ -4,7 +4,7 @@ Exchanges
 Exchanges supporting DERO
 
 -   [XeggeX DERO/BTC](https://xeggex.com/market/DERO_BTC)
--   [XeggeX DERO/BTC](https://xeggex.com/market/DERO_USDT)
+-   [XeggeX DERO/USDT](https://xeggex.com/market/DERO_USDT)
 -   [TradeOgre DERO/BTC](https://tradeogre.com/exchange/BTC-DERO)
 -   [TradeOgre DERO/USDT](https://tradeogre.com/exchange/DERO-USDT)
 -   [Non-KYC DERO/BTC](https://nonkyc.io/market/DERO_BTC)
