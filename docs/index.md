@@ -1,7 +1,3 @@
----
-sidebar_position: 1
----
-
 What is DERO
 ==============================
 
@@ -18,7 +14,7 @@ The DERO Project has created a platform for developers to deploy secure, open, s
 -   Difficulty:Retargets at every block
 -   Ticker:DERO
 
-![image](https://docs.dero.io/assets/index/curve.png)
+![image](assets/index/curve.png)
 
 The DERO Mission
 ----------------
@@ -75,7 +71,7 @@ This account based encrypted blockchain model not only provides superior privacy
 
 Below is a comparison of DHEBP and a conventional blockchain.
 
-![image](https://docs.dero.io/assets/index/DHEBPvsCBP.png)
+![image](assets/index/DHEBPvsCBP.png)
 
 ### TLS-SECUREDSecured UDP P2P Network
 
@@ -87,7 +83,7 @@ The DERO team also keeps future large scale applications in mind, e.g. enterpris
 
 Comparison below of network data captured from wallet traffic
 
-![image](https://docs.dero.io/assets/index/table_width_code_optimized.png)
+![image](assets/index/table_width_code_optimized.png)
 
 ### The DERO Journey
 

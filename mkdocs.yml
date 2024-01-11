@@ -15,26 +15,21 @@ theme:
   language: en
   name: material
   palette:
-
-    # Palette toggle for automatic mode
-    - media: "(prefers-color-scheme)"
-      toggle:
-        icon: material/brightness-auto
-        name: Switch to light mode
+    
 
     # Palette toggle for light mode
-    - media: "(prefers-color-scheme: light)"
-      scheme: default 
+    - scheme: default
+      primary: black
       toggle:
-        icon: material/brightness-7
+        icon: material/brightness-7 
         name: Switch to dark mode
 
     # Palette toggle for dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
+    - scheme: slate
+      primary: black
       toggle:
         icon: material/brightness-4
-        name: Switch to system preference
+        name: Switch to light mode
 extra:
   generator: false
   social:
@@ -71,29 +66,32 @@ copyright: >
 nav:
   - Home: index.md
   - Getting started:
-    - Installation: getting-started.md
+    - DERO Node: 
+      - Windows Node: getting-started/dero-node.md
+      - Linux Node: getting-started/linux-node.md
+      - Android node: getting-started/android-node.md
+      - Windows WSL Ubuntu Full Node & Fastsync: getting-started/fastsync.md
+    - Wallets:
+      - Command Line Interface: getting-started/cli.md
+      - Engram GUI Mobile & Desktop: getting-started/engram.md
+      - Android CLI: getting-started/androidcli.md
+    - Mining:
+      - Mining DERO: getting-started/miningdero.md
+      - Android Mining: getting-started/androidmining.md
+    - Buying DERO:
+      - How to buy DERO: getting-started/buyingdero.md
+    - Trading:
+      - Exchanges: getting-started/exchanges.md
+      - Deposit to an Exchange: getting-started/deposit.md
+      - Withdraw from an Exchange: getting-started/withdraw.md
+    - DERO Home network:
+      - Create a Home Network: getting-started/homenetwork.md
+    - Smart Contracts:
+      - Deploy your own Smart Contract: getting-started/smartcontract.md
   - Developers:
-    - setup/index.md
-    - Changing the colors: setup/changing-the-colors.md
-    - Changing the fonts: setup/changing-the-fonts.md
-    - Changing the language: setup/changing-the-language.md
-    - Changing the logo and icons: setup/changing-the-logo-and-icons.md
-    - Ensuring data privacy: setup/ensuring-data-privacy.md
-    - Setting up navigation: setup/setting-up-navigation.md
-    - Setting up site search: setup/setting-up-site-search.md
-    - Setting up site analytics: setup/setting-up-site-analytics.md
-    - Setting up social cards: setup/setting-up-social-cards.md
-    - Setting up a blog: setup/setting-up-a-blog.md
-    - Setting up tags: setup/setting-up-tags.md
-    - Setting up versioning: setup/setting-up-versioning.md
-    - Setting up the header: setup/setting-up-the-header.md
-    - Setting up the footer: setup/setting-up-the-footer.md
-    - Adding a git repository: setup/adding-a-git-repository.md
-    - Adding a comment system: setup/adding-a-comment-system.md
-    - Building an optimized site: setup/building-an-optimized-site.md
-    - Building for offline usage: setup/building-for-offline-usage.md
-    - Extensions:
-      - setup/extensions/index.md
-      - Python Markdown: setup/extensions/python-markdown.md
-      - Python Markdown Extensions: setup/extensions/python-markdown-extensions.md
-  
+    - developer/dvm.md
+    - developer/astrobwt.md
+    - developer/DHEBP.md
+    - developer/graviton.md
+    - developer/RPC.md
+   
