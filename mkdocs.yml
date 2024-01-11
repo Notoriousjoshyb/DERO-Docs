@@ -1,0 +1,99 @@
+site_name: DERO Documentation
+theme:
+  features:
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.tracking
+    - navigation.expand
+    - search.suggest
+    - search.share
+    - content.code.copy
+  logo: assets/logo.png
+  favicon: assets/img/favicon.ico
+  language: en
+  name: material
+  palette:
+
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default 
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/deroproject
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/H95TJDp
+    - icon: fontawesome/brands/x-twitter
+      link: https://twitter.com/deroproject
+    - icon: fontawesome/brands/telegram
+      link: https://t.me/DeroProjectGroup
+  consent:
+    title: Cookie consent
+    description: >- 
+      At DERO, we prioritize and highly value your privacy. 
+      We understand the importance of protecting your personal information, and we are committed to maintaining the confidentiality and security of any data you share with us. 
+      To demonstrate our commitment to your privacy, we have implemented a transparent and cookie-free approach to data collection.
+    actions:
+      - accept
+     
+    
+    
+plugins:
+  - privacy
+  - search
+  - offline
+
+
+copyright: >
+            Copyright &copy; 2017 - 2024 DERO Project
+
+
+# Page tree
+nav:
+  - Home: index.md
+  - Getting started:
+    - Installation: getting-started.md
+  - Developers:
+    - setup/index.md
+    - Changing the colors: setup/changing-the-colors.md
+    - Changing the fonts: setup/changing-the-fonts.md
+    - Changing the language: setup/changing-the-language.md
+    - Changing the logo and icons: setup/changing-the-logo-and-icons.md
+    - Ensuring data privacy: setup/ensuring-data-privacy.md
+    - Setting up navigation: setup/setting-up-navigation.md
+    - Setting up site search: setup/setting-up-site-search.md
+    - Setting up site analytics: setup/setting-up-site-analytics.md
+    - Setting up social cards: setup/setting-up-social-cards.md
+    - Setting up a blog: setup/setting-up-a-blog.md
+    - Setting up tags: setup/setting-up-tags.md
+    - Setting up versioning: setup/setting-up-versioning.md
+    - Setting up the header: setup/setting-up-the-header.md
+    - Setting up the footer: setup/setting-up-the-footer.md
+    - Adding a git repository: setup/adding-a-git-repository.md
+    - Adding a comment system: setup/adding-a-comment-system.md
+    - Building an optimized site: setup/building-an-optimized-site.md
+    - Building for offline usage: setup/building-for-offline-usage.md
+    - Extensions:
+      - setup/extensions/index.md
+      - Python Markdown: setup/extensions/python-markdown.md
+      - Python Markdown Extensions: setup/extensions/python-markdown-extensions.md
+  
