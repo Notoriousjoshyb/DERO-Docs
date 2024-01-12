@@ -12,6 +12,8 @@ Exchanges supporting DERO
 -   [Non-KYC DERO/XMR](https://nonkyc.io/market/DERO_XMR)
 -   [Coin-Ex DERO/BTC](https://www.coinex.com/en/exchange/dero-btc?currency=BTC&dest=DERO)
 -   [Coin-Ex DERO/USDT](https://www.coinex.com/en/exchange/dero-usdt?currency=USDT&dest=DERO)
+-   [Safetrade DERO/BTC](https://safe.trade/exchange/DERO-BTC?type=basic)
+-   [Safetrade DERO/USDT](https://safe.trade/exchange/DERO-USDT?type=basic)
 -   [Vite DERO/BTC](https://x.vite.net/trade?symbol=DERO-000_BTC-000)
 
 To view a full list of exchanges, visit [CoinGecko](https://www.coingecko.com/en/coins/dero)
