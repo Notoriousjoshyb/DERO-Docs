@@ -14,7 +14,7 @@ DVM apps run on a from scratch custom built privacy supporting, encrypted blockc
 -   This enables developers to create puzzles, games, voting, markets, store registries of debts or promises, move funds in accordance with instructions given long in the past (like a will or a futures contract) and many other ideas/things that have not been invented yet, all without a middleman or counterparty risk.
 -   DVM-BASIC is a contract-oriented, high-level language for implementing smart contracts. It is influenced by GW-BASIC, Visual Basic and C and is designed to target the DERO Virtual Machine (DVM). It is very easy to program and very readable.
 -   DVM runs Smart Contracts which are a collection of functions written in DVM-BASIC. These functions can be invoked over the blockchain to do something. SCs can act as libraries for other SCs.
--   DVM supports number of comments formats such as â€˜, // , // as good documentation is necessary.
+-   DVM supports number of comments formats such as ', // , // as good documentation is necessary.
 
 **Example Factorial Program**
 
@@ -47,7 +47,7 @@ DVM apps run on a from scratch custom built privacy supporting, encrypted blockc
 -   uint64 supports following logical operators >, >= , <, <=, == , !=
 -   string supports only + operator. string support concatenation with a uint64.
 -   string supports ==, != logical operators.
--   All DVM variables are mandatory to define and are initialized to default values namely 0 and â€œâ€.
+-   All DVM variables are mandatory to define and are initialized to default values namely 0 and "".
 
 A SC execution must return 0 to persist any changes made during execution. During execution, no panics should occur.
 
